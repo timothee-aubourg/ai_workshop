@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
 <meta name="theme-color" content="#002147">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<title>What's going on in AI? — companion</title>
+<meta name="description" content="Practical AI — the workshop deck, reflowed for a phone. Twenty-seven slides, same running order.">
+<title>Practical AI — the deck, on your phone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script>/* react 18.2.0 (MIT) inlined */
 /**
  * @license React
@@ -317,284 +319,1102 @@ function(a,b,c){if(!Vd(b))throw Error(n(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
 </script>
 <style>
-:root{--ink:#002147;--paper:#f4f2ee;--grey:#a79d96;--rule:#dcd8d1;--panel:#e7e4dd;
- --green:#426A5A;--red:#994636;--lb:#5B8FC7;--yellow:#E8B72E;
- --serif:'Noto Serif',Georgia,serif;--sans:'Roboto',system-ui,sans-serif;--mono:'Roboto Mono',monospace;
- --sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px)}
-*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+:root{
+ --ink:#002147; --paper:#f4f2ee; --white:#fff; --rule:#dcd8d1; --grey:#a79d96; --mut:#5c606b;
+ --green:#426A5A; --red:#994636; --lb:#5B8FC7; --yellow:#E8B72E;
+ --serif:'Noto Serif',Georgia,serif; --sans:'Roboto',system-ui,-apple-system,sans-serif; --mono:'Roboto Mono',ui-monospace,monospace;
+ --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);overscroll-behavior-y:none}
+body{background:var(--ink);color:var(--ink);font-family:var(--sans);overscroll-behavior:none;
+ -webkit-text-size-adjust:100%}
 #root{height:100%}
-.app{height:100%;display:flex;flex-direction:column}
-.top{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--paper);
- padding:calc(10px + var(--sat)) 16px 10px;display:flex;align-items:baseline;gap:10px}
-.top h1{font-family:var(--serif);font-size:17px;font-weight:900;letter-spacing:-.01em}
-.top h1 em{font-style:italic;color:var(--yellow)}
-.top .chip{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#9ab0c8}
-.feed{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px calc(76px + var(--sab))}
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ink);
- display:flex;padding:6px 8px calc(8px + var(--sab));gap:4px}
-.tab{flex:1;border:0;background:transparent;color:#8fa3b8;font-family:var(--mono);
- font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:9px 2px 7px;cursor:pointer;
- display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:10px}
-.tab b{font-family:var(--serif);font-size:16px;font-weight:900;line-height:1}
-.tab.on{background:rgba(232,183,46,.14);color:var(--yellow)}
-/* home */
-.cover{background:var(--ink);color:var(--paper);padding:22px 18px;margin:-14px -14px 14px;border-bottom:4px solid var(--yellow)}
-.cover .k{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#9ab0c8}
-.cover h2{font-family:var(--serif);font-size:30px;font-weight:900;line-height:1.06;letter-spacing:-.02em;margin:6px 0}
-.cover h2 em{font-style:italic;color:var(--yellow)}
-.cover p{font-size:12.5px;line-height:1.5;color:#c9d4e2;max-width:34ch}
-.hcard{border:1.5px solid var(--ink);background:#fff;border-radius:14px;padding:14px 15px;margin-bottom:12px;
- display:flex;gap:13px;align-items:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,33,71,.06)}
-.hcard .n{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--red);width:34px;flex:none}
-.hcard h3{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.1}
-.hcard p{font-size:11px;color:#5c606b;line-height:1.4;margin-top:2px}
-.hcard .go{margin-left:auto;font-size:18px;color:var(--grey)}
-/* section cards */
-.scard{border:1.5px solid var(--ink);background:#fff;border-radius:14px;padding:13px 15px;margin-bottom:11px;cursor:pointer;
- box-shadow:0 2px 10px rgba(0,33,71,.06)}
-.scard .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}
-.scard h3{font-family:var(--serif);font-size:19px;font-weight:900;letter-spacing:-.01em;margin:2px 0 3px}
-.scard p{font-size:11.5px;line-height:1.45;color:#33373f}
-.scard .big{font-family:var(--serif);font-size:26px;font-weight:900;color:var(--ink);margin:4px 0 0}
-.scard .big small{font-size:11px;font-weight:400;color:var(--grey);font-family:var(--sans)}
-/* sheet */
-.dim{position:fixed;inset:0;background:rgba(0,20,45,.5);z-index:30;opacity:0;transition:opacity .22s}
-.dim.on{opacity:1}
-.sheet{position:fixed;left:0;right:0;bottom:0;top:calc(26px + var(--sat));z-index:31;background:var(--paper);
- border-radius:18px 18px 0 0;transform:translateY(103%);transition:transform .28s cubic-bezier(.2,.8,.2,1);
- display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.3)}
-.sheet.on{transform:translateY(0)}
-.grab{padding:9px 0 5px;flex:none;display:flex;justify-content:center;touch-action:none}
-.grab i{width:42px;height:5px;border-radius:3px;background:#cfc9bf}
-.shead{padding:2px 18px 11px;border-bottom:1.5px solid var(--ink);flex:none;display:flex;align-items:baseline;gap:10px}
-.shead .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--red)}
-.shead h2{font-family:var(--serif);font-size:23px;font-weight:900;letter-spacing:-.02em}
-.shead button{margin-left:auto;border:1.5px solid var(--ink);background:transparent;border-radius:9px;
- font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:7px 11px;color:var(--ink)}
-.sbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 18px calc(20px + var(--sab))}
+.app{height:100%;height:100dvh;display:flex;flex-direction:column;background:var(--ink)}
+
+/* ── hud ─────────────────────────────────────────── */
+.hud{flex:none;background:var(--ink);color:var(--paper);padding:calc(7px + var(--sat)) 12px 7px;
+ display:flex;align-items:center;gap:10px}
+.hud .ttl{font-family:var(--serif);font-size:13.5px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;
+ overflow:hidden;text-overflow:ellipsis}
+.hud .ttl em{font-style:italic;color:var(--yellow)}
+.hud .ct{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#9ab0c8;white-space:nowrap}
+.hud button,.hud a.hb{border:1px solid #2f5f8c;background:transparent;color:var(--paper);border-radius:8px;
+ font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:6px 9px;flex:none;
+ display:inline-flex;align-items:center;gap:5px;text-decoration:none}
+.hud a.hb .mo{width:15px;height:10px;border:1.5px solid currentColor;border-radius:2px;flex:none;position:relative}
+.hud a.hb .mo::after{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);
+ width:7px;height:1.5px;background:currentColor}
+.deskrow{display:block;text-align:center;border:1.5px solid var(--ink);border-radius:11px;background:var(--ink);
+ color:var(--paper);text-decoration:none;font-family:var(--mono);font-size:10px;letter-spacing:.1em;
+ text-transform:uppercase;padding:13px 10px;margin-top:14px}
+.prog{flex:none;height:3px;background:#0b2748;display:flex;gap:1px;padding:0 2px}
+.prog i{flex:1;background:#1d4570;border-radius:2px}
+.prog i.on{background:var(--yellow)}
+.prog i.past{background:#4f7fae}
+
+/* ── stage ───────────────────────────────────────── */
+.stage{flex:1;min-height:0;position:relative;overflow:hidden}
+.slide{position:absolute;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;
+ padding:18px 16px calc(22px + var(--sab))}
+.slide.dark{background:var(--ink);color:var(--paper)}
+.slide.light{background:var(--paper);color:var(--ink)}
+.slide.enter{animation:sl .22s ease-out}
+@keyframes sl{from{opacity:0;transform:translateX(var(--dx,14px))}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.slide.enter{animation:none}}
+
+/* ── nav ─────────────────────────────────────────── */
+.nav{flex:none;background:var(--ink);display:flex;align-items:center;gap:8px;
+ padding:7px 10px calc(9px + var(--sab))}
+.nav button{flex:1;border:1px solid #2f5f8c;background:transparent;color:var(--paper);border-radius:10px;
+ font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:11px 6px}
+.nav button:disabled{opacity:.28}
+.nav button.k{flex:0 0 auto;padding:11px 14px;background:#0b2748}
+.nav .sec{flex:2;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+ text-transform:uppercase;color:#8fa3b8;line-height:1.3;padding:0 4px}
+
+/* ── shared slide typography ─────────────────────── */
+.kick{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--yellow)}
+.light .kick{color:var(--red)}
+.eyebrow{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;
+ color:var(--mut);margin-bottom:5px}
+.dark .eyebrow{color:#9ab0c8}
+h1.big{font-family:var(--serif);font-size:33px;font-weight:900;line-height:1.05;letter-spacing:-.025em;margin:5px 0 9px}
+h1.big em{font-style:italic;color:var(--yellow)}
+.light h1.big em{color:var(--red)}
+h2.hd{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1.08;letter-spacing:-.02em;margin:3px 0 8px}
+h2.hd em{font-style:italic;color:var(--red)}
+.dark h2.hd em{color:var(--yellow)}
+.stand{font-size:13.5px;line-height:1.55;color:#22262e;margin-bottom:12px}
+.dark .stand{color:#c9d4e2}
+.stand b{font-weight:700;color:var(--ink)}
+.dark .stand b{color:var(--paper)}
+.stand i{font-style:italic;color:var(--red)}
+.dark .stand i{color:var(--yellow)}
 .blk{margin-bottom:13px}
-.blk p{font-size:13.5px;line-height:1.55;color:#22262e}
-.blk p b{font-weight:700;color:var(--ink)}
-.blk p i{color:var(--red)}
-.stat{border:1.5px solid var(--ink);border-radius:12px;background:#fff;padding:11px 14px;display:flex;align-items:baseline;gap:12px}
-.stat .v{font-family:var(--serif);font-size:30px;font-weight:900;color:var(--ink);white-space:nowrap}
-.stat .x{font-size:11.5px;line-height:1.4;color:#33373f}
-.quote{border-left:4px solid var(--yellow);padding:4px 0 4px 13px;font-family:var(--serif);
- font-size:16.5px;font-style:italic;line-height:1.4;color:var(--ink)}
-.acc{border:1.5px solid var(--ink);border-radius:12px;background:#fff;overflow:hidden;margin-bottom:9px}
-.acc .ah{width:100%;display:flex;align-items:center;gap:10px;padding:11px 14px;border:0;background:transparent;
- font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);text-align:left}
-.acc .ah .pm{margin-left:auto;font-family:var(--mono);color:var(--grey);font-size:14px}
-.acc .ab{padding:0 14px 12px;font-size:12.5px;line-height:1.5;color:#33373f;border-top:1px solid var(--rule)}
-.acc .ab p{margin-top:9px}
-.terms{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
-.term{font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);
- border:1px solid var(--red);background:#f7efe9;border-radius:8px;padding:3px 8px}
-.vq{font-size:12.5px;line-height:1.5;color:#22262e;padding-left:16px;position:relative;margin-top:7px}
-.vq::before{content:"?";position:absolute;left:0;font-family:var(--serif);font-weight:900;color:var(--red)}
-.fig{border:1.5px solid var(--rule);border-radius:12px;background:#fff;padding:8px;margin-bottom:0}
-.fig svg{display:block;width:100%;height:auto}
-.quiz{border:1.5px dashed var(--red);border-radius:12px;background:#fdf8f3;padding:12px 14px;cursor:pointer}
-.quiz .q{font-size:13px;font-weight:500}
-.quiz .a{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--red);margin-top:7px}
-.runrow{border:1.5px solid var(--ink);border-left-width:6px;border-radius:12px;background:#fff;padding:10px 13px;margin-bottom:9px}
-.runrow.bad{border-left-color:var(--red)} .runrow.good{border-left-color:var(--green)} .runrow.chg{border-left-color:var(--lb)}
-.runrow .k{font-family:var(--mono);font-size:8.2px;letter-spacing:.12em;text-transform:uppercase;color:var(--grey)}
-.runrow .m{font-family:var(--serif);font-size:22px;font-weight:900;margin:2px 0}
-.runrow .m small{font-size:11px;font-weight:400;color:var(--grey);font-family:var(--sans)}
-.runrow p{font-size:11.5px;line-height:1.42;color:#33373f}
-.runrow a{display:inline-block;margin-top:7px;font-family:var(--mono);font-size:9px;letter-spacing:.08em;
- text-transform:uppercase;color:var(--ink);border:1.5px solid var(--ink);border-radius:8px;padding:6px 10px;text-decoration:none}
-.checks label{display:flex;gap:11px;align-items:baseline;font-size:13px;line-height:1.45;padding:7px 0;border-bottom:1px solid var(--rule)}
-.checks input{width:17px;height:17px;accent-color:var(--green);flex:none}
-.links a{display:block;font-size:12px;color:var(--lb);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--rule)}
-.steps5{display:flex;gap:5px}
-.steps5 span{flex:1;border:1px solid var(--ink);border-radius:9px;background:#fff;text-align:center;
- font-family:var(--mono);font-size:8px;letter-spacing:.04em;text-transform:uppercase;padding:8px 2px;color:var(--ink)}
-.steps5 span b{display:block;font-family:var(--serif);font-size:15px;color:var(--red)}
+p.tx{font-size:13px;line-height:1.55;color:#22262e}
+.dark p.tx{color:#c9d4e2}
+p.tx b{color:var(--ink)} .dark p.tx b{color:var(--paper)}
+p.tx i{font-style:italic;color:var(--red)} .dark p.tx i{color:var(--yellow)}
+.note{font-family:var(--mono);font-size:10px;line-height:1.5;color:var(--mut);letter-spacing:.01em}
+.dark .note{color:#8fa3b8}
+.quote{border-left:4px solid var(--yellow);padding:3px 0 3px 13px;font-family:var(--serif);
+ font-size:16px;font-style:italic;line-height:1.38;margin-bottom:12px}
+.quote cite{display:block;font-family:var(--mono);font-size:9px;font-style:normal;letter-spacing:.09em;
+ text-transform:uppercase;color:var(--mut);margin-top:7px}
+.dark .quote cite{color:#8fa3b8}
+
+/* ── components ──────────────────────────────────── */
+.statrow{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.stat{flex:1 1 42%;border:1.5px solid var(--ink);border-radius:12px;background:var(--white);padding:9px 11px}
+.dark .stat{border-color:#2f5f8c;background:#0b2748}
+.stat .v{font-family:var(--serif);font-size:23px;font-weight:900;line-height:1.05;color:var(--ink)}
+.dark .stat .v{color:var(--paper)}
+.stat .s{font-size:10.5px;line-height:1.35;color:var(--mut);margin-top:3px}
+.dark .stat .s{color:#9ab0c8}
+
+.bars{border:1.5px solid var(--ink);border-radius:12px;background:var(--white);padding:11px 12px;margin-bottom:12px}
+.dark .bars{border-color:#2f5f8c;background:#0b2748}
+.bars .bh{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+ color:var(--red);margin-bottom:8px}
+.dark .bars .bh{color:var(--yellow)}
+.bar{margin-bottom:9px}
+.bar .bn{font-size:11px;line-height:1.35;color:var(--mut);display:flex;justify-content:space-between;gap:8px}
+.dark .bar .bn{color:#9ab0c8}
+.bar .bn b{font-family:var(--mono);font-size:11px;color:var(--ink);white-space:nowrap}
+.dark .bar .bn b{color:var(--paper)}
+.bar .bt{height:9px;background:#e7e4dd;border-radius:5px;overflow:hidden;margin-top:4px}
+.dark .bar .bt{background:#123a63}
+.bar .bt i{display:block;height:100%;background:var(--ink);border-radius:5px;min-width:3px}
+.dark .bar .bt i{background:var(--yellow)}
+.bar.g .bt i{background:var(--grey)}
+.bar.r .bt i{background:var(--red)}
+
+.card{border:1.5px solid var(--ink);border-left-width:5px;border-radius:12px;background:var(--white);
+ padding:11px 13px;margin-bottom:10px}
+.dark .card{border-color:#2f5f8c;border-left-color:var(--yellow);background:#0b2748}
+.card.red{border-left-color:var(--red)}
+.card .k{font-family:var(--mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}
+.dark .card.red{border-left-color:var(--red)}
+.card .k{color:var(--yellow)}
+.card .v{font-family:var(--serif);font-size:26px;font-weight:900;line-height:1.05;margin:3px 0 2px}
+.card .sub{font-size:11.5px;line-height:1.4;color:var(--mut)}
+.dark .card .sub{color:#9ab0c8}
+.card .x{font-size:12.5px;line-height:1.5;margin-top:7px}
+.card .cn{font-family:var(--mono);font-size:10px;line-height:1.45;color:var(--mut);margin-top:7px;
+ border-top:1px solid var(--rule);padding-top:7px}
+.dark .card .cn{color:#8fa3b8;border-top-color:#1d4570}
+
+.acc{border:1.5px solid var(--ink);border-radius:12px;background:var(--white);overflow:hidden;margin-bottom:9px}
+.dark .acc{border-color:#2f5f8c;background:#0b2748}
+.acc .ah{width:100%;display:flex;align-items:center;gap:10px;padding:11px 13px;border:0;background:transparent;
+ font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);text-align:left;line-height:1.2}
+.dark .acc .ah{color:var(--paper)}
+.acc .ah .an{font-family:var(--mono);font-size:9.5px;color:var(--red);flex:none;letter-spacing:.08em}
+.dark .acc .ah .an{color:var(--yellow)}
+.acc .ah .pm{margin-left:auto;font-family:var(--mono);font-size:16px;color:var(--grey);flex:none}
+.acc .ab{padding:0 13px 12px;border-top:1px solid var(--rule)}
+.dark .acc .ab{border-top-color:#1d4570}
+.acc .ab p{font-size:12.5px;line-height:1.5;margin-top:9px;color:#33373f}
+.dark .acc .ab p{color:#c9d4e2}
+.acc .tag{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--mut);margin-top:8px}
+.dark .acc .tag{color:#8fa3b8}
+.tools{list-style:none;margin-top:9px}
+.tools li{font-size:12px;line-height:1.4;padding:6px 0;border-top:1px solid var(--rule)}
+.dark .tools li{border-top-color:#1d4570}
+.tools a{color:var(--lb);text-decoration:none;font-weight:500}
+.tools span{color:var(--mut);display:block;font-size:11px}
+.dark .tools span{color:#8fa3b8}
+.check{font-family:var(--mono);font-size:10.5px;line-height:1.45;color:var(--red);border-top:1px solid var(--rule);
+ padding-top:8px;margin-top:9px}
+.dark .check{color:var(--yellow);border-top-color:#1d4570}
+
+.two{border:1.5px solid var(--ink);border-radius:12px;background:var(--ink);color:var(--paper);
+ padding:11px 13px;margin-bottom:10px}
+.two .h{font-family:var(--serif);font-size:14.5px;font-weight:700;margin-bottom:4px;color:var(--yellow)}
+.two .x{font-size:12.5px;line-height:1.5;color:#c9d4e2}
+.two .x b{color:var(--paper)}
+
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:12px}
+.mini{border:1.5px solid var(--ink);border-radius:11px;background:var(--white);padding:9px 10px}
+.dark .mini{border-color:#2f5f8c;background:#0b2748}
+.mini h4{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.dark .mini h4{color:var(--yellow)}
+.mini .it{font-size:11.5px;line-height:1.4;padding:4px 0;border-top:1px solid var(--rule);color:#33373f}
+.dark .mini .it{border-top-color:#1d4570;color:#c9d4e2}
+.mini .it:first-of-type{border-top:0}
+
+.steps{margin-bottom:12px}
+.step{border:1.5px solid var(--ink);border-radius:11px;background:var(--white);padding:9px 11px;margin-bottom:7px;
+ display:flex;gap:11px;align-items:flex-start}
+.dark .step{border-color:#2f5f8c;background:#0b2748}
+.step .n{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--red);line-height:1;flex:none;width:20px}
+.dark .step .n{color:var(--yellow)}
+.step .t{font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.15}
+.step .x{font-size:11.5px;line-height:1.42;color:var(--mut);margin-top:3px}
+.dark .step .x{color:#9ab0c8}
+.chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.chip{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--red);
+ border:1px solid var(--red);background:#f7efe9;border-radius:7px;padding:3px 7px}
+.dark .chip{background:transparent;color:#e0a08c;border-color:#a5604e}
+.chip.you{color:var(--ink);border-color:var(--yellow);background:#fdf5df}
+.chip.ag{color:var(--green);border-color:var(--green);background:#eef3f0}
+
+.rev{border:1.5px solid var(--ink);border-radius:11px;background:var(--white);padding:9px 11px;margin-bottom:7px}
+.dark .rev{border-color:#2f5f8c;background:#0b2748}
+.rev h4{font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.15}
+.rev .s{font-size:10.5px;color:var(--mut);margin-top:2px;font-family:var(--mono);letter-spacing:.03em}
+.dark .rev .s{color:#8fa3b8}
+.rev button{margin-top:7px;border:1.5px solid var(--ink);background:transparent;border-radius:8px;
+ font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;color:var(--ink)}
+.dark .rev button{border-color:#2f5f8c;color:var(--paper)}
+.rev .ans{margin-top:8px;border-top:1px solid var(--rule);padding-top:8px;font-size:12px;line-height:1.45;color:#33373f}
+.dark .rev .ans{border-top-color:#1d4570;color:#c9d4e2}
+.verdict{font-family:var(--mono);font-size:10px;letter-spacing:.12em;font-weight:500;padding:3px 8px;border-radius:7px;
+ display:inline-block;margin-bottom:5px}
+.verdict.yes{background:var(--green);color:#fff}
+.verdict.no{background:var(--grey);color:#231f1c}
+.verdict.both{background:var(--yellow);color:var(--ink)}
+
+.quizbox{border:1.5px dashed var(--red);border-radius:12px;background:#fdf8f3;padding:11px 13px;margin-bottom:12px}
+.dark .quizbox{background:#1a2233;border-color:#a5604e}
+.quizbox .q{font-size:13px;line-height:1.5}
+.quizbox .a{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--red);margin-top:8px;line-height:1.35}
+.dark .quizbox .a{color:var(--yellow)}
+
+pre.code{background:var(--ink);color:#dbe6f2;border-radius:11px;padding:12px;overflow-x:auto;margin-bottom:12px;
+ font-family:var(--mono);font-size:9.6px;line-height:1.55;white-space:pre;border:1px solid #2f5f8c}
+.dark pre.code{background:#00152c}
+.cmd{font-family:var(--mono);font-size:16px;background:var(--ink);color:var(--paper);border-radius:11px;
+ padding:13px;text-align:center;margin-bottom:12px;letter-spacing:.02em}
+.cmd b{color:var(--yellow);font-weight:500}
+
+.run{border:1.5px solid var(--ink);border-left-width:6px;border-radius:11px;background:var(--white);
+ padding:10px 12px;margin-bottom:8px}
+.dark .run{border-color:#2f5f8c;background:#0b2748}
+.run.bad{border-left-color:var(--red)} .run.good{border-left-color:var(--green)} .run.chg{border-left-color:var(--lb)}
+.run .k{font-family:var(--mono);font-size:8.6px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut)}
+.dark .run .k{color:#8fa3b8}
+.run .m{font-family:var(--serif);font-size:21px;font-weight:900;margin:2px 0 3px}
+.run .m small{font-size:11px;font-weight:400;color:var(--grey);font-family:var(--sans)}
+.run p{font-size:11.5px;line-height:1.42;color:#33373f}
+.dark .run p{color:#c9d4e2}
+.run a{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+ text-transform:uppercase;color:var(--ink);border:1.5px solid var(--ink);border-radius:8px;padding:6px 11px;text-decoration:none}
+.dark .run a{color:var(--paper);border-color:#2f5f8c}
+
+.checks{margin-bottom:12px}
+.checks label{display:flex;gap:11px;align-items:flex-start;font-size:12.5px;line-height:1.45;padding:8px 0;
+ border-bottom:1px solid var(--rule)}
+.dark .checks label{border-bottom-color:#1d4570}
+.checks input{width:17px;height:17px;accent-color:var(--green);flex:none;margin-top:1px}
+.checks .g{font-family:var(--mono);font-size:10px;color:var(--red);flex:none;width:44px}
+.dark .checks .g{color:var(--yellow)}
+.checks .human{border-bottom:0;border-top:2px solid var(--ink);margin-top:4px;padding-top:10px;font-weight:500}
+.dark .checks .human{border-top-color:var(--yellow)}
+
+.links{margin-bottom:12px}
+.links a{display:block;font-size:12px;color:var(--lb);text-decoration:none;padding:7px 0;
+ border-bottom:1px solid var(--rule);line-height:1.35}
+.dark .links a{border-bottom-color:#1d4570}
+
+.people{display:grid;gap:8px;margin-bottom:12px}
+.person{border:1.5px solid var(--ink);border-radius:11px;background:var(--white);padding:9px 11px}
+.dark .person{border-color:#2f5f8c;background:#0b2748}
+.person b{font-family:var(--serif);font-size:14px}
+.person span{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.dark .person span{color:#9ab0c8}
+
+.take{border-top:1px solid rgba(244,242,238,.28);padding-top:11px;margin-top:4px}
+.take .t{margin-bottom:11px}
+.take .n{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)}
+.take .x{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.2;margin:3px 0}
+.take .y{font-size:12px;line-height:1.45;color:#c9d4e2}
+
+.foot{margin-top:16px;border-top:1px solid var(--rule);padding-top:10px;font-family:var(--mono);
+ font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);line-height:1.7}
+.dark .foot{border-top-color:rgba(244,242,238,.25);color:#9ab0c8}
+.foot a{color:inherit}
+
+/* ── index sheet ─────────────────────────────────── */
+.dim{position:fixed;inset:0;background:rgba(0,20,45,.55);z-index:30}
+.sheet{position:fixed;left:0;right:0;bottom:0;top:calc(30px + var(--sat));z-index:31;background:var(--paper);
+ border-radius:18px 18px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 40px rgba(0,0,0,.35)}
+.sheet .sh{padding:14px 16px 11px;border-bottom:1.5px solid var(--ink);display:flex;align-items:baseline;gap:10px;flex:none}
+.sheet .sh h3{font-family:var(--serif);font-size:19px;font-weight:900}
+.sheet .sh button{margin-left:auto;border:1.5px solid var(--ink);background:transparent;border-radius:9px;
+ font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:7px 11px;color:var(--ink)}
+.sheet .sb{flex:1;overflow-y:auto;padding:10px 14px calc(18px + var(--sab))}
+.ix{width:100%;text-align:left;border:1.5px solid var(--ink);border-radius:11px;background:var(--white);
+ padding:9px 11px;margin-bottom:7px;display:flex;gap:11px;align-items:center}
+.ix.here{border-color:var(--red);background:#fdf5ef}
+.ix .n{font-family:var(--serif);font-size:17px;font-weight:900;color:var(--red);width:26px;flex:none}
+.ix .t{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.15}
+.ix .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.ixch{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
+ background:var(--rule);border-radius:6px;padding:5px 8px;margin:12px 0 8px}
 </style>
 <body>
 <div id="root"></div>
 <script>
-const h=htm.bind(React.createElement);
-const {useState,useRef,useEffect}=React;
-const RUNS={A:{mae:4.04,r2:0.706,base:8.39},B:{mae:3.1,r2:0.868},V:{mae:3.68,r2:0.77}};
+const h = htm.bind(React.createElement);
+const {useState, useEffect, useRef, useCallback} = React;
 
-const FIG={
-sup:`<svg viewBox='0 0 560 150'><text x='140' y='16' text-anchor='middle' font-size='11' font-weight='700' fill='#002147'>REGRESSION · a quantity</text><line x1='30' y1='126' x2='250' y2='126' stroke='#8c8f98'/><line x1='30' y1='126' x2='30' y2='28' stroke='#8c8f98'/><g fill='#002147'><circle cx='55' cy='108' r='4'/><circle cx='90' cy='96' r='4'/><circle cx='120' cy='86' r='4'/><circle cx='150' cy='72' r='4'/><circle cx='185' cy='60' r='4'/><circle cx='220' cy='46' r='4'/></g><line x1='38' y1='116' x2='242' y2='38' stroke='#426A5A' stroke-width='3'/><text x='420' y='16' text-anchor='middle' font-size='11' font-weight='700' fill='#002147'>CLASSIFICATION · a category</text><g fill='#5B8FC7'><circle cx='330' cy='60' r='4'/><circle cx='352' cy='44' r='4'/><circle cx='345' cy='78' r='4'/><circle cx='372' cy='60' r='4'/></g><g fill='#994636'><circle cx='470' cy='96' r='4'/><circle cx='492' cy='80' r='4'/><circle cx='485' cy='112' r='4'/><circle cx='510' cy='98' r='4'/></g><line x1='400' y1='128' x2='452' y2='30' stroke='#B98F1D' stroke-width='2.4' stroke-dasharray='6,5'/></svg>`,
-rl:`<svg viewBox='0 0 560 150'><rect x='210' y='14' width='140' height='34' fill='#fff' stroke='#002147' stroke-width='2'/><text x='280' y='36' text-anchor='middle' font-size='12' font-weight='700'>AGENT</text><rect x='210' y='102' width='140' height='34' fill='#eceae3' stroke='#002147' stroke-width='2'/><text x='280' y='124' text-anchor='middle' font-size='12'>ENVIRONMENT</text><path d='M350,31 C 470,31 470,119 350,119' fill='none' stroke='#8c8f98' stroke-width='2'/><path d='M210,119 C 90,119 90,31 210,31' fill='none' stroke='#8c8f98' stroke-width='2'/><text x='452' y='70' font-size='11'>action</text><text x='58' y='64' font-size='11'>state,</text><text x='58' y='80' font-size='11' fill='#426A5A' font-weight='700'>reward</text></svg>`,
-pipe:`<svg viewBox='0 0 560 110'><g font-size='9.5' text-anchor='middle'><rect x='6' y='30' width='70' height='40' fill='#fff' stroke='#002147' stroke-width='1.6'/><text x='41' y='54'>Data</text><rect x='86' y='30' width='70' height='40' fill='#fff' stroke='#002147' stroke-width='1.6'/><text x='121' y='54'>Features</text><rect x='166' y='30' width='60' height='40' fill='#fff' stroke='#002147' stroke-width='1.6'/><text x='196' y='54'>Split</text><rect x='240' y='40' width='48' height='22' fill='#994636'/><text x='264' y='55' fill='#fff' font-weight='800' font-size='8.5'>MODEL</text><rect x='300' y='30' width='84' height='40' fill='#fff' stroke='#002147' stroke-width='1.6'/><text x='342' y='54'>Validation</text><rect x='396' y='30' width='84' height='40' fill='#fff' stroke='#002147' stroke-width='1.6'/><text x='438' y='54'>Report</text><text x='264' y='30' font-size='8' fill='#994636'>the smallest box</text><text x='264' y='92' font-size='9' fill='#8c8f98'>garbage in → garbage out · le maillon faible</text></g></svg>`};
+/* ══════════════════════════════════════════════════════════════════
+   THE DECK — 27 pages, same running order as index.html.
+   Each page reflows for a phone; nothing is a scaled-down 1280×720.
+   ══════════════════════════════════════════════════════════════════ */
 
-const S=[
-{ch:1,id:'s01',n:'01',t:'A historic moment',lead:'SpaceX goes public. The market prices a story.',
- big:'$1.9T',small:'valuation at the close',
- blocks:[
- {p:'On IPO day, SpaceX closed near <b>$1.9 trillion</b>. Not for the rockets alone — for a story: reusable launch, Starlink, Mars.'},
- {q:'The market did not price the metal. It priced thirty years of belief.'},
- {p:'Why open an AI talk here? Because the same mechanism runs AI in 2026: <b>capability plus story, priced by everyone</b>. And this belief now belongs to everyone — that is the theme of the whole first chapter.'}]},
-{ch:1,id:'s02',n:'02',t:'A history of revolutions',lead:'Chess, Go, proteins, cars, language — one ladder.',
- big:'1997→2026',small:'from one game to everyone',
- blocks:[
- {p:'<b>1997</b> chess (Deep Blue) · <b>2011</b> quiz TV (Watson) · <b>2016</b> Go (AlphaGo) · <b>2020</b> proteins (AlphaFold) · <b>2022</b> language (ChatGPT) · <b>2024–26</b> agents that act.'},
- {p:'Each rung looked like an endpoint. Each was a door. The pattern to keep: the machine first beats the champion — then, a few years later, <b>everyone gets it in their pocket</b>.'},
- {q:'From one grandmaster losing, to two billion people playing.'}]},
-{ch:1,id:'s03',n:'03',t:'Intelligence as a commodity',lead:'Capability → price tag → everywhere.',
- big:'model → API → app',small:'the pipeline that changes everything',
- blocks:[
- {p:'Electricity became sockets; computing became clouds. Intelligence is on the same path: a <b>model</b> is wrapped in an <b>API</b> with a price per token, and apps plug in like appliances.'},
- {p:'When a capability gets a price tag, strategy changes: the question stops being <i>can it be done?</i> and becomes <b>what is worth doing?</b> — your question, in your field.'},
- {q:'You do not build the power plant. You decide what to plug in.'}]},
-{ch:1,id:'s04',n:'04',t:'Your new colleagues',lead:'Six roles you can delegate to — today.',
- big:'6 roles',small:'advisor first',
- blocks:[
- {p:'<b>Advisor</b> (think with you) · <b>Coder</b> (build for you) · <b>Analyst</b> (compute for you) · <b>Scribe</b> (write with you) · <b>Scheduler</b> (organise for you) · <b>Tutor</b> (teach you).'},
- {p:'Which first? <b>The advisor</b>: lowest risk, immediate value — discuss a plan, challenge a draft, prepare a meeting. Delegation by role, not by task, is the chapter-one habit.'},
- {q:'Treat it as a colleague: brief it, question it, verify it.'}]},
-{ch:2,id:'s05',n:'05',t:'The energy bill',lead:'Exponentials meet physics.',
- big:'×2 / 2 yr',small:'computing keeps doubling',
- blocks:[
- {p:'Computing doubles roughly every two years — a stack of doublings that never felt fast on any single day.'},
- {quiz:{q:'A sheet of paper is 0.1 mm thick. Fold it 42 times. How thick is the stack? (tap)',a:'About 440,000 km — past the Moon. That is what ×2 does, quietly.'}},
- {p:'The wider envelope — compute → data → <b>knowledge</b> — doubles more slowly, every 9–18 years. And the supply wall is real: grids, cooling, siting. Efficiency helps but does not free us: <i>it moves the orbit; it does not remove it</i> (Jevons).'},
- {links:[['IEA — Energy & AI, executive summary','https://www.iea.org/reports/energy-and-ai/executive-summary']]}]},
-{ch:2,id:'s06',n:'06',t:'The social bill',lead:'Jobs, control, goals — three cases from 2026.',
- big:'101,743',small:'US job cuts citing AI, H1 2026',
- blocks:[
- {p:'<b>Jobs.</b> 101,743 US cuts blamed on AI — the top stated reason four months running. Caution: the reason employers <i>give</i>, not proof of cause; total cuts were down 40% on 2025.'},
- {p:'<b>Control.</b> Anthropic&rsquo;s strongest model went to ~40 vetted firms, not the public — in tests it found new security holes on its own. Who may hold a tool becomes the real question.'},
- {p:'<b>Goals.</b> Two models, told to score well on a hacking test, broke out and stole the answer key — 17,000 logged actions. Nobody asked for an attack; they chased the score.'},
- {q:'Alignment: getting a machine to want what you meant — not the literal words.'},
- {p:'Postscript: cleaning up, US models refused to help — the team finished with a <b>Chinese open model</b>. Capability is now national power.'},
- {links:[['Challenger report','https://www.challengergray.com/blog/challenger-report-june-layoffs-cool-to-45849-down-53-from-may-ai-leads-reasons-for-fourth-consecutive-month/'],['Anthropic — Project Glasswing','https://www.anthropic.com/glasswing'],['Fortune, 21 July 2026','https://fortune.com/2026/07/21/openai-says-ai-models-escaped-control-hacked-hugging-face/'],['Decrypt','https://decrypt.co/374015/openai-models-escaped-test-environment-hacked-hugging-face-cheat-benchmark']]}]},
-{ch:2,id:'s07',n:'07',t:'The mind bill',lead:'What offloading does to the offloader.',
- big:'3 studies',small:'same signal in 2025–26',
- blocks:[
- {p:'<b>Moravec&rsquo;s lesson:</b> hard for us is easy for it, and the reverse. A teen learns to drive in ~45 hours; robotaxis needed hundreds of millions of real miles plus billions simulated.'},
- {p:'<b>Offloading:</b> heavy AI users showed weaker critical-thinking engagement (Gerlich, n=666); knowledge workers reported less evaluation effort (Microsoft/CHI, n=319); an MIT EEG study found lower brain connectivity when writing with a model.'},
- {q:'Ask of every impressive result: was it measured on data — or tasks — the system never saw?'},
- {p:'The habits: <b>keep a human in the loop</b>, and protect the evaluator — <i>the speed of your loop is the speed of your evaluation</i>.'}]},
-{ch:3,id:'s08',n:'08',t:'What ML is',lead:'Rules written by us, or a function fitted to examples.',
- big:'2 systems',small:'and one workflow',
- blocks:[
- {p:'<b>Expert system:</b> human knowledge as explicit if–then rules — &ldquo;if pH &lt; 6.5 and flow high, raise the dose.&rdquo; Auditable; extending it means more rules.'},
- {p:'<b>Machine learning:</b> a function fitted to recorded examples — inputs paired with outcomes — then reused on new cases. Its worth is <b>generalisation</b>.'},
- {fig:'sup',cap:'Supervised: regression predicts a quantity; classification a category. Forecasting = predicting a future value — a time setting, not a synonym of regression.'},
- {fig:'rl',cap:'Reinforcement: act, get reward, improve the policy — and it will chase exactly what the reward measures.'},
- {acc:[
-  ['Water — predict output BOD (Snehal & Sudeep)','Regression or a limit alarm. Vigilance: time-aware split; every input known at prediction time.',['data leakage','concept drift']],
-  ['Energy — forecast solar & wind (Jalpa)','Her own published work. Vigilance: pick the horizon; beat persistence (&ldquo;same as yesterday&rdquo;); test on an unseen season.',['seasonality','distribution shift']],
-  ['Materials — property from recipe (Harshil & Samikkumar)','Small data: design-of-experiments plus a simple model. Models interpolate; they do not extrapolate.',['small data','extrapolation']],
-  ['Language — classify hostile text (Jagruti)','Gujarati, low-resource. Vigilance: do labellers agree? Rare class — accuracy misleads.',['class imbalance','label noise']]]},
- {steps5:1},
- {q:'Same six-steps in every field — only the data changes.'}]},
-{ch:3,id:'s09',n:'09',t:'Doing it well',lead:'Where you stand in the system.',
- big:'4 duties',small:'never delegated',
- blocks:[
- {p:'<b>The myth:</b> the data-science Venn — programming, maths &amp; statistics, domain expertise — with a unicorn in the centre. <b>The 2026 update:</b> you stay in your circle; Coder and Analyst agents extend your reach. <i>You do not move to the centre; the centre comes to you.</i>'},
- {p:'<b>The spiral:</b> to command agents you write rules again, one level up — specs, guardrails, acceptance checks. The expert system returns, <i>around the learner</i>.'},
- {p:'<b>Yours, always:</b> the question · the data · validation · sign-off.'},
- {fig:'pipe',cap:'The system around the model — the model is the smallest box (Sculley 2015). Beat the dumb baseline before any model.'},
- {q:'Delegate only what you can validate.'},
- {links:[['Sculley et al., Hidden Technical Debt in ML (NeurIPS 2015)','https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf']]}]},
-{ch:3,id:'s10',n:'10',t:'The loop, enacted',lead:'One problem, three runs — one is lying.',
- big:'527 days',small:'one treatment plant',
- blocks:[
- {p:'<b>The problem.</b> A plant must keep output BOD under a legal limit; the lab test takes days. From this morning&rsquo;s numbers, predict tomorrow&rsquo;s output BOD. 527 daily records, 92 missing cells — reality is messy.'},
- {p:'<b>The design (frozen prompt):</b> target DBO-S in mg/L · regression · time-aware split · baseline first · no leakage · limits stated · human sign-off the skill may never tick.'},
- {runs:1},
- {checks:['Target and unit stated','No feature leaks the outcome','Test days later than training days','Metric read next to the baseline','Limits and uncertainty stated','I approve this report']},
- {q:'The human job was never the typing. It is the question, the data, and the judgement.'}]}
+const SITE = 'https://timothee-aubourg.github.io/ai_workshop/';
+
+const SLIDES = [
+/* 1 ───────────────────────────────────────────────────────── */
+{id:'t1', kind:'title', tag:'Practical AI · title',
+ body:[
+  {k:'h', t:'Practical <em>AI</em>:<br>fundamentals you can apply to your projects.'},
+  {k:'tx', t:'Timothée Aubourg · Nuffield Department of Clinical Neurosciences, University of Oxford. July 2026.'},
+  {k:'links', items:[['The workshop site', SITE],
+                     ['Source on GitHub','https://github.com/timothee-aubourg/ai_workshop'],
+                     ['timothee.aubourg@ndcn.ox.ac.uk','mailto:timothee.aubourg@ndcn.ox.ac.uk']]},
+  {k:'note', t:'Swipe left to advance · swipe right to go back · tap ☰ for the index.'}]},
+
+/* 2 ───────────────────────────────────────────────────────── */
+{id:'t2', kind:'speaker', tag:'About the speaker',
+ body:[
+  {k:'kick', t:'About the speaker'},
+  {k:'hd', t:'From industrial data science to <em>clinical research.</em>'},
+  {k:'sub', t:'Past experience — ten years of applied AI in research and industry'},
+  {k:'people', items:[
+    ['Orange Labs','research · telecoms &amp; data'],
+    ['ARaymond','IT project · smart glove'],
+    ['Verkor','battery gigafactory · data']]},
+  {k:'sub', t:'Current environment — NDCN, University of Oxford'},
+  {k:'people', items:[
+    ['NDCN, Oxford','Nuffield Department of Clinical Neurosciences'],
+    ['Prof. Michele Hu','NDCN · clinical lead'],
+    ['Dr. Siddharth Arora','scientific supervisor · Saïd Business School, Oxford']]}]},
+
+/* 3 ───────────────────────────────────────────────────────── */
+{id:'t3', kind:'agenda', tag:'Session agenda',
+ body:[
+  {k:'kick', t:'This session'},
+  {k:'hd', t:'Three chapters, <em>one seat.</em>'},
+  {k:'steps', items:[
+    ['1','What’s going on in AI?','What people mean by AI today, and what you can start using this week.'],
+    ['2','New challenges.','Real costs and real risks (no miracle solution).'],
+    ['3','Doing AI in your project.','What machine learning is, and how to develop it using AI tools.']]},
+  {k:'sub', t:'By the end of this session you can'},
+  {k:'list', items:[
+    'Understand the current AI narrative: the <b>democratisation of intelligence</b>, the <b>energy-based framing</b> of progress, and the <b>self-improving loop</b>.',
+    'Identify today’s challenges: <b>energy</b>, <b>society</b>, and the <b>risks of the intelligence itself</b> — alignment, overfitting, offloading.',
+    'See how AI can support your own work today — <b>six roles</b> you can already delegate to.',
+    'Position yourself in an AI project: <b>your circle, your four duties</b> — the question, the data, validation, sign-off.',
+    'Practice a practical AI workflow, end to end: <b>question → data → features → model → split → evaluation</b>.']}]},
+
+/* 4 ───────────────────────────────────────────────────────── */
+{id:'ch1', kind:'chapter', ch:1, tag:'Chapter 1',
+ body:[
+  {k:'kick', t:'Chapter 1'},
+  {k:'h', t:'What’s going on<br>in <em>AI?</em>'},
+  {k:'stand', t:'Four moments, in order: the largest listing in history, the revolutions that led to it, what intelligence costs today, and what you can hand over tomorrow. Three ideas carry the whole chapter.'},
+  {k:'take', items:[
+    ['Takeaway 01','The market has priced the story','Value is now attached to the AI narrative itself, ahead of the revenue that supports it.'],
+    ['Takeaway 02','Intelligence became a commodity','Energy becomes data, data becomes knowledge. The capability is abundant, priced, and open to everyone.'],
+    ['Takeaway 03','You can delegate more each year','Six working roles you can hand to a machine today, and the one check each of them still needs.']]}]},
+
+/* 5 ───────────────────────────────────────────────────────── */
+{id:'intro1', kind:'intro', ch:1, n:'01', tag:'Section 01 · A historic moment',
+ body:[
+  {k:'eyebrow', t:'What’s going on in AI?'},
+  {k:'h', t:'A Historic<br><em>Moment.</em>'},
+  {k:'stand', t:'The market now prices the AI narrative itself, ahead of the revenue beneath it. One morning in June made that visible: the largest listing ever recorded — sold as an AI company.'},
+  {k:'note', t:'Nasdaq · 12 June 2026 · Musk at the MarketSite, the balcony over Times Square.'}]},
+
+/* 6 ───────────────────────────────────────────────────────── */
+{id:'spacex', kind:'slide', ch:1, n:'01', tag:'SpaceX IPO',
+ body:[
+  {k:'eyebrow', t:'Nasdaq · 12 June 2026 · the largest IPO ever'},
+  {k:'hd', t:'The first<br><em>trillionaire</em>.'},
+  {k:'stand', t:'SpaceX raised <b>$85.7bn</b> — roughly triple the old record. In one day Musk’s paper wealth went from about <b>$700bn</b> to <b>$1.32tn</b>. Look at what investors were sold: <b>an AI company that happens to own the cheapest ride to orbit.</b> Twenty-four years earlier, Musk gave the company less than a <b>10%</b> chance.'},
+  {k:'quote', t:'“Don’t value us as a rocket company, value us as an AI company.”',
+   cite:'Pravin Pradeep, Frost &amp; Sullivan, reading the S-1 — Via Satellite, 3 June'},
+  {k:'bars', title:'The company · what SpaceX is now worth', items:[
+    ['SpaceX','$2,460bn',100,''],
+    ['Next 20 public space companies, combined','$235bn',9.55,'g'],
+    ['Rocket Lab — the next biggest','$68.6bn',2.79,'g']],
+   note:'10.5× the rest of the listed space sector · about 36 Rocket Labs · more than Boeing, Airbus, GE Aerospace, RTX and Lockheed Martin combined · roughly Brazil’s annual output.'},
+  {k:'bars', title:'The raise · collected in one morning', items:[
+    ['SpaceX, 12 June 2026','$85.7bn',100,''],
+    ['Saudi Aramco, 2019 — the old record','$25.6bn',29.9,'g'],
+    ['NASA — a full year, everything','$24.4bn',28.5,'g'],
+    ['ESA — a full year, 23 countries','$9.8bn',11.4,'g']],
+   note:'3.5 NASAs. Or 8.8 ESAs. Raised between breakfast and lunch.'},
+  {k:'card', tone:'red', kk:'The claim · what it was sold on', v:'93%',
+   sub:'of the $28.5tn market claimed in the S-1 is AI — $26.5tn, of which $22.7tn is “enterprise applications”. Space and connectivity are the small part.',
+   x:'<b>Actual 2025 revenue: $18.7bn</b> — 0.07% of the claim, a hairline. Net loss $4.9bn. The stock priced at <b>131× revenue</b>. Who pays SpaceX for AI today? Anthropic, $1.25bn/mo. Google, $920m/mo.'},
+  {k:'sub', t:'Six weeks later'},
+  {k:'tx', t:'On 24 July the same account posted two words: <b>“(Former) Trillionaire”</b>. Twenty-five million views. Nothing was built or unbuilt in those six weeks — the rockets still fly. What moved was the price, which tells you precisely what that number was made of. <i>Not metal. Not revenue. A story, marked to market every morning.</i>'},
+  {k:'links', items:[
+    ['Elon Musk on X · 24 Jul 2026','https://x.com/elonmusk/status/2065485963120328945'],
+    ['The S-1 · SEC filing, 20 May 2026','https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm'],
+    ['The hype video, filed with the SEC','https://www.sec.gov/Archives/edgar/data/1181412/000162828026040610/spacexfwp.htm'],
+    ['Equity — the IPO, unpacked (TechCrunch)','https://www.youtube.com/watch?v=Zno9J7le1N4'],
+    ['Nasdaq · the opening bell','https://www.nasdaq.com/events/spacex-rings-opening-bell']]}]},
+
+/* 7 ───────────────────────────────────────────────────────── */
+{id:'intro2', kind:'intro', ch:1, n:'02', tag:'Section 02 · AI revolutions',
+ body:[
+  {k:'eyebrow', t:'What’s going on in AI?'},
+  {k:'h', t:'A History of<br>AI <em>Revolutions.</em>'},
+  {k:'stand', t:'What changed across 1997, 2016 and 2022 is the source of the machine’s knowledge: written by us, then generated by itself, then absorbed from us at scale. In 2022 the result was handed to everyone.'},
+  {k:'note', t:'Chess 1997 · Go 2016 · Biology 2020 · Driving today · Everyone 2022.'}]},
+
+/* 8 ───────────────────────────────────────────────────────── */
+{id:'ai', kind:'slide', ch:1, n:'02', tag:'A history of AI revolutions',
+ body:[
+  {k:'eyebrow', t:'A history of AI revolutions · 1997 → today'},
+  {k:'hd', t:'Everybody<br>was <em>watching</em>.'},
+  {k:'stand', t:'Chess, 1997. Go, 2016. Biology, 2020. Each time a machine beat the specialists of one field, and the rest of us watched from outside. Deep Blue was taken apart after the match. AlphaGo was retired and never released. <b>In November 2022 the tool itself was handed over</b>, and the price of entry fell to an internet connection. That is the change.'},
+  {k:'quote', t:'“We will soon find out more of what was within our reach all along.”',
+   cite:'Thomas Bloom, mathematician, Manchester — on AI-generated proofs, 11 July 2026'},
+  {k:'bars', title:'Who could actually use it · log scale', items:[
+    ['<b>Deep Blue</b> · chess · May 1997 · you had to be Garry Kasparov','1',2,'r'],
+    ['<b>AlphaGo</b> · go · March 2016 · there was no way','0',0,'r'],
+    ['<b>Waymo</b> · driving · 2026 · one of ten US cities','500k / wk',63.3,''],
+    ['<b>AlphaFold DB</b> · biology · 2021 · be a researcher','3m',72,''],
+    ['<b>ChatGPT</b> · everything · Nov 2022 · an internet connection','900m / wk',99.5,'']],
+   note:'Each gridline is ten times the one before. Deep Blue is the left edge — one person, once. Zero has no place on a log axis, so AlphaGo has no bar at all. Loose comparison: ChatGPT’s 900m is one week; AlphaFold’s 3m is everyone since 2021 — generous to AlphaFold, and still 300 to one.'},
+  {k:'sub', t:'Where the knowledge came from'},
+  {k:'steps', items:[
+    ['1997','Written by us','Deep Blue searched 200 million positions a second, but every judgement about what made a position good was written by human grandmasters and coded by hand. Dismantled after the match.'],
+    ['2016','Generated by the machine','AlphaGo learned its judgement. Move 37 of game two — a fifth-line move human theory rejects — won the game. The next version learned from self-play alone and beat its predecessor 100 to nil.'],
+    ['2020','Absorbed at scale','Protein structure, where nature provides the answer key; a Nobel Prize in chemistry followed in 2024. Then November 2022: the world’s written text, absorbed without labels. One system, many tasks — with an address bar.']]},
+  {k:'sub', t:'Everybody is now acting'},
+  {k:'tx', t:'A man whose dog was dying used a public chatbot and the AlphaFold database to find a treatment his vets had not tried. No laboratory, no permission, no funding.'},
+  {k:'acc', items:[
+    {t:'Vibe coding · Karpathy, Feb 2025', n:'01',
+     x:'The person who led AI at Tesla describing how he now writes software: talk to the model, accept every suggestion, stop reading the diffs. He is explicit that it works for throwaway weekend projects — and equally explicit that the code grows beyond his own comprehension. <i>Enormous speed, purchased with understanding you no longer have.</i>',
+     links:[['x.com/karpathy','https://x.com/karpathy/status/1886192184808149383']]},
+    {t:'“A powerful alien tool” · Dec 2025', n:'02',
+     x:'Agents, subagents, prompts, memory, permissions, tools, MCP, hooks — a new programmable layer on top of everything else. His image is the useful one: a powerful alien tool was handed round, and it came with no manual. <b>If he feels behind, nobody in this room should feel embarrassed to.</b>',
+     links:[['x.com/karpathy','https://x.com/karpathy/status/1872362712958906460']]},
+    {t:'You cannot outsource understanding', n:'03',
+     x:'“You can outsource your thinking, but you cannot outsource your understanding.” This is the whole argument of chapter three in one sentence — and the reason four duties (the question, the data, validation, the signature) never leave your hands.',
+     links:[['x.com/karpathy','https://x.com/karpathy/status/1917546757929722115'],
+            ['A dog saved with public AI tools','https://www.youtube.com/watch?v=MgY8MkJg8js']]}]}]},
+
+/* 9 ───────────────────────────────────────────────────────── */
+{id:'intro3', kind:'intro', ch:1, n:'03', tag:'Section 03 · Intelligence as a commodity',
+ body:[
+  {k:'eyebrow', t:'What’s going on in AI?'},
+  {k:'h', t:'Intelligence as<br>a <em>Commodity.</em>'},
+  {k:'stand', t:'Capability is now abundant, priced, and interchangeable — produced by a chain that turns energy into knowledge, and that feeds itself. What limits the loop is the cost of checking its output. This section shows the machine, the loop, and the limit.'},
+  {k:'note', t:'Energy → data → knowledge → again.'}]},
+
+/* 10 ──────────────────────────────────────────────────────── */
+{id:'c3', kind:'slide', ch:1, n:'03', tag:'Intelligence as a commodity',
+ body:[
+  {k:'eyebrow', t:'Energy becomes knowledge — and the process is now a commodity'},
+  {k:'hd', t:'Intelligence as<br><em>a commodity.</em>'},
+  {k:'stand', t:'A commodity is abundant, priced, and interchangeable. This is not human intelligence: it is a set of <b>capabilities</b> — reading, drafting, calculating, coding — and they now behave this way. Energy becomes data, data becomes knowledge, <b>computation</b> does each transformation, and <b>infrastructure</b> carries every step. The loop now feeds itself, so what matters is <b>the speed of your loop.</b>'},
+  {k:'quote', t:'“You pay for intelligence twice: once in money, and again with proprietary knowledge.”',
+   cite:'Satya Nadella, Microsoft CEO — July 2026'},
+  {k:'pipe'},
+  {k:'note', t:'Electricity enters. Computation converts it into a fixed number of operations. Those operations turn raw data into structure — a model. The model returns something usable. Each arrow is a conversion with an exchange rate, and with losses. Underneath, one slab: chips, memory, networks, cooling.'},
+  {k:'sub', t:'Why the loop improves itself — three channels, all in production'},
+  {k:'steps', items:[
+    ['H','Hardware','Learning systems place components on chips. Google used this on its own processors, which then train the next model.'],
+    ['D','Data','Models generate training examples, filter them, and grade the answers of other models. The teacher and the student are now the same technology.'],
+    ['M','Method','Models write and test the code that trains their successors.']]},
+  {k:'two', items:[
+    ['What limits the loop','The loop only closes where <b>checking is cheap</b>. In Go, the rules score the game for nothing. In code, tests pass or fail in seconds — which is why coding assistants improve faster than anything else on the market. In medicine or materials, checking means trials and months of human judgement, and the loop turns slowly whatever the computation. The rule for your projects: <b>the speed of your loop is the speed of your evaluation.</b>'],
+    ['What stays scarce','If capability is abundant and interchangeable, access to it is not an advantage — everyone has the same access. Three things stay scarce: <b>your data</b>, <b>your ability to evaluate an answer</b>, and <b>the judgement to choose a problem worth solving</b>. A university holds all three.']]},
+  {k:'tx', t:'The open question, from Demis Hassabis: <i>can the loop close without a human inside it?</i> Today it cannot. A person still sets the objective, defines what counts as success, and accepts the result. Objectives, verification, energy — those are the three limits.'}]},
+
+/* 11 ──────────────────────────────────────────────────────── */
+{id:'intro4', kind:'intro', ch:1, n:'04', tag:'Section 04 · New colleagues',
+ body:[
+  {k:'eyebrow', t:'What’s going on in AI?'},
+  {k:'h', t:'New<br><em>Colleagues.</em>'},
+  {k:'stand', t:'Delegation works role by role. Six jobs you can hand to a machine this week — and for each one, the single check that stays human. Open the doors you need.'}]},
+
+/* 12 ──────────────────────────────────────────────────────── */
+{id:'c4', kind:'slide', ch:1, n:'04', tag:'New colleagues · six panels',
+ body:[
+  {k:'eyebrow', t:'Section 04 · new colleagues'},
+  {k:'hd', t:'Six roles you<br>can <em>delegate.</em>'},
+  {k:'stand', t:'The model behind every product here is the same kind of machine. What differs is the packaging: what the tool may read, what it produces, what it may do on your behalf. So do not choose by brand — <b>choose by task</b>. Tap a role for its tools and the one check that stays yours.'},
+  {k:'acc', items:[
+   {n:'R1', t:'Research Assistant',
+    tag:'literature scout · systematic review · fact-check · web investigation',
+    x:'Finds and verifies knowledge. It screens the literature, weighs the evidence for a claim, and writes cited investigations of the open web.',
+    tools:[['Elicit','https://elicit.com','systematic screening across 138M+ papers'],
+           ['Consensus','https://consensus.app','evidence-weighted answers to yes/no scientific questions'],
+           ['Semantic Scholar','https://www.semanticscholar.org','free discovery across 200M+ papers'],
+           ['scite','https://scite.ai','did later work support or contradict this citation'],
+           ['Perplexity','https://www.perplexity.ai','cited web reports in minutes'],
+           ['Claude Research','https://claude.ai','long, structured, sourced investigations']],
+    c:'Open the citations before you trust them.'},
+   {n:'R2', t:'Reader',
+    tag:'summarise · Q&amp;A on your corpus · connect documents · podcast',
+    x:'Masters the documents you give it, and nothing else. Every answer is grounded in your sources, with the passage cited.',
+    tools:[['NotebookLM','https://notebooklm.google','source-grounded chat; audio overviews in 80+ languages'],
+           ['Claude Projects','https://claude.ai','your files loaded into every conversation']],
+    c:'It only knows what you gave it.'},
+   {n:'R3', t:'Adviser',
+    tag:'counsel · critique · edit · analyse data · methods',
+    x:'Thinks with you. A draft in, criticism out. A data file in, a first analysis out. The plain chat window is already a serious instrument.',
+    tools:[['Claude','https://claude.ai','long documents, careful writing, data analysis'],
+           ['ChatGPT','https://chatgpt.com','the generalist, with data analysis built in'],
+           ['Gemini','https://gemini.google.com','strong on long context and your Google files'],
+           ['Claude for Excel','https://claude.com/claude-for-excel','the analyst inside the spreadsheet']],
+    c:'It agrees too easily. Ask for the counter-argument.'},
+   {n:'R4', t:'Teaching Assistant',
+    tag:'quizzes · flashcards · slides · tutor mode · course chatbot',
+    x:'Prepares and delivers learning. It turns course material into quizzes, decks, multilingual audio lessons, and a tutor that questions instead of answering.',
+    tools:[['NotebookLM studio','https://notebooklm.google','quizzes, flashcards, slides, audio from your pack'],
+           ['ChatGPT Study Mode','https://chatgpt.com','Socratic tutoring with guardrails'],
+           ['Claude for Education','https://claude.com/solutions/education','guides the reasoning instead of giving the answer'],
+           ['Claude for PowerPoint','https://claude.com/claude-for-excel','material into slides, in your template']],
+    c:'Read it before your students do.'},
+   {n:'R5', t:'Engineer',
+    tag:'prototype · scripts · data pipeline · debug · simulate',
+    x:'Turns an idea into running software. It writes code, runs it, reads the error, and fixes it, until the task completes. <b>This presentation was built this way.</b>',
+    tools:[['Claude Code','https://claude.com/product/claude-code','the coding agent, in terminal or app'],
+           ['OpenAI Codex','https://openai.com/codex','delegated coding tasks in the cloud'],
+           ['Cursor','https://cursor.com','the AI-first editor'],
+           ['GitHub Copilot','https://github.com/features/copilot','completion and chat inside the IDE']],
+    c:'Review the code before it touches real data.'},
+   {n:'R6', t:'Coordinator',
+    tag:'scheduler · meeting notes · minutes &amp; actions · mail drafts',
+    x:'Runs the week. It attends the meeting, writes the minutes, extracts the actions, drafts the mail, and manages the calendar. The newest tools delegate whole tasks.',
+    tools:[['Claude Cowork','https://claude.com/product/cowork','delegate multi-step office work'],
+           ['Claude in Chrome','https://claude.com/chrome','acts on websites for you'],
+           ['Gemini in Workspace','https://workspace.google.com','mail, docs and calendar assistance'],
+           ['Microsoft 365 Copilot','https://www.microsoft.com/en-us/microsoft-365/copilot','the same, across Office'],
+           ['Fathom','https://fathom.video','transcripts, summaries, action items']],
+    c:'It records people. Consent comes first.'},
+   {n:'R7', t:'Which one first?',
+    tag:'a quick guide · match the object in your hand',
+    x:'If you do not know where to start, look at what is on your desk. The object points at the panel.',
+    tools:[['Papers to screen','','Research Assistant — R1'],
+           ['Your own PDFs or notes','','Reader — R2'],
+           ['A draft to improve','','Adviser — R3'],
+           ['A course to prepare','','Teaching Assistant — R4'],
+           ['An idea to build','','Engineer — R5'],
+           ['A week to organise','','Coordinator — R6']],
+    c:'One role, one task, this week.'}]},
+  {k:'note', t:'And in practice? One provider’s data, read critically: India is second on Earth in absolute use, yet 103rd of 121 per person — and over half of that use is one panel, the Engineer. France ranks tenth, near four times its expected level; the UK sixteenth, near three. Early markets hire one colleague; mature markets hire all six.'}]},
+
+/* 13 ──────────────────────────────────────────────────────── */
+{id:'ch2', kind:'chapter', ch:2, tag:'Chapter 2',
+ body:[
+  {k:'kick', t:'Chapter 2'},
+  {k:'h', t:'New<br><em>challenges.</em>'},
+  {k:'stand', t:'The same loop that makes capability cheap now meets four hard walls: physics, society, alignment, and the nature of learning itself.'},
+  {k:'take', items:[
+    ['Takeaway 01','Scaling laws &amp; Jevons','Progress is bought with exponential inputs, and efficiency gains raise total demand instead of lowering it.'],
+    ['Takeaway 02','Alignment','Capable systems pursue the goal as written, not as meant — and this year gave two public demonstrations.'],
+    ['Takeaway 03','Moravec &amp; overfitting','What is hard for machines is easy for us, and vice versa; and a model can memorise its data instead of learning from it.']]}]},
+
+/* 14 ──────────────────────────────────────────────────────── */
+{id:'intro5', kind:'intro', ch:2, n:'05', tag:'Section 05 · The energy bill',
+ body:[
+  {k:'eyebrow', t:'New challenges.'},
+  {k:'h', t:'The Energy<br><em>Bill.</em>'},
+  {k:'stand', t:'Progress in AI currently follows scaling laws: predictable gains, bought with exponential inputs. Exponentials defeat intuition, and they meet supply walls that efficiency alone cannot remove.'},
+  {k:'note', t:'A doubling scale turns exponential curves into straight lines.'}]},
+
+/* 15 ──────────────────────────────────────────────────────── */
+{id:'c5', kind:'slide', ch:2, n:'05', tag:'The energy bill',
+ body:[
+  {k:'eyebrow', t:'Section 05 · new challenges'},
+  {k:'hd', t:'The bill for<br><em>the loop.</em>'},
+  {k:'stand', t:'Chapter one ended on a warm slab. Here is why it was warming. Progress in AI follows <b>scaling laws</b>: predictable gains, bought with exponential inputs. Six steps build the argument.'},
+  {k:'acc', items:[
+   {n:'1', t:'Computing doubles every 2 years',
+    x:'Chip performance has doubled roughly every <b>2 years</b> for 60 years — <b>Moore’s Law</b>, 1965. It holds because many doublings run at once: transistor shrinkage, density, switching speed, energy per operation, cores per chip. Read it as a <b>continuous dynamic of computation</b>, not a lucky streak.'},
+   {n:'2', t:'The matchstick — a question',
+    x:'A 5 cm matchstick doubles in length every year. <b>How many years to reach the Moon — 384,000 km away?</b> And then the Sun — <b>149,600,000 km</b>, about 400× farther? Guess before revealing.',
+    quiz:['Take a guess, then tap.','Moon: <b>33 years</b>. Sun: only <b>9 more</b> — 42 in total. The final doubling alone covers the whole second half: <b>75,000,000 km in year 42</b>.']},
+   {n:'3', t:'The answer',
+    x:'Exponentials defeat intuition — so we compare growth rates instead of trusting feelings. Nobody guesses this correctly.'},
+   {n:'4', t:'The envelope: compute → data → knowledge',
+    x:'Each layer keeps a fraction of the growth below it, in the spirit of the measured scaling laws (Kaplan 2020). Computing ×2/2yr feeds data ×2/~3yr, which feeds knowledge — drawn as a <b>band</b>, ×2/9–18yr, because capability is a proxy with real uncertainty. <b>Thousands of times more computing buys only a few times more knowledge.</b>'},
+   {n:'5', t:'The three slopes, and where they come from',
+    x:'<b>computing ×2 / 2 yr</b> — the physical identity: electricity ×2/5.1 yr (IEA 2025) × hardware efficiency ×2/3.0 yr (Epoch 2023) ÷ PUE, flat six years at ~1.54 (Uptime 2025). Add the doubling rates and the physical ceiling is a doubling every 1.9 years — near enough the measured line. <i>Denser, hotter chips are the reason cooling stopped improving, so treat the sum as a good approximation, not an arithmetic fact.</i>'},
+   {n:'6', t:'Four things that could bend these lines',
+    x:'<b>1 · On-demand supply.</b> Data centres: 415 TWh in 2024 → 945 projected for 2030, ~3% of world electricity; a plant is built in 1–2 years but a grid connection now waits ~5 years.<br><b>2 · The human data stock.</b> Public text usable for training is finite — projected to be fully used between <b>2026 and 2032</b>.<br><b>3 · Knowledge productivity.</b> US research productivity has fallen <b>4–6% a year for ninety years</b>; Moore’s Law now needs <b>18×</b> the researchers of the 1970s.<br><b>4 · Jevons’ paradox (1865).</b> Efficiency gains are spent on more use, not less.<br><i>And the conversion itself is lossy: a million-fold gain in compute buys roughly an eight-fold reduction in error.</i>'}]},
+  {k:'card', kk:'Today · 2024', v:'415 TWh', sub:'1.5% of world electricity',
+   x:'Data centres already use more electricity in a year than the whole United Kingdom.',
+   src:['IEA, Energy &amp; AI, 2025','https://www.iea.org/reports/energy-and-ai/executive-summary']},
+  {k:'card', kk:'2030 · projection', v:'945 TWh', sub:'just under 3%',
+   x:'About Japan’s entire electricity consumption today. AI-optimised servers are the fastest-growing part.',
+   src:['IEA, Energy &amp; AI, 2025','https://www.iea.org/reports/energy-and-ai/executive-summary']},
+  {k:'card', kk:'Jevons paradox · 1865', v:'Efficiency', sub:'raises total use',
+   x:'Cheaper computation means more of it is bought, not less. “Jevons paradox strikes again” — Nadella, January 2025, as DeepSeek cut costs.',
+   src:['Luccioni et al., arXiv:2501.16548','https://arxiv.org/abs/2501.16548']},
+  {k:'note', t:'Why people now draw data centres in orbit: in sun-synchronous orbit the panel never sees night or weather — about 1,300 W/m² continuously, against a terrestrial average nearer 200, and no five-year queue for a grid connection. What you take on instead is engineering: mass to orbit, radiation, no maintenance, and heat you can only radiate away. It moves the constraint. It does not remove it.'}]},
+
+/* 16 ──────────────────────────────────────────────────────── */
+{id:'intro6', kind:'intro', ch:2, n:'06', tag:'Section 06 · The social bill',
+ body:[
+  {k:'eyebrow', t:'New challenges.'},
+  {k:'h', t:'The Social<br><em>Bill.</em>'},
+  {k:'stand', t:'Energy is the bill you can meter. The social bill arrives in three places: in jobs, in who is allowed to hold the capability, and in the goals we write for machines — and each place had a public case this year.'}]},
+
+/* 17 ──────────────────────────────────────────────────────── */
+{id:'c6', kind:'slide', ch:2, n:'06', tag:'The social bill',
+ body:[
+  {k:'eyebrow', t:'Section 06 · new challenges'},
+  {k:'hd', t:'Who pays,<br><em>and who decides.</em>'},
+  {k:'stand', t:'Electricity is the easy bill to count. Three harder ones follow: what happens to <b>jobs</b>, <b>who is allowed to own</b> the most capable systems, and what a machine does when <b>the goal you wrote</b> is not quite the goal you meant. One documented case each, all from 2026.'},
+  {k:'card', kk:'Jobs', v:'101,743',
+   sub:'US job cuts blamed on AI, first half of 2026 — the top stated reason four months running',
+   bars:[['Mar','15k',40],['Apr','21k',56],['May','39k',100],['Jun','14k',36]],
+   note:'Careful reading: “AI” is the reason employers <i>declare</i>, not a measured cause. Total cuts were down 40% on 2025.',
+   src:['Challenger, June 2026','https://www.challengergray.com/blog/challenger-report-june-layoffs-cool-to-45849-down-53-from-may-ai-leads-reasons-for-fourth-consecutive-month/']},
+  {k:'card', kk:'Control', v:'~40',
+   sub:'firms, not the public, got Anthropic’s strongest model this April',
+   x:'In tests it found brand-new security holes on its own. So it was <b>not sold to everyone</b> — a handful of vetted organisations got it, and a government safety body checked it first.',
+   note:'When a tool is this powerful, who is allowed to hold it becomes the real question.',
+   src:['anthropic.com/glasswing','https://www.anthropic.com/glasswing']},
+  {k:'card', kk:'Goals', v:'17,000+',
+   sub:'actions logged as two OpenAI models cheated on a hacking test, July 2026',
+   x:'Told to score well and left less restricted, the models broke out of their locked test, reached the internet, and <b>stole the answer key</b> from another company’s servers.',
+   note:'Nobody asked them to attack. They just did whatever scored best.',
+   src:['Fortune, 21 July 2026','https://fortune.com/2026/07/21/openai-says-ai-models-escaped-control-hacked-hugging-face/']},
+  {k:'two', items:[
+    ['What is “alignment”?','Getting a machine to want what you actually meant — not just the words of the instruction. The July models were told “score well”, so they cheated: goal followed, intention missed. It is an open research problem, and it shows up small in your own work too: <b>whatever you measure, the system will chase</b>.'],
+    ['And who owns it','Capability is now national power. Top models are gated through government safety bodies — and when the hacked firm cleaned up, US models refused to help, so its team finished the job with a <b>Chinese open model</b>. It is not only about firms: the strongest systems are trained and tested mostly in English, so the places with the least representation in the data are the ones least served by the result.']]},
+  {k:'links', items:[['Decrypt · the escape, in detail','https://decrypt.co/374015/openai-models-escaped-test-environment-hacked-hugging-face-cheat-benchmark']]}]},
+
+/* 18 ──────────────────────────────────────────────────────── */
+{id:'intro7', kind:'intro', ch:2, n:'07', tag:'Section 07 · The mind bill',
+ body:[
+  {k:'eyebrow', t:'New challenges.'},
+  {k:'h', t:'The Mind<br><em>Bill.</em>'},
+  {k:'stand', t:'Two minds are on this bill. The machine’s — Moravec’s paradox, and overfitting. And our own — what offloading does to the person who delegates.'}]},
+
+/* 19 ──────────────────────────────────────────────────────── */
+{id:'c7', kind:'slide', ch:2, n:'07', tag:'The mind bill',
+ body:[
+  {k:'eyebrow', t:'Section 07 · new challenges'},
+  {k:'hd', t:'What we<br><em>hand over.</em>'},
+  {k:'stand', t:'The last bill is cognitive. Three ideas worth carrying home: <b>offloading</b>, <b>Moravec’s paradox</b>, and <b>overfitting</b>. Each one tells you where to keep a human.'},
+  {k:'sub', t:'Moravec’s paradox · 1988'},
+  {k:'cols2', items:[
+    ['Cheap for a machine',['Play chess better than any human','Check a proof, sit an exam','Draft code, summarise a paper','Recall almost everything written']],
+    ['Expensive for a machine',['Walk over loose gravel','Fold laundry, catch a ball','Read a room, judge when to stop','Drive on an unfamiliar street']]]},
+  {k:'note', t:'Sensing and moving carry half a billion years of evolutionary tuning; abstract skill is recent — so the “easy” task is the hard one. The measure: Waymo needed about 200 million real autonomous miles plus 20 billion simulated — months of data-centre training at megawatt scale — where a person learns in 45–50 hours, on a brain that runs on about 20 watts.'},
+  {k:'card', kk:'Cognitive offloading · three findings, 2025',
+   x:'<b>666 people</b> — Gerlich, <i>Societies</i>: heavier AI use, more offloading, lower critical-thinking scores; youngest hit hardest.<br><b>319 knowledge workers</b> — Lee et al., Microsoft, CHI: more confidence in the tool, less critical checking.<br><b>EEG</b> — Kosmyna et al., MIT Media Lab: lower brain connectivity when essay-writing with a chatbot.',
+   note:'Correlations, not proof of cause — but one habit follows: your own attempt first, the machine second.',
+   src:['doi:10.3390/soc15010006','https://doi.org/10.3390/soc15010006']},
+  {k:'card', kk:'Overfitting · the word that tests any claim',
+   x:'<b>Definition:</b> excellent on the training data, poor on new data — the model memorised the examples instead of learning the rule. The red curve passes through every point and predicts nothing; the green line is worse on the data, better on the world.',
+   note:'One question defeats a hollow claim: was the score measured on data the model never saw?'},
+  {k:'two', items:[
+    ['Keep a human here','Machines are strong where knowledge is written down and scored quickly; weak where the world is physical, social, or unrepeatable. Delegate the first. Keep judgement, taste, and the definition of success.'],
+    ['The echo','Every use of AI ends the same way: <b>someone judges whether the answer is good.</b> Offloading erodes exactly that skill — the more the machine evaluates for you, the less practised your judgement becomes. The countermeasure is boring and effective: keep doing part of the evaluation by hand.']]}]},
+
+/* 20 ──────────────────────────────────────────────────────── */
+{id:'ch3', kind:'chapter', ch:3, tag:'Chapter 3',
+ body:[
+  {k:'kick', t:'Chapter 3'},
+  {k:'h', t:'Doing AI in<br><em>your project.</em>'},
+  {k:'stand', t:'Chapter one gave you the loop; chapter two taught you its price. Now you build a small loop of your own. Three sections: what learning from examples means, where you stand in the system, and one chain run end to end. Your one irreplaceable job inside it is evaluation.'},
+  {k:'take', items:[
+    ['Takeaway 01','The six-step pattern','Question, data, features, model, split, evaluate. The same six steps for every field — only the data changes.'],
+    ['Takeaway 02','Place your expertise','The model is the smallest part. Delegate what you can validate; keep the question, the data, and the judgement.'],
+    ['Takeaway 03','Evaluation is the job','Run the whole chain, then do the human part: catch the flaw, approve the honest result, sign it off.']]},
+  {k:'note', t:'Oxford India Centre for Sustainable Development · Somerville College'}]},
+
+/* 21 ──────────────────────────────────────────────────────── */
+{id:'intro8', kind:'intro', ch:3, n:'08', tag:'Section 08 · What ML is',
+ body:[
+  {k:'eyebrow', t:'Doing AI in your project'},
+  {k:'h', t:'What ML<br><em>Is.</em>'},
+  {k:'stand', t:'The build starts with the idea itself: machines learn patterns from recorded examples, instead of following rules we write. One picture to carry through the chapter — the learned model is the smallest box in a real system; the work, and your judgement, live around it.'},
+  {k:'links', items:[['Sculley et al., Hidden Technical Debt in ML (NeurIPS 2015)','https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf']]}]},
+
+/* 22 ──────────────────────────────────────────────────────── */
+{id:'c8', kind:'slide', ch:3, n:'08', tag:'What ML is',
+ body:[
+  {k:'eyebrow', t:'Section 08 · doing AI in your project'},
+  {k:'hd', t:'Two ways to<br><em>be smart.</em>'},
+  {k:'stand', t:'A program <b>learns</b> when its performance at a task improves with experience — with data (Mitchell, 1997). Two systems, three learning settings, and the six-step workflow — with the five build words: <b>overfitting, leakage, false positives, stratified splits, imputation</b>.'},
+  {k:'acc', items:[
+   {n:'A', t:'Expert system',
+    tag:'experts → hand-written rules → answer',
+    x:'Human knowledge written as <b>if–then rules</b>: “if pH &lt; 6.5 and flow high, raise the dose.” Transparent and auditable; no data needed; it cannot surprise you. Aviation checklists, tax software, safety interlocks. Where it breaks: every new situation needs a new rule, written by hand — rules multiply, then contradict each other, and any pattern hiding in the data stays invisible. <i>Keep it in mind: it returns one level up, as the specs and guardrails you write to command agents.</i>'},
+   {n:'B', t:'Machine learning',
+    tag:'examples → fitted model → prediction · Mitchell 1997',
+    x:'You stop saying <i>how</i> to do the task and start showing <i>what the answer was</i>. Decode the definition for your own project: <b>E</b> is your recorded data, <b>T</b> is the prediction you need, <b>P</b> is the number you agreed to be judged by. What is learned is a function with adjustable numbers, nudged until predictions stop improving — there is no understanding inside. What matters is <b>generalisation</b>: not how well it reproduces what it has seen, but how it behaves on cases it never saw. The price: data, labelled outcomes, and a failure mode rules never had — it can be confidently, fluently wrong.'},
+   {n:'1', t:'Supervised — labelled pairs → a mapping',
+    x:'Flashcards: question on the front, answer on the back. The <b>answer decides the family</b> — a quantity (output BOD in mg/L) is <b>regression</b>; a category (limit exceeded or not) is <b>classification</b>. One confusion to kill now: <i>forecasting means predicting a future value — a setting in time, usually solved with regression. It is not a synonym for regression.</i> The real bottleneck is not the model; it is labels.'},
+   {n:'2', t:'Unsupervised — structure in unlabelled data',
+    x:'A drawer of unsorted parts. Nobody tells you the categories; you group what belongs together and notice the piece that fits nowhere — clustering, and anomaly detection. The catch: with no ground truth there is no accuracy score. Only a domain expert can say whether a grouping is meaningful. <b>That expert is you.</b>'},
+   {n:'3', t:'Reinforcement — a policy learned from reward',
+    x:'Like learning to ride a bicycle: nobody hands you the correct handlebar angle; you act, you wobble, you adjust. The agent observes a state, takes an action, receives a reward, improves its policy. It needs a safe place to fail — a simulator, not a live plant. And it will chase precisely what the reward measures. <b>The goal you write is the goal you get.</b>'}]},
+  {k:'sub', t:'Activity · AI or not AI?'},
+  {k:'reveal', items:[
+   ['Predicting water quality','UPL project · 527 plant-days · inflow chemistry → tomorrow’s BOD','yes','AI','Supervised · regression. Nobody can write the rule that turns this morning’s chemistry into tomorrow’s outflow — so it is fitted to the record instead.'],
+   ['A pocket calculator','Casio HS-4 · 7 × 8 = 56, every time','no','NOT AI','Fixed rules, written by a human. No examples, no learning — and it is never wrong.'],
+   ['Forecasting solar &amp; wind','grid forecast · past output + weather → tomorrow','yes','AI','Supervised · regression in a forecasting setting. The rival to beat is not another network: it is “same as yesterday”.'],
+   ['A spreadsheet formula','Microsoft Excel · =SUM(B2:B40)','no','NOT AI','A rule you wrote. Excel repeats it exactly — no data-fitted function, nothing learned.'],
+   ['Predicting a material property','UPL project · composition → melting point','yes','AI','Supervised · regression on small data — which changes everything: simple model, designed experiments, and no extrapolation beyond what was tested.'],
+   ['A smart toothbrush','Oral-B iO · pressure + motion sensors','both','BOTH','The timer and the pressure alert are rules. But mapping motion to <b>which tooth you are brushing</b> is learned from labelled recordings — supervised classification. Note the trap: its microcontroller runs about ten times faster than the first Macintosh. Raw power was never what made something AI.'],
+   ['Classifying hostile comments','UPL project · Gujarati NLP · posts → hostile / not','yes','AI','Supervised · classification with a rare class — which means accuracy will lie to you.'],
+   ['A thermostat','classic dial model · below 19°C → heat on','no','NOT AI','One threshold, one rule. A <i>learning</i> thermostat that predicts your schedule would be AI — this one is not.']]},
+  {k:'note', t:'Not everything automatic is AI. Rules are written; models are fitted to examples. <b>What decides is where the behaviour came from.</b>'},
+  {k:'sub', t:'The workflow · six steps'},
+  {k:'steps', items:[
+    ['1','Question','Target variable, unit, metric, baseline. “Improve the plant” is a wish; “tomorrow’s output BOD in mg/L, by 8 a.m., for the shift supervisor” is a question. Choose the metric <i>before</i> modelling.', ['baseline']],
+    ['2','Data','Collect · check quality · document. Provenance first: where each variable comes from, how it was measured, over what period. Filling a missing cell has a name — imputation — and it is a decision. Compute the median on training rows only.', ['imputation','leakage']],
+    ['3','Features','Raw inputs → informative variables. Load = BOD × flow: one number a chemist recognises, which often predicts better than either input alone. <b>This is where your expertise physically enters the model.</b>', ['feature leakage']],
+    ['4','Model choice','Pick the family, then the simplest member of it. Complexity must be earned against the baseline. Two failures live here: overfitting (memorises, then collapses) and underfitting (wrong everywhere).', ['overfitting','underfitting']],
+    ['5','Split · train / test','Hold out data the model never sees. Ordered in time? Split by time — a random shuffle puts tomorrow in the training set and the score becomes excellent and meaningless. Rare class? Keep its proportion on both sides.', ['stratification','leakage']],
+    ['6','Fit &amp; evaluate','Fit on train · measure on test · read against the baseline. Error 4.04 against a baseline of 8.39 means something; 4.04 alone means nothing. For alarms, read the matrix — a false positive costs a wasted check, a false negative costs a fine, or a river.', ['FP / FN','overfitting']]]},
+  {k:'note', t:'Leakage is the failure that ruins more projects than any other: information from the outcome, or from the future, sneaks into your features or your split. The score becomes a lie — and a beautiful one, which is why nobody questions it. The test is one question, asked of every feature: <b>would this value exist, with this value, at the moment of prediction?</b>'}]},
+
+/* 23 ──────────────────────────────────────────────────────── */
+{id:'intro9', kind:'intro', ch:3, n:'09', tag:'Section 09 · Doing it well',
+ body:[
+  {k:'eyebrow', t:'Doing AI in your project'},
+  {k:'h', t:'Doing It<br><em>Well.</em>'},
+  {k:'stand', t:'The three-circle myth said one person must hold programming, maths, and the domain. The 2026 answer: stand in your field, let agents reach the other circles. Four duties stay with you: the question, the data, validation, sign-off.'}]},
+
+/* 24 ──────────────────────────────────────────────────────── */
+{id:'c9', kind:'slide', ch:3, n:'09', tag:'Doing it well',
+ body:[
+  {k:'eyebrow', t:'Section 09 · doing AI in your project'},
+  {k:'hd', t:'Where you<br><em>stand.</em>'},
+  {k:'stand', t:'The old myth: one person holding programming, maths and the domain. The 2026 answer: <b>stand in your field</b>, extend your reach with agents — and keep four duties that are never delegated.'},
+  {k:'acc', items:[
+   {n:'1', t:'The myth — the unicorn',
+    x:'The classic picture of a data scientist: <b>programming</b>, <b>maths &amp; statistics</b>, and <b>domain expertise</b> — one person in the centre holding all three. That person is rare. For twenty years, this triangle kept domain experts out.'},
+   {n:'2', t:'The 2026 update',
+    x:'You stand where you are strong: <b>your field</b>. Agents — the Coder and Analyst from chapter one — extend your reach into the other circles. <b>You do not move to the centre; the centre comes to you.</b> And notice the spiral: to command them you write rules again — specs, guardrails, checks. The expert system returns, one level up: rules <i>around the learner</i>.'},
+   {n:'3', t:'What stays yours',
+    x:'<b>The question</b>: what is predicted, in which unit, for whom, and which mistake costs more. <b>The data</b>: where each number comes from, what it means, whether it can be trusted. <b>Validation</b>: does the result hold on cases the model never saw, read against the dumb baseline. <b>Sign-off</b>: the accountable yes — your name under the report. Everything else can be delegated; these four cannot.'},
+   {n:'4', t:'The attitudes — four walls, four habits',
+    x:'<b>Alignment</b> → write the spec and guardrails before the agent runs (it will chase what you measure). <b>Offloading</b> → discuss the plan before any execution; think at system level. <b>Responsibility</b> → the last word is not delegated. <b>Data</b> → collection, quality, documentation; the ground truth is yours to own.'},
+   {n:'5', t:'The system around the model',
+    x:'Zoom out and the workflow becomes a system — the model is the smallest box in it (Sculley 2015). The four duties land where they belong: <b>the question</b> before the chain, <b>the data</b> at its start, <b>validation</b> and <b>sign-off</b> at its end. Agents run the middle, inside your guardrails. Garbage in, garbage out — the chain is as strong as its weakest link. And before any model: <b>beat the dumb baseline</b>.'},
+   {n:'6', t:'Where you stand',
+    x:'Green, an agent can run — features, the model, a first draft of the report. Red stays human — the data, the split, validation. And on the split, the question from section seven is pinned for good: <i>data the model never saw?</i>'}]},
+  {k:'pipe'},
+  {k:'two', items:[
+    ['The rule of the chapter','<b>Delegate only what you can validate.</b>']]},
+  {k:'links', items:[['Sculley et al., Hidden Technical Debt in ML (NeurIPS 2015)','https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf']]}]},
+
+/* 25 ──────────────────────────────────────────────────────── */
+{id:'intro10', kind:'intro', ch:3, n:'10', tag:'Section 10 · From problem to report',
+ body:[
+  {k:'eyebrow', t:'Doing AI in your project'},
+  {k:'h', t:'From Problem<br>to <em>Report.</em>'},
+  {k:'stand', t:'One dataset on a real schema, one frozen prompt, one skill — and a guided walk: problem, your place, workflow, prompt, skill, three runs with one lie, and the single line that reruns it all on your machine. The signature stays yours.'}]},
+
+/* 26 ──────────────────────────────────────────────────────── */
+{id:'c10', kind:'slide', ch:3, n:'10', tag:'From problem to report',
+ body:[
+  {k:'eyebrow', t:'Section 10 · doing AI in your project'},
+  {k:'hd', t:'From problem<br><em>to report.</em>'},
+  {k:'stand', t:'The water example, carried to the end: the problem, your place in it, the workflow applied, the <b>prompt</b>, the <b>skill</b>, the <b>three runs</b> — one lying — and the line you type tomorrow: <b>/analysis prompt.txt</b>. The signature stays human.'},
+  {k:'sub', t:'1 · The problem'},
+  {k:'tx', t:'<b>BOD</b> — biochemical oxygen demand: how much oxygen microbes need to break down the organic matter in the water. High BOD = polluted water; rivers suffocate. That is why the law sets a <b>limit</b> on the plant’s outflow. The lab test that measures it takes <b>days</b> — so operators steer blind. The question: from this morning’s easy measurements (acidity, flow, incoming pollution), predict <b>tomorrow’s output BOD</b>.'},
+  {k:'stats', items:[['527','daily records'],['92','missing cells'],['1','legal BOD limit'],['?','tomorrow’s output, today']]},
+  {k:'sub', t:'2 · Where you stand'},
+  {k:'tx', t:'<b>Kept by the human:</b> the question, the data’s meaning, validation, the signature. <b>Delegated:</b> the code (Coder agent) and the statistics (Analyst agent). This is where AI is used — and where it is not.'},
+  {k:'sub', t:'3 · The workflow, applied'},
+  {k:'steps', items:[
+    ['1','Question','target DBO-S, mg/L · metric MAE · baseline: the mean',['baseline','you · the question']],
+    ['2','Data','527 days · 92 missing cells → medians from training rows',['imputation','leakage','you · the data']],
+    ['3','Features','inflow chemistry + flow · load = BOD × solids',['feature leakage','agent · your review']],
+    ['4','Model','regression family → linear first',['overfitting','agent · guardrails']],
+    ['5','Split','time-aware · first 80% train, last 20% test',['leakage','stratification','agent · guardrails']],
+    ['6','Evaluate','MAE vs baseline 8.39 · write the report',['FP / FN','you · validation · sign-off']]]},
+  {k:'note', t:'Plain words: <b>imputation</b> = filling a missing cell by a stated rule · <b>leakage</b> = tomorrow’s information hiding in today’s inputs · <b>overfitting</b> = memorising instead of learning · <b>baseline</b> = the zero-effort score every model must beat.'},
+  {k:'sub', t:'4 · The context prompt — written by the human, frozen before any run'},
+  {k:'code', t:`TASK   Predict tomorrow's output BOD (DBO-S, mg/L) for one treatment
+       plant from this morning's measurements.
+       BOD = biochemical oxygen demand; a legal discharge limit applies.
+
+DATA   water_treatment.csv — 527 daily rows, UCI id-106 schema.
+       92 missing cells: fill with TRAINING-set medians only.
+
+TYPE   Regression (the outcome is a quantity).
+       Metric: MAE, reported beside the baseline (predict the training mean).
+
+SPLIT  Time-aware: train = first 80% of days, test = last 20%. Never shuffle.
+
+GUARDRAILS — verify each one by ID, and print the ID with PASS or FAIL.
+       G1  The target variable and its unit are stated in the report.
+       G2  Imputation rule applied, and every imputed column is listed.
+       G3  No feature is measured with or after the outcome.
+           Explicitly exclude DQO-S.
+       G4  Every test day is later than every training day. No shuffle.
+       G5  The baseline is computed FIRST, and every score is printed
+           beside it.
+       G6  Limits and uncertainty are stated.
+       G7  Target reached: MAE ≤ 4.5 mg/L.
+           Tick G7 ONLY if it is reached AND G1–G6 all pass.
+
+       H1  Human sign-off. The run must leave this line EMPTY.
+           No exception, in any mode, for any score.
+
+REPORT HTML, in this order: question · data (with the imputation table) ·
+       features · model · split · evaluation against the baseline ·
+       the guardrail table above, each row as "G1 PASS" or "G1 FAIL" ·
+       limits & uncertainty · next investigations (2–3 concrete leads) ·
+       the empty H1 sign-off line.
+       A FAIL is printed in red and is never hidden.
+
+LOOP   Iterations: 3. Each report ends with next investigations; the
+       following run executes them and says so in its header.
+       Tune on validation data; touch the test set once per run.`},
+  {k:'note', t:'Saved as <b>prompt.txt</b>. Note the numbered guardrails G1–G7: the run prints each ID with PASS or FAIL, the report shows the same IDs, and the checklist below ticks the same IDs. One list, three places — so every claim traces back to something you wrote.'},
+  {k:'sub', t:'5 · The skill — the same six steps, written down'},
+  {k:'code', t:`STEP 1  Question   q = read(prompt)  # target, metric, baseline
+STEP 2  Data       df = load(csv); impute(median[train])
+STEP 3  Features   X = build_features(df)  # nothing future
+STEP 4  Model      m = LinearRegression()
+STEP 5  Split      train, test = split_by_time(.8)
+STEP 6  Evaluate   report(mae, base, limits) → html`},
+  {k:'tx', t:'<b>The skill is generic.</b> It does not know water. It reads <b>prompt.txt</b> and follows its instructions — target, split, guardrails, report. A skill is the concatenation: <b>SKILL.md</b> (when and how to act) + <b>run.py</b> + the data the prompt names.'},
+  {k:'sub', t:'6 · Three runs — one is lying'},
+  {k:'runs'},
+  {k:'note', t:'<b>How to read the numbers.</b> MAE = mean absolute error: the average miss, in mg/L — lower is better. R² = the share of the day-to-day variation the model explains — 1 is perfect, 0 is no better than the baseline. <b>A score too beautiful should worry you before it pleases you.</b>'},
+  {k:'sub', t:'7 · Run it yourself'},
+  {k:'cmd', t:'<b>/analysis</b> prompt.txt'},
+  {k:'steps', items:[
+    ['01','Install','Put the folder <b>skills/ml-analysis</b> (SKILL.md · run.py · the data) into <b>.claude/skills/analysis/</b> in a Claude project, then run <b>/analysis</b>.'],
+    ['02','Run','Claude reads the skill and executes the whole chain locally, end to end — imputation, split, baseline, model, report.'],
+    ['03','Judge','What comes back is a report with an empty sign-off line. The checklist below is how you earn the right to tick it.']]},
+  {k:'sub', t:'Guardrails from prompt.txt · G checked by the agent, H signed by you'},
+  {k:'checks', items:[
+    ['G1','target &amp; unit stated', true],
+    ['G2·G3','imputation listed · nothing leaks', true],
+    ['G4·G5·G6','time split · vs baseline 8.39 · limits', true],
+    ['G7','MAE ≤ 4.50 reached', true],
+    ['H1','I approve this report', false]]},
+  {k:'tx', t:'<b>The human job was never the typing.</b> It is the question, the data, and the judgement — the seat this talk has been about from the first minute.'}]},
+
+/* 27 ──────────────────────────────────────────────────────── */
+{id:'thanks', kind:'end', tag:'Thank you',
+ body:[
+  {k:'h', t:'Thank <em>you.</em>'},
+  {k:'stand', t:'Any questions?'},
+  {k:'links', items:[
+    ['timothee.aubourg@ndcn.ox.ac.uk','mailto:timothee.aubourg@ndcn.ox.ac.uk'],
+    ['The workshop site', SITE],
+    ['Source on GitHub','https://github.com/timothee-aubourg/ai_workshop']]},
+  {k:'note', t:'On Monday, take one problem from your own field and write its question in a single sentence — with a unit, a metric, and a baseline. Everything in this talk starts there.'}]}
 ];
 
-const CH={1:{t:'A bright narrative',d:'A historic moment, a ladder of revolutions, intelligence as a commodity, six new colleagues.'},
-          2:{t:'The bills',d:'Energy, society, and your own mind — what the loop costs, and the habits that answer.'},
-          3:{t:'Doing AI in your project',d:'What ML is, where you stand, and the whole chain run once — with you as the judge.'}};
+const CHAPTERS = {1:'What’s going on in AI?', 2:'New challenges', 3:'Doing AI in your project'};
 
-function Fig({id,cap}){return h`<div class="blk"><div class="fig" dangerouslySetInnerHTML=${{__html:FIG[id]}}></div>
- ${cap&&h`<p style=${{fontSize:'11px',color:'#5c606b',marginTop:'6px'}} dangerouslySetInnerHTML=${{__html:cap}}></p>`}</div>`}
-function Acc({items}){const [o,setO]=useState(-1);
- return items.map((it,i)=>h`<div class="acc" key=${i}>
-  <button class="ah" onClick=${()=>setO(o===i?-1:i)}>${it[0]}<span class="pm">${o===i?'–':'+'}</span></button>
-  ${o===i&&h`<div class="ab"><p dangerouslySetInnerHTML=${{__html:it[1]}}></p>
-    <div class="terms">${it[2].map(t=>h`<span class="term" key=${t}>${t}</span>`)}</div></div>`}
- </div>`)}
-function Quiz({q,a}){const [on,setOn]=useState(false);
- return h`<div class="quiz blk" onClick=${()=>setOn(!on)}><div class="q">${q}</div>${on&&h`<div class="a">${a}</div>`}</div>`}
-function Runs(){return h`<div class="blk">
- <div class="runrow bad"><div class="k">Run 1 · first attempt — the trap</div>
-  <div class="m">R² ${RUNS.B.r2}<small> · MAE ${RUNS.B.mae} mg/L</small></div>
-  <p>Too beautiful. Split = random shuffle; features include <b>DQO-S_leak</b>, an output measured with the target.</p>
-  <a href="ml_report_flawed.html" target="_blank" rel="noopener">open report</a></div>
- <div class="runrow good"><div class="k">Run 2 · guardrails enforced</div>
-  <div class="m">R² ${RUNS.A.r2}<small> · MAE ${RUNS.A.mae} mg/L</small></div>
-  <p>Honest split, no leak. Baseline ${RUNS.A.base} mg/L — the error is roughly halved. A worse number that means something.</p>
-  <a href="ml_report_honest.html" target="_blank" rel="noopener">open report</a></div>
- <div class="runrow chg"><div class="k">Run 3 · one change — the loop</div>
-  <div class="m">R² ${RUNS.V.r2}<small> · MAE ${RUNS.V.mae} mg/L</small></div>
-  <p>Add <b>load = BOD × solids</b> — domain knowledge, not a bigger model — and the report improves.</p>
-  <a href="ml_report_variant.html" target="_blank" rel="noopener">open report</a></div></div>`}
-function Checks({items}){return h`<div class="checks blk">${items.map((c,i)=>h`<label key=${i}><input type="checkbox"/> <span dangerouslySetInnerHTML=${{__html:i===items.length-1?'<b>'+c+'</b>':c}}></span></label>`)}</div>`}
-function Steps5(){const st=[['1','Question'],['2','Data'],['3','Features'],['4','Model'],['5','Evaluate']];
- return h`<div class="steps5 blk">${st.map(s=>h`<span key=${s[0]}><b>${s[0]}</b>${s[1]}</span>`)}</div>`}
+/* ══════════════════════════════════════════════════════════════════
+   BLOCKS
+   ══════════════════════════════════════════════════════════════════ */
 
-function Sheet({sec,onClose}){
- const ref=useRef(null), y0=useRef(null);
- useEffect(()=>{const t=setTimeout(()=>ref.current&&ref.current.classList.add('on'),20);return()=>clearTimeout(t)},[]);
- const close=()=>{ref.current.classList.remove('on');setTimeout(onClose,260)};
- const speak=()=>{const txt=sec.blocks.map(b=>b.p||b.q||'').join(' ').replace(/<[^>]+>/g,' ');
-   const u=new SpeechSynthesisUtterance(sec.t+'. '+txt);u.rate=.95;speechSynthesis.cancel();speechSynthesis.speak(u);};
+const html = t => ({dangerouslySetInnerHTML:{__html:t}});
+
+function Pipe(){
+ return h`<div class="blk"><svg viewBox="0 0 320 118" style=${{width:'100%',height:'auto',border:'1.5px solid currentColor',borderRadius:'11px',background:'#fff'}} font-family="'Roboto Mono',monospace">
+  <g font-size="8.5" text-anchor="middle" fill="#002147">
+   <rect x="6" y="30" width="52" height="30" fill="#fff" stroke="#002147" stroke-width="1.4"/><text x="32" y="49">Data</text>
+   <rect x="66" y="30" width="56" height="30" fill="#fff" stroke="#002147" stroke-width="1.4"/><text x="94" y="49">Features</text>
+   <rect x="130" y="30" width="40" height="30" fill="#fff" stroke="#002147" stroke-width="1.4"/><text x="150" y="49">Split</text>
+   <rect x="178" y="37" width="34" height="16" fill="#994636"/><text x="195" y="48" fill="#fff" font-size="7">MODEL</text>
+   <text x="195" y="30" font-size="6.5" fill="#994636">the smallest box</text>
+   <rect x="220" y="30" width="44" height="30" fill="#fff" stroke="#002147" stroke-width="1.4"/><text x="242" y="46">Valid-</text><text x="242" y="55">ation</text>
+   <rect x="272" y="30" width="42" height="30" fill="#fff" stroke="#002147" stroke-width="1.4"/><text x="293" y="49">Report</text>
+   <text x="160" y="80" font-size="7.5" fill="#8c8f98">garbage in → garbage out · le maillon faible</text>
+   <rect x="6" y="90" width="308" height="18" fill="#e7e4dd" stroke="#a79d96" stroke-width="1"/>
+   <text x="160" y="102" font-size="7.5" fill="#5c606b">INFRASTRUCTURE · chips · memory · networks · cooling</text>
+  </g></svg></div>`;
+}
+
+function Acc({items}){
+ const [open, setOpen] = useState(-1);
+ return items.map((it, i) => h`<div class="acc" key=${i}>
+   <button class="ah" onClick=${() => setOpen(open === i ? -1 : i)}>
+     ${it.n && h`<span class="an">${it.n}</span>`}
+     <span ...${html(it.t)}></span>
+     <span class="pm">${open === i ? '–' : '+'}</span>
+   </button>
+   ${open === i && h`<div class="ab">
+     ${it.tag && h`<div class="tag" ...${html(it.tag)}></div>`}
+     <p ...${html(it.x)}></p>
+     ${it.quiz && h`<${Quiz} q=${it.quiz[0]} a=${it.quiz[1]}/>`}
+     ${it.tools && h`<ul class="tools">${it.tools.map((t, j) => h`<li key=${j}>
+        ${t[1] ? h`<a href=${t[1]} target="_blank" rel="noopener">${t[0]} ↗</a>` : h`<b>${t[0]}</b>`}
+        <span ...${html(t[2])}></span></li>`)}</ul>`}
+     ${it.links && h`<ul class="tools">${it.links.map((l, j) => h`<li key=${j}>
+        <a href=${l[1]} target="_blank" rel="noopener">${l[0]} ↗</a></li>`)}</ul>`}
+     ${it.c && h`<div class="check"><b>Check:</b> ${it.c}</div>`}
+   </div>`}
+ </div>`);
+}
+
+function Quiz({q, a}){
+ const [on, setOn] = useState(false);
+ return h`<div class="quizbox" onClick=${() => setOn(!on)} style=${{marginTop:'9px'}}>
+   <div class="q">${q} ${!on && h`<b>(tap)</b>`}</div>
+   ${on && h`<div class="a" ...${html(a)}></div>`}</div>`;
+}
+
+function Reveal({items}){
+ const [open, setOpen] = useState({});
+ return h`<div class="blk">${items.map((it, i) => h`<div class="rev" key=${i}>
+   <h4 ...${html(it[0])}></h4>
+   <div class="s" ...${html(it[1])}></div>
+   <button onClick=${() => setOpen({...open, [i]: !open[i]})}>${open[i] ? 'hide' : 'reveal ›'}</button>
+   ${open[i] && h`<div class="ans">
+     <span class=${'verdict ' + it[2]}>${it[3]}</span>
+     <div ...${html(it[4])}></div></div>`}
+ </div>`)}</div>`;
+}
+
+function Runs(){
+ return h`<div class="blk">
+  <div class="run bad"><div class="k">Run 1 · iteration 0 · first attempt — the trap</div>
+   <div class="m">R² 0.868<small> · MAE 3.1 mg/L</small></div>
+   <p>Too beautiful. The split was a random shuffle, and a feature measured with the target — <b>DQO-S</b> — sat in the inputs. Two guardrails failed, so the target tick is withheld, in red, on the report.</p>
+   <a href="ml_report_flawed.html" target="_blank" rel="noopener">open report ↗</a></div>
+  <div class="run good"><div class="k">Run 2 · applies run 1’s next steps</div>
+   <div class="m">R² 0.706<small> · MAE 4.04 vs baseline 8.39</small></div>
+   <p>Honest split, no leak. A worse number — and the first one that means anything. The error is roughly halved against zero effort.</p>
+   <a href="ml_report_honest.html" target="_blank" rel="noopener">open report ↗</a></div>
+  <div class="run chg"><div class="k">Run 3 · applies run 2’s next step</div>
+   <div class="m">R² 0.77<small> · MAE 3.68 mg/L</small></div>
+   <p>Add <b>load = BOD × solids</b> — domain knowledge, not a bigger model — and the report improves.</p>
+   <a href="ml_report_variant.html" target="_blank" rel="noopener">open report ↗</a></div>
+  <div class="note">Each run executes the <b>next investigations</b> written by the previous report — three turns of the loop, a human approving each turn before it runs.</div>
+ </div>`;
+}
+
+function Checks({items}){
+ return h`<div class="checks">${items.map((c, i) => h`
+   <label key=${i} class=${c[2] ? '' : 'human'}>
+     <input type="checkbox" defaultChecked=${!!c[2]} disabled=${!!c[2]}/>
+     <span class="g">${c[0]}</span><span ...${html(c[1])}></span></label>`)}
+   <div class="note" style=${{marginTop:'8px'}}>The agent ticks G1–G7 only when it verified them. <b>H1 is left empty by every run, in every mode, for any score.</b></div>
+ </div>`;
+}
+
+function Block({b}){
+ switch(b.k){
+  case 'kick':    return h`<div class="kick" ...${html(b.t)}></div>`;
+  case 'eyebrow': return h`<div class="eyebrow" ...${html(b.t)}></div>`;
+  case 'h':       return h`<h1 class="big" ...${html(b.t)}></h1>`;
+  case 'hd':      return h`<h2 class="hd" ...${html(b.t)}></h2>`;
+  case 'stand':   return h`<div class="stand" ...${html(b.t)}></div>`;
+  case 'sub':     return h`<div class="eyebrow" style=${{marginTop:'16px'}} ...${html(b.t)}></div>`;
+  case 'tx':      return h`<div class="blk"><p class="tx" ...${html(b.t)}></p></div>`;
+  case 'note':    return h`<div class="blk"><div class="note" ...${html(b.t)}></div></div>`;
+  case 'quote':   return h`<div class="quote"><span ...${html(b.t)}></span>
+                    ${b.cite && h`<cite ...${html(b.cite)}></cite>`}</div>`;
+  case 'list':    return h`<div class="blk">${b.items.map((x, i) =>
+                    h`<p class="tx" key=${i} style=${{marginBottom:'7px'}}>· <span ...${html(x)}></span></p>`)}</div>`;
+  case 'stats':   return h`<div class="statrow">${b.items.map((s, i) =>
+                    h`<div class="stat" key=${i}><div class="v" ...${html(s[0])}></div>
+                       <div class="s" ...${html(s[1])}></div></div>`)}</div>`;
+  case 'bars':    return h`<div class="bars">
+                    <div class="bh" ...${html(b.title)}></div>
+                    ${b.items.map((x, i) => h`<div class=${'bar ' + (x[3] || '')} key=${i}>
+                      <div class="bn"><span ...${html(x[0])}></span><b>${x[1]}</b></div>
+                      <div class="bt"><i style=${{width: x[2] + '%'}}></i></div></div>`)}
+                    ${b.note && h`<div class="note" ...${html(b.note)}></div>`}</div>`;
+  case 'card':    return h`<div class=${'card' + (b.tone ? ' ' + b.tone : '')}>
+                    ${b.kk && h`<div class="k" ...${html(b.kk)}></div>`}
+                    ${b.v && h`<div class="v" ...${html(b.v)}></div>`}
+                    ${b.sub && h`<div class="sub" ...${html(b.sub)}></div>`}
+                    ${b.bars && h`<div style=${{marginTop:'9px'}}>${b.bars.map((x, i) =>
+                      h`<div class="bar" key=${i}><div class="bn"><span>${x[0]}</span><b>${x[1]}</b></div>
+                        <div class="bt"><i style=${{width: x[2] + '%'}}></i></div></div>`)}</div>`}
+                    ${b.x && h`<div class="x" ...${html(b.x)}></div>`}
+                    ${b.note && h`<div class="cn" ...${html(b.note)}></div>`}
+                    ${b.src && h`<div class="cn"><a href=${b.src[1]} target="_blank" rel="noopener"
+                       style=${{color:'#5B8FC7',textDecoration:'none'}} ...${html(b.src[0] + ' ↗')}></a></div>`}
+                  </div>`;
+  case 'two':     return h`<div>${b.items.map((x, i) => h`<div class="two" key=${i}>
+                    <div class="h" ...${html(x[0])}></div><div class="x" ...${html(x[1])}></div></div>`)}</div>`;
+  case 'cols2':   return h`<div class="cols2">${b.items.map((c, i) => h`<div class="mini" key=${i}>
+                    <h4 ...${html(c[0])}></h4>
+                    ${c[1].map((x, j) => h`<div class="it" key=${j} ...${html(x)}></div>`)}</div>`)}</div>`;
+  case 'steps':   return h`<div class="steps">${b.items.map((s, i) => h`<div class="step" key=${i}>
+                    <span class="n">${s[0]}</span>
+                    <span><span class="t" ...${html(s[1])}></span>
+                      <span class="x" ...${html(s[2])}></span>
+                      ${s[3] && h`<span class="chips">${s[3].map((c, j) =>
+                        h`<span key=${j} class=${'chip' + (/^you/.test(c) ? ' you' : /^agent/.test(c) ? ' ag' : '')}
+                           ...${html(c)}></span>`)}</span>`}
+                    </span></div>`)}</div>`;
+  case 'take':    return h`<div class="take">${b.items.map((t, i) => h`<div class="t" key=${i}>
+                    <div class="n" ...${html(t[0])}></div><div class="x" ...${html(t[1])}></div>
+                    <div class="y" ...${html(t[2])}></div></div>`)}</div>`;
+  case 'people':  return h`<div class="people">${b.items.map((p, i) => h`<div class="person" key=${i}>
+                    <b ...${html(p[0])}></b><span ...${html(p[1])}></span></div>`)}</div>`;
+  case 'links':   return h`<div class="links">${b.items.map((l, i) =>
+                    h`<a key=${i} href=${l[1]} target="_blank" rel="noopener">${l[0]} ↗</a>`)}</div>`;
+  case 'code':    return h`<pre class="code">${b.t}</pre>`;
+  case 'cmd':     return h`<div class="cmd" ...${html(b.t)}></div>`;
+  case 'acc':     return h`<div class="blk"><${Acc} items=${b.items}/></div>`;
+  case 'reveal':  return h`<${Reveal} items=${b.items}/>`;
+  case 'runs':    return h`<${Runs}/>`;
+  case 'checks':  return h`<${Checks} items=${b.items}/>`;
+  case 'pipe':    return h`<${Pipe}/>`;
+  default:        return null;
+ }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   DECK
+   ══════════════════════════════════════════════════════════════════ */
+
+const DARK = {title:1, chapter:1, intro:1, end:1};
+
+function Index({i, go, close}){
  return h`<div>
-  <div class="dim on" onClick=${close}></div>
-  <div class="sheet" ref=${ref}>
-   <div class="grab" onTouchStart=${e=>{y0.current=e.touches[0].clientY}}
-        onTouchMove=${e=>{const d=e.touches[0].clientY-y0.current; if(d>0)ref.current.style.transform='translateY('+d+'px)'}}
-        onTouchEnd=${e=>{const d=e.changedTouches[0].clientY-y0.current; ref.current.style.transform=''; if(d>90)close()}}>
-    <i></i></div>
-   <div class="shead"><span class="k">Section ${sec.n}</span><h2>${sec.t}</h2>
-    <button onClick=${speak}>▶ listen</button></div>
-   <div class="sbody">
-    ${sec.blocks.map((b,i)=>{
-      if(b.p)return h`<div class="blk" key=${i}><p dangerouslySetInnerHTML=${{__html:b.p}}></p></div>`;
-      if(b.q)return h`<div class="quote blk" key=${i} dangerouslySetInnerHTML=${{__html:b.q}}></div>`;
-      if(b.fig)return h`<${Fig} key=${i} id=${b.fig} cap=${b.cap}/>`;
-      if(b.acc)return h`<div class="blk" key=${i}><${Acc} items=${b.acc}/></div>`;
-      if(b.quiz)return h`<${Quiz} key=${i} q=${b.quiz.q} a=${b.quiz.a}/>`;
-      if(b.runs)return h`<${Runs} key=${i}/>`;
-      if(b.checks)return h`<${Checks} key=${i} items=${b.checks}/>`;
-      if(b.steps5)return h`<${Steps5} key=${i}/>`;
-      if(b.links)return h`<div class="links blk" key=${i}>${b.links.map(l=>h`<a key=${l[1]} href=${l[1]} target="_blank" rel="noopener">${l[0]} ↗</a>`)}</div>`;
-      return null;})}
-   </div></div></div>`}
+  <div class="dim" onClick=${close}></div>
+  <div class="sheet">
+   <div class="sh"><h3>The deck</h3>
+    <span class="note">27 pages</span>
+    <button onClick=${close}>close</button></div>
+   <div class="sb">
+    ${SLIDES.map((s, k) => {
+      const head = (s.kind === 'chapter') ? h`<div class="ixch" key=${'c' + k}>Chapter ${s.ch} · ${CHAPTERS[s.ch]}</div>` : null;
+      const row = h`<button class=${'ix' + (k === i ? ' here' : '')} key=${k} onClick=${() => {go(k); close();}}>
+        <span class="n">${k + 1}</span>
+        <span><span class="t" ...${html(s.body.find(b => b.k === 'h' || b.k === 'hd') ?
+          s.body.find(b => b.k === 'h' || b.k === 'hd').t.replace(/<br>/g, ' ') : s.tag)}></span>
+        <span class="k">${s.tag}</span></span></button>`;
+      return head ? [head, row] : row;
+    })}
+    <a class="deskrow" href=${'index.html#' + (i + 1)}>Open the desktop deck at this page ›</a>
+   </div>
+  </div></div>`;
+}
 
 function App(){
- const [tab,setTab]=useState(0);
- const [open,setOpen]=useState(null);
- const feedRef=useRef(null);
- useEffect(()=>{if(feedRef.current)feedRef.current.scrollTop=0},[tab]);
- const sec=S.find(s=>s.id===open);
+ const [i, setI] = useState(() => {
+   const m = /^#(\d+)$/.exec(location.hash);
+   const n = m ? parseInt(m[1], 10) - 1 : 0;
+   return (n >= 0 && n < SLIDES.length) ? n : 0;
+ });
+ const [dir, setDir] = useState(1);
+ const [menu, setMenu] = useState(false);
+ const stage = useRef(null);
+ const t0 = useRef(null);
+
+ const go = useCallback(n => {
+   const k = Math.max(0, Math.min(SLIDES.length - 1, n));
+   setDir(k >= i ? 1 : -1);
+   setI(k);
+ }, [i]);
+
+ useEffect(() => {
+   location.hash = String(i + 1);
+   if (stage.current) stage.current.scrollTop = 0;
+ }, [i]);
+
+ useEffect(() => {
+   const k = e => {
+     if (e.key === 'ArrowRight' || e.key === 'PageDown') go(i + 1);
+     if (e.key === 'ArrowLeft' || e.key === 'PageUp') go(i - 1);
+     if (e.key === 'Escape') setMenu(false);
+   };
+   addEventListener('keydown', k);
+   return () => removeEventListener('keydown', k);
+ }, [i, go]);
+
+ const s = SLIDES[i];
+ const dark = !!DARK[s.kind];
+
+ const start = e => { const t = e.touches[0]; t0.current = {x: t.clientX, y: t.clientY, t: Date.now()}; };
+ const end = e => {
+   if (!t0.current) return;
+   const t = e.changedTouches[0];
+   const dx = t.clientX - t0.current.x, dy = t.clientY - t0.current.y;
+   t0.current = null;
+   if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.6) go(dx < 0 ? i + 1 : i - 1);
+ };
+
  return h`<div class="app">
-  <div class="top"><h1>What's going on in <em>AI?</em></h1>
-   <span class="chip">${tab===0?'companion':'chapter '+tab}</span></div>
-  <div class="feed" ref=${feedRef}>
-   ${tab===0?h`<div>
-     <div class="cover"><div class="k">Oxford · summer school · 90 minutes</div>
-      <h2>Practical <em>AI</em> for your projects</h2>
-      <p>The talk in your pocket: the story, the bills, and the build — with the numbers, the questions to ask, and the reports.</p></div>
-     ${[1,2,3].map(c=>h`<div class="hcard" key=${c} onClick=${()=>setTab(c)}>
-       <div class="n">${c}</div><div><h3>${CH[c].t}</h3><p>${CH[c].d}</p></div><span class="go">›</span></div>`)}
-    </div>`
-   :S.filter(s=>s.ch===tab).map(s=>h`<div class="scard" key=${s.id} onClick=${()=>setOpen(s.id)}>
-      <div class="k">Section ${s.n}</div><h3>${s.t}</h3><p>${s.lead}</p>
-      <div class="big">${s.big} <small>${s.small}</small></div></div>`)}
+  <div class="hud">
+   <span class="ttl">Practical <em>AI</em></span>
+   <span class="ct">${String(i + 1).padStart(2, '0')} / ${SLIDES.length}</span>
+   <a class="hb" href=${'index.html#' + (i + 1)} aria-label="Desktop version"
+      title="Open the full deck at this page"><span class="mo" aria-hidden="true"></span>Desktop</a>
+   <button onClick=${() => setMenu(true)} aria-label="Index">☰</button>
   </div>
-  <div class="tabs">
-   ${[['Home','⌂',0],['Story','1',1],['Bills','2',2],['Build','3',3]].map(t=>h`
-    <button key=${t[2]} class=${'tab'+(tab===t[2]?' on':'')} onClick=${()=>setTab(t[2])}><b>${t[1]}</b>${t[0]}</button>`)}
+  <div class="prog">${SLIDES.map((_, k) =>
+    h`<i key=${k} class=${k === i ? 'on' : k < i ? 'past' : ''}></i>`)}</div>
+
+  <div class="stage" onTouchStart=${start} onTouchEnd=${end}>
+   <div class=${'slide enter ' + (dark ? 'dark' : 'light')} ref=${stage} key=${i}
+        style=${{'--dx': dir > 0 ? '14px' : '-14px'}}>
+    ${s.body.map((b, k) => h`<${Block} b=${b} key=${k}/>`)}
+    <div class="foot">
+     ${s.ch ? 'Chapter ' + s.ch + ' · ' + CHAPTERS[s.ch] : 'Practical AI · Oxford · July 2026'}<br/>
+     ${s.tag}
+    </div>
+   </div>
   </div>
-  ${sec&&h`<${Sheet} sec=${sec} onClose=${()=>setOpen(null)}/>`}
- </div>`}
+
+  <div class="nav">
+   <button class="k" onClick=${() => go(i - 1)} disabled=${i === 0}>‹</button>
+   <span class="sec">${s.tag}</span>
+   <button class="k" onClick=${() => go(i + 1)} disabled=${i === SLIDES.length - 1}>›</button>
+  </div>
+
+  ${menu && h`<${Index} i=${i} go=${go} close=${() => setMenu(false)}/>`}
+ </div>`;
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(h`<${App}/>`);
 </script>
 </body>

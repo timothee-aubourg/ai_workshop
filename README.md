@@ -13,7 +13,7 @@ University of Oxford · timothee.aubourg@ndcn.ox.ac.uk
 | Path | What it is |
 |---|---|
 | `index.html` | The talk: 27 interactive pages, with presenter mode, transcript and voice. Self-contained — the reports and skill files are embedded, so it runs from any location. |
-| `mobile.html` | Phone companion: the same content as card feeds and slide-up sheets. Add to home screen for a full-screen app. |
+| `mobile.html` | The same 27 pages, as a phone deck: swipe to advance, reflowed for portrait, with the index, the activity, the prompt and the three reports. Add to home screen for a full-screen app. |
 | `ml_report_honest.html` | Analysis report, **iteration 1** — guardrails enforced. |
 | `ml_report_flawed.html` | Analysis report, **iteration 0** — the run that lies. |
 | `ml_report_variant.html` | Analysis report, **iteration 2** — one domain feature added. |
