@@ -1,0 +1,71 @@
+<!doctype html><meta charset="utf-8"><title>ML report — Run 1 — first attempt</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
+<style>
+ body{margin:0;background:#e7e5df;font-family:Roboto,Arial,sans-serif;color:#002147}
+ .page{max-width:860px;margin:26px auto;background:#f4f2ee;padding:34px 44px;box-shadow:0 8px 40px rgba(0,0,0,.15)}
+ h1{font-family:'Noto Serif',serif;font-weight:900;font-size:30px;letter-spacing:-.02em;margin:0}
+ .kick{font-family:'Roboto Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#994636}
+ h2{font-family:'Noto Serif',serif;font-size:18px;border-bottom:2px solid #002147;padding-bottom:4px;margin:26px 0 10px}
+ h2 span{font-family:'Roboto Mono',monospace;font-size:10px;color:#994636;margin-right:8px}
+ p,li{font-size:13.5px;line-height:1.55}
+ table{border-collapse:collapse;margin:8px 0}
+ th,td{border:1px solid #dcd8d1;padding:6px 12px;font-size:13px;text-align:left}
+ th{background:#eceae3;font-weight:500}
+ .big{font-family:'Noto Serif',serif;font-size:26px;font-weight:900}
+ .warn{border:1.5px solid #994636;background:#f7efe9;padding:9px 12px;font-size:12.5px;margin:8px 0}
+ .ck{display:block;font-size:13px;margin:7px 0;padding-left:2px}
+ .foot{font-family:'Roboto Mono',monospace;font-size:10px;color:#8c8f98;border-top:1px solid #dcd8d1;margin-top:26px;padding-top:10px}
+ code{font-family:'Roboto Mono',monospace;font-size:12px;background:#eceae3;padding:1px 5px}
+</style>
+<div class="page">
+ <div class="kick">Practical AI — analysis report — Run 1 — first attempt</div>
+ <h1>Predicting treated-water quality</h1><style>
+.runsum{border:2px solid #002147;margin:18px 0 26px;background:#fbfaf7}
+.runsum .rh{background:#002147;color:#f4f2ee;padding:9px 16px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.runsum .rh b{font-size:14px}
+.runsum .rh span{font-family:monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9ab0c8}
+.runsum .rb{padding:12px 16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.runsum h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#994636;margin:0 0 6px}
+.runsum ul{list-style:none;margin:0;padding:0}
+.runsum li{font-size:12.5px;line-height:1.45;padding:2px 0}
+.runsum li.ok::before{content:"\2713  ";color:#426A5A;font-weight:700}
+.runsum li.ko::before{content:"\2717  ";color:#994636;font-weight:700}
+.runsum li.ko{color:#994636;font-weight:600}
+.runsum li.wh::before{content:"\26A0  ";color:#B98F1D;font-weight:700}
+.runsum li.nx{padding-left:16px;position:relative}
+.runsum li.nx::before{content:"\2192";position:absolute;left:0;color:#5B8FC7;font-weight:700}
+.runsum .from{padding:8px 16px;border-top:1px solid #dcd8d1;font-size:12.5px;background:#f1efe9}
+.runsum .from b{color:#002147}
+</style><div class="runsum"><div class="rh"><b>Iteration 0</b><span>first attempt · no previous run</span></div><div class="rb"><div><h4>Guardrails · checked by the run</h4><ul><li class="ko">Leakage: <b>DQO-S present</b> in the features</li><li class="ko">Split: rows were <b>randomly shuffled</b> (time series)</li><li class="ok">Baseline computed first (8.39) and reported alongside</li><li class="ok">Imputation: training-set medians only</li><li class="wh">Target MAE ≤ 4.5: met numerically (3.10) — <b>tick withheld</b>, guardrails failed</li></ul></div><div><h4>Next investigations · the suggestions</h4><ul><li class="nx">Re-run with a <b>time-aware split</b>: train on the first 80% of days, test on the last 20%.</li><li class="nx">Remove <b>DQO-S</b> and every variable measured with the target.</li><li class="nx">Then compare honestly against the 8.39 baseline.</li></ul><p style="font-size:12px;margin-top:8px;color:#33373f">These three lines are what <b>run 2</b> executes.</p></div></div><div class="from"><b>Iterated from:</b> nothing — this run opens the loop.</div></div>
+ <h2><span>1</span>Question</h2>
+ <p>Predict tomorrow's <b>output BOD (DBO-S, mg/L)</b> for the treatment plant, from today's inflow measurements and settings. Success metric: <b>MAE</b>. The baseline to beat: predict the historical mean.</p>
+ <h2><span>2</span>Data</h2>
+ <p>527 daily records, 12 variables, 92 missing cells (imputed with training-set medians). Schema follows the UCI Water Treatment Plant dataset (Poch 1993, CC BY 4.0); values regenerated offline for this session.</p>
+ <h2><span>3</span>Features</h2>
+ <p><code>Q-E, PH-E, DBO-E, DQO-E, SS-E, SED-E, COND-E + DQO-S_leak</code></p>
+ <div class="warn">Split: <b>random shuffle</b>. Features include <b>DQO-S_leak</b> — an output measured at the same time as the target.</div>
+ <h2><span>4</span>Model &amp; split</h2>
+ <p>Linear regression. Split: <b>random shuffle (WRONG for time series)</b>.</p>
+ <h2><span>5</span>Evaluation</h2>
+ <table>
+  <tr><th>MAE on test</th><td class="big">3.1 mg/L</td></tr>
+  <tr><th>R&sup2; on test</th><td class="big">0.868</td></tr>
+  
+ </table>
+ 
+ <h2><span>&#10003;</span>Human validation — to be ticked by the signatory</h2>
+ <label class="ck"><input type="checkbox"> The question is stated with a target and a unit</label><label class="ck"><input type="checkbox"> Every feature exists at prediction time (no leakage)</label><label class="ck"><input type="checkbox"> The split respects time: test days are strictly later</label><label class="ck"><input type="checkbox"> The metric is reported on the test set only, next to the baseline</label><label class="ck"><input type="checkbox"> Worst errors inspected; limits and uncertainty stated</label><label class="ck"><input type="checkbox"> I approve this report for use within its stated limits</label>
+ <div class="foot">All runs precomputed for the session (no live computation on stage). Skill: skills/ml-analysis — swap in the real water-treatment.data with one line. Sources: UCI id 106; Sculley et al., NeurIPS 2015.</div>
+</div><style>.sci{border:2px solid #002147;margin:26px 0;padding:0}
+.sci h2{background:#002147;color:#f4f2ee;margin:0;padding:10px 18px;font-size:15px}
+.sci .in{padding:14px 18px}
+.gr{list-style:none;margin:0 0 12px;padding:0}
+.gr li{padding:4px 0;font-size:13.5px}
+.gr .ok::before{content:"\2713  ";color:#426A5A;font-weight:700}
+.gr .ko::before{content:"\2717  ";color:#994636;font-weight:700}
+.gr .ko{color:#994636;font-weight:600}
+.sci h3{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#994636;margin:14px 0 6px}
+.sci p{font-size:13px;line-height:1.5;margin:4px 0}
+.sig{border-top:2px solid #002147;margin-top:14px;padding-top:12px;font-size:13.5px}
+.sig .line{display:inline-block;min-width:280px;border-bottom:1.5px solid #002147;height:18px;vertical-align:bottom}
+</style><style>.gtab{border:2px solid #002147;margin:20px 0;width:100%;border-collapse:collapse;font-size:12.5px}.gtab caption{caption-side:top;text-align:left;background:#002147;color:#f4f2ee;padding:8px 14px;font-family:monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.gtab td{border-top:1px solid #dcd8d1;padding:6px 12px;vertical-align:top}.gtab td.id{font-family:monospace;font-weight:700;width:44px;color:#002147}.gtab td.st{font-family:monospace;font-size:10.5px;width:96px;letter-spacing:.06em}.gtab tr.ok td.st{color:#426A5A}.gtab tr.ko td.st{color:#994636;font-weight:700}.gtab tr.wh td.st{color:#B98F1D;font-weight:700}.gtab tr.hum td.st{color:#002147}.gtab tr.ko{background:#fdecec}.gtab tr.wh{background:#fdf8ec}.gtab tr.hum td{border-top:2px solid #002147}</style><table class="gtab"><caption>Guardrails — the numbered list from prompt.txt, verified by the run</caption><tbody><tr class="ok"><td class="id">G1</td><td class="st">PASS</td><td>Target variable and unit stated — DBO-S, mg/L</td></tr><tr class="ok"><td class="id">G2</td><td class="st">PASS</td><td>Imputation applied, training-set medians</td></tr><tr class="ko"><td class="id">G3</td><td class="st">FAIL</td><td><b>FAIL</b> — DQO-S is present in the features; it is measured with the target</td></tr><tr class="ko"><td class="id">G4</td><td class="st">FAIL</td><td><b>FAIL</b> — rows were randomly shuffled; test days precede training days</td></tr><tr class="ok"><td class="id">G5</td><td class="st">PASS</td><td>Baseline computed first (8.39) and printed beside every score</td></tr><tr class="ok"><td class="id">G6</td><td class="st">PASS</td><td>Limits and uncertainty stated</td></tr><tr class="wh"><td class="id">G7</td><td class="st">WITHHELD</td><td>Metric target met numerically (MAE 3.10) but <b>tick WITHHELD</b>: G3 and G4 failed</td></tr><tr class="hum"><td class="id">H1</td><td class="st">HUMAN</td><td>Human sign-off — left empty by the run</td></tr></tbody></table><div class="sci"><h2>Scientist’s panel — read before signing</h2><div class="in"><p style="font-family:monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#994636;margin:0 0 4px">Iteration 0 · first attempt</p><p style="font-size:13px;margin:0 0 10px">This run starts the loop. Its next investigations below become run 2’s instructions.</p><h3>Guardrails checklist</h3><ul class="gr"><li class="ko">No feature measured with the outcome — <b>DQO-S present in features</b></li><li class="ko">Time-aware split — <b>rows were randomly shuffled</b></li><li class="ok">Baseline computed first; scores reported next to it (8.39)</li><li class="ok">Imputation: training-set medians only</li><li class="ko">Target MAE ≤ 4.5 — met numerically (3.10) but tick WITHHELD: guardrails failed</li></ul><h3>Limits &amp; uncertainty</h3><p>The two failed checks invalidate the headline score. R² 0.868 measures leakage, not skill.</p><h3>Next investigations</h3><p>• Re-run with the time-aware split and DQO-S removed — this is run 2.</p><div class="sig"><b>Sign-off (human only):</b> approved by <span class="line"></span> date <span class="line" style="min-width:120px"></span></div></div></div>

@@ -1,0 +1,7 @@
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# local-only: superseded material kept out of the public repo
+archive/
