@@ -69,6 +69,8 @@
   #ytLb{position:fixed;inset:0;background:rgba(0,10,25,.88);z-index:70;display:none;align-items:center;justify-content:center}
   #ytLb.on{display:flex}
   .ytbox{width:min(1120px,92vw)}
+  .ytbox.short{width:min(392px,84vw)}
+  #ytHost.short{aspect-ratio:9/16}
   #ytHost{position:relative;width:100%;aspect-ratio:16/9;background:#000;box-shadow:0 24px 80px rgba(0,0,0,.6)}
   #ytHost iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .ythint{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:#9ab0c8;margin-top:10px;text-align:center}
@@ -936,7 +938,7 @@
       el.src=f.url; if(f.kind==='video'){el.controls=true;} else {el.alt=f.name||'';}
       lbbody.appendChild(el); lbnote.textContent=f.name||'';
     } else if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
 
       if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }
       var ifr=document.createElement('iframe');
@@ -1898,7 +1900,7 @@
       el.src=f.url; if(f.kind==='video'){el.controls=true;} else {el.alt=f.name||'';}
       lbbody.appendChild(el); lbnote.textContent=f.name||'';
     } else if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
 
       if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }
       var ifr=document.createElement('iframe');
@@ -2600,7 +2602,7 @@
   function openLb(slot){var d=slot.dataset;lbt.textContent=d.title||'Media';lbsrc.href=d.src||'#';
     lbsrc.textContent=(d.srclabel||'source')+' ↗';lbbody.innerHTML='';
     if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
 
       if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }var i=document.createElement('iframe');i.src='https://www.youtube-nocookie.com/embed/'+d.yt;
       i.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';i.allowFullscreen=true;lbbody.appendChild(i);
@@ -5750,7 +5752,7 @@
               <div class="it"><i>04</i><span>Drive on an unfamiliar street</span></div>
             </div>
           </div>
-        <button class="vig" onclick="try{if(window.parent!==window){window.parent.postMessage({__yt:'mLa3movQczE'},'*');return false;}}catch(e){}window.open('https://www.youtube.com/shorts/mLa3movQczE','_blank','noopener');return false;" title="Play the clip">
+        <button class="vig" onclick="try{if(window.parent!==window){window.parent.postMessage({__yt:'mLa3movQczE',__short:true},'*');return false;}}catch(e){}window.open('https://www.youtube.com/shorts/mLa3movQczE','_blank','noopener');return false;" title="Play the clip">
           <span class="th"><img src="https://img.youtube.com/vi/mLa3movQczE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="pl"><i></i></span></span>
           <span><span class="vk">&#9654; click to play &middot; 40 seconds</span>
             <span class="vt">What &ldquo;expensive for a machine&rdquo; looks like</span>
@@ -11541,22 +11543,19 @@ var qrcode = function() {
     updateQR();
   }
   var ytLb=document.getElementById('ytLb'), ytHost=document.getElementById('ytHost'), ytOut=document.getElementById('ytOut');
-  function openYT(id){
-    ytOut.href='https://www.youtube.com/watch?v='+id;
-    if(location.protocol==='file:'){
-      ytHost.innerHTML='<a href="https://www.youtube.com/watch?v='+id+'" target="_blank" rel="noopener" style="position:absolute;inset:0;display:block">'
-        +'<img alt="" src="https://img.youtube.com/vi/'+id+'/hqdefault.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">'
-        +'<span style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;background:rgba(0,33,71,.9);border-radius:14px;display:flex;align-items:center;justify-content:center">'
-        +'<span style="width:0;height:0;border-left:30px solid #f4f2ee;border-top:17px solid transparent;border-bottom:17px solid transparent;margin-left:8px"></span></span></a>';
-    } else {
-      ytHost.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" '
-        +'allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen '
-        +'referrerpolicy="strict-origin-when-cross-origin" title="Video"></iframe>';
-    }
+  function openYT(id,short){
+    ytOut.href='https://www.youtube.com/'+(short?'shorts/':'watch?v=')+id;
+    /* play it in the page, whatever the protocol — the link below covers the
+       case where the embed is refused (it is, from some local file origins) */
+    document.querySelector('.ytbox').classList.toggle('short',!!short);
+    ytHost.classList.toggle('short',!!short);
+    ytHost.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" '
+      +'allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen '
+      +'referrerpolicy="strict-origin-when-cross-origin" title="Video"></iframe>';
     ytLb.classList.add('on');}
   function closeYT(){ytLb.classList.remove('on');ytHost.innerHTML='';}
   ytLb.addEventListener('click',function(e){ if(e.target===ytLb) closeYT(); });
-  window.addEventListener('message',function(e){ if(e.data && e.data.__yt) openYT(String(e.data.__yt)); });
+  window.addEventListener('message',function(e){ if(e.data && e.data.__yt) openYT(String(e.data.__yt), !!e.data.__short); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ytLb.classList.contains('on')){closeYT();e.stopImmediatePropagation();} },true);
   var qrBig=document.getElementById('qrBig');
   document.getElementById('qrBtn').addEventListener('click',function(){
