@@ -4355,7 +4355,7 @@
   var PW=820,PH=340,L=64,R=14,T=16,Bm=34;
   function el(t,a,tx){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);
     if(tx!=null)e.textContent=tx;svg.appendChild(e);return e;}
-  var YEARS=20, DMAX=11;
+  var YEARS=40, DMAX=22;   /* 40 years of computing at x2/2yr = 20 doublings, so the ceiling follows */
   function X(yr){return L+(PW-L-R)*yr/YEARS;}
   function Y(d){return T+(PH-T-Bm)*(1-Math.min(d,DMAX)/DMAX);}
   /* measured inputs for the supply wall:
@@ -4389,11 +4389,12 @@
   (function axes(){
     el('line',{x1:L,y1:PH-Bm,x2:PW-R,y2:PH-Bm,stroke:'#002147','stroke-width':1.5});
     el('line',{x1:L,y1:T,x2:L,y2:PH-Bm,stroke:'#002147','stroke-width':1.5});
-    for(var d=0;d<=DMAX;d+=2){
+    var dStep=DMAX>14?4:2;   /* over a longer horizon the labels would crowd */
+    for(var d=0;d<=DMAX;d+=dStep){
       el('line',{x1:L,y1:Y(d),x2:PW-R,y2:Y(d),stroke:'#e3ded4','stroke-width':1});
       el('text',{x:L-8,y:Y(d)+4,'text-anchor':'end','font-size':9,fill:'#8c8f98'},'\u00d7'+Math.pow(2,d).toLocaleString());
     }
-    for(var yr2=0;yr2<=YEARS;yr2+=5)
+    for(var yr2=0;yr2<=YEARS;yr2+=(YEARS>20?10:5))
       el('text',{x:X(yr2),y:PH-Bm+16,'text-anchor':'middle','font-size':9,fill:'#8c8f98'},yr2?'+'+yr2+' yr':'today');
     el('text',{x:L,y:12,'font-size':9,fill:'#8c8f98','data-id':'axlab',opacity:0},'DOUBLING SCALE \u2014 a steady doubling is a straight line');
   })();
