@@ -938,11 +938,11 @@
       el.src=f.url; if(f.kind==='video'){el.controls=true;} else {el.alt=f.name||'';}
       lbbody.appendChild(el); lbnote.textContent=f.name||'';
     } else if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||''),__start:+(d.ytstart||0)},'*'); return; }catch(e){} }
 
       if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }
       var ifr=document.createElement('iframe');
-      ifr.src='https://www.youtube-nocookie.com/embed/'+d.yt;
+      ifr.src='https://www.youtube-nocookie.com/embed/'+d.yt+(d.ytstart?'?start='+(+d.ytstart):'');
       ifr.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';
       ifr.allowFullscreen=true; lbbody.appendChild(ifr);
       lbnote.innerHTML='If the player errors here, <a href="https://www.youtube.com/watch?v='+d.yt+'" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">open on YouTube \u2197</a>';
@@ -1900,11 +1900,11 @@
       el.src=f.url; if(f.kind==='video'){el.controls=true;} else {el.alt=f.name||'';}
       lbbody.appendChild(el); lbnote.textContent=f.name||'';
     } else if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||''),__start:+(d.ytstart||0)},'*'); return; }catch(e){} }
 
       if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }
       var ifr=document.createElement('iframe');
-      ifr.src='https://www.youtube-nocookie.com/embed/'+d.yt;
+      ifr.src='https://www.youtube-nocookie.com/embed/'+d.yt+(d.ytstart?'?start='+(+d.ytstart):'');
       ifr.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';
       ifr.allowFullscreen=true; lbbody.appendChild(ifr);
       lbnote.innerHTML='If the player errors here, <a href="https://www.youtube.com/watch?v='+d.yt+'" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">open on YouTube \u2197</a>';
@@ -2533,7 +2533,7 @@
       </div>
 
       <figure>
-        <button class="slot hero filled" data-slot="hero" data-title="Most CEOs have no AI strategy" data-yt="BKx0Dp8y-6g" data-src="https://www.business-standard.com/technology/artificial-intelligence/recursive-self-improvement-explained-is-ai-building-ai-the-path-to-agi-126062200661_1.html" data-srclabel="the capability frontier"><span class="tag">▶ CLICK TO PLAY</span><svg class="plate" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" font-family="Georgia,'Noto Serif',serif"><rect width="640" height="400" fill="#f4f2ee"/><rect width="640" height="400" fill="#002147"/><path d="M200 210 a120 120 0 1 1 240 0" fill="none" stroke="#f4f2ee" stroke-width="9"/><polygon points="440,206 420,180 456,178" fill="#f4f2ee"/><path d="M440 210 a120 120 0 1 1 -240 0" fill="none" stroke="#E8B72E" stroke-width="9"/><polygon points="200,214 220,240 184,242" fill="#E8B72E"/><text x="320.0" y="360" text-anchor="middle" font-size="30" font-weight="700" fill="#f4f2ee">Recursive self-improvement</text><text x="320.0" y="386" text-anchor="middle" font-size="13" font-family="monospace" fill="#a79d96">CAN THE LOOP CLOSE WITHOUT US?</text></svg>
+        <button class="slot hero filled" data-slot="hero" data-title="Most CEOs have no AI strategy" data-yt="BKx0Dp8y-6g" data-ytstart="426" data-src="https://www.business-standard.com/technology/artificial-intelligence/recursive-self-improvement-explained-is-ai-building-ai-the-path-to-agi-126062200661_1.html" data-srclabel="the capability frontier"><span class="tag">▶ CLICK TO PLAY</span><svg class="plate" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" font-family="Georgia,'Noto Serif',serif"><rect width="640" height="400" fill="#f4f2ee"/><rect width="640" height="400" fill="#002147"/><path d="M200 210 a120 120 0 1 1 240 0" fill="none" stroke="#f4f2ee" stroke-width="9"/><polygon points="440,206 420,180 456,178" fill="#f4f2ee"/><path d="M440 210 a120 120 0 1 1 -240 0" fill="none" stroke="#E8B72E" stroke-width="9"/><polygon points="200,214 220,240 184,242" fill="#E8B72E"/><text x="320.0" y="360" text-anchor="middle" font-size="30" font-weight="700" fill="#f4f2ee">Recursive self-improvement</text><text x="320.0" y="386" text-anchor="middle" font-size="13" font-family="monospace" fill="#a79d96">CAN THE LOOP CLOSE WITHOUT US?</text></svg>
           <span class="ph"><span class="what"><b>Recursive self-improvement</b>Systems that modify their own learning process. The frontier question: can the loop close without a human in it?</span></span>
         </button>
         
@@ -2602,9 +2602,9 @@
   function openLb(slot){var d=slot.dataset;lbt.textContent=d.title||'Media';lbsrc.href=d.src||'#';
     lbsrc.textContent=(d.srclabel||'source')+' ↗';lbbody.innerHTML='';
     if(d.yt){
-      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||'')},'*'); return; }catch(e){} }
+      if(window.parent!==window){ try{ window.parent.postMessage({__yt:d.yt,__short:/\/shorts\//.test(d.src||''),__start:+(d.ytstart||0)},'*'); return; }catch(e){} }
 
-      if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }var i=document.createElement('iframe');i.src='https://www.youtube-nocookie.com/embed/'+d.yt;
+      if(window.__ytCard){ window.__ytCard(lbbody,lbnote,d.yt); lb.classList.add('on'); return; }var i=document.createElement('iframe');i.src='https://www.youtube-nocookie.com/embed/'+d.yt+(d.ytstart?'?start='+(+d.ytstart):'');
       i.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';i.allowFullscreen=true;lbbody.appendChild(i);
       lbnote.innerHTML='If the player errors here, <a href="https://www.youtube.com/watch?v='+d.yt+'" target="_blank" rel="noopener" style="color:var(--red);border-bottom:1px solid var(--red)">open on YouTube \u2197</a>';}
     else{var e=document.createElement('div');e.className='lbempty';e.textContent='Media slot · open source →';lbbody.appendChild(e);
@@ -11543,19 +11543,21 @@ var qrcode = function() {
     updateQR();
   }
   var ytLb=document.getElementById('ytLb'), ytHost=document.getElementById('ytHost'), ytOut=document.getElementById('ytOut');
-  function openYT(id,short){
-    ytOut.href='https://www.youtube.com/'+(short?'shorts/':'watch?v=')+id;
+  function openYT(id,short,start){
+    start=+start||0;
+    ytOut.href='https://www.youtube.com/'+(short?'shorts/':'watch?v=')+id+(start?'&t='+start+'s':'');
     /* play it in the page, whatever the protocol — the link below covers the
        case where the embed is refused (it is, from some local file origins) */
     document.querySelector('.ytbox').classList.toggle('short',!!short);
     ytHost.classList.toggle('short',!!short);
-    ytHost.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" '
+    ytHost.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0'
+      +(start?'&start='+start:'')+'" '
       +'allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen '
       +'referrerpolicy="strict-origin-when-cross-origin" title="Video"></iframe>';
     ytLb.classList.add('on');}
   function closeYT(){ytLb.classList.remove('on');ytHost.innerHTML='';}
   ytLb.addEventListener('click',function(e){ if(e.target===ytLb) closeYT(); });
-  window.addEventListener('message',function(e){ if(e.data && e.data.__yt) openYT(String(e.data.__yt), !!e.data.__short); });
+  window.addEventListener('message',function(e){ if(e.data && e.data.__yt) openYT(String(e.data.__yt), !!e.data.__short, e.data.__start); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&ytLb.classList.contains('on')){closeYT();e.stopImmediatePropagation();} },true);
   var qrBig=document.getElementById('qrBig');
   document.getElementById('qrBtn').addEventListener('click',function(){
