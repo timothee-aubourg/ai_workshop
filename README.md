@@ -105,7 +105,13 @@ live session, or to check or rebuild it:
 python3 skills/ml-analysis/setup_env.py            # build if needed
 python3 skills/ml-analysis/setup_env.py --check    # ready? (exit 0 / 1)
 python3 skills/ml-analysis/setup_env.py --force    # rebuild from scratch
+python3 skills/ml-analysis/setup_env.py --verbose  # show every command
 ```
+
+It tries `uv`, then the `venv` module, then `venv --without-pip` plus a
+`get-pip` bootstrap, so it also works on a Debian/Ubuntu Python without the
+`python3-venv` package. Failed attempts stay quiet; if all of them fail, the
+captured output is printed.
 
 If the environment cannot be built — no network, or a Python without `venv`
 support — nothing fails: the run falls back to the frozen results in
