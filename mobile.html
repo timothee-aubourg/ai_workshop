@@ -1143,7 +1143,7 @@ STEP 6  Evaluate   report(mae, base, limits) → html`},
   {k:'note', t:'<b>One test decides where a line goes:</b> if changing it changes <i>the answer</i>, it belongs in the prompt; if it changes <i>what a good answer means</i>, it belongs in the skill. So the prompt does not extend the skill — it adapts it. Hand the same skill a prompt from another field and nothing in it should need editing.'},
   {k:'sub', t:'6 · Three runs — one is lying'},
   {k:'runs'},
-  {k:'note', t:'<b>How to read the numbers.</b> MAE = mean absolute error: the average miss, in mg/L — lower is better. R² = the share of the day-to-day variation the model explains — 1 is perfect, 0 is no better than the baseline. <b>A score too beautiful should worry you before it pleases you.</b>'},
+  {k:'note', t:'<b>How to read the numbers.</b> One metric, all three runs: MAE = mean absolute error, the average miss in mg/L. Lower is better, and it is only meaningful next to the <b>baseline of 8.39</b> — the score doing nothing would get. So 4.04 means the error is roughly halved. <b>A score too beautiful should worry you before it pleases you.</b>'},
   {k:'sub', t:'7 · Run it yourself'},
   {k:'cmd', t:'<b>/analysis</b> prompt.txt'},
   {k:'steps', items:[
@@ -1266,15 +1266,15 @@ function Reveal({items}){
 function Runs(){
  return h`<div class="blk">
   <div class="run bad"><div class="k">Run 1 · iteration 0 · first attempt — the trap</div>
-   <div class="m">R² 0.868<small> · MAE 3.1 mg/L</small></div>
+   <div class="m">MAE 3.10<small> mg/L · vs baseline 8.39</small></div>
    <p>Too beautiful. The split was a random shuffle, and a feature measured with the target — <b>DQO-S</b> — sat in the inputs. Two guardrails failed, so the target tick is withheld, in red, on the report.</p>
    <a href="ml_report_flawed.html" target="_blank" rel="noopener">open report ↗</a></div>
   <div class="run good"><div class="k">Run 2 · applies run 1’s next steps</div>
-   <div class="m">R² 0.706<small> · MAE 4.04 vs baseline 8.39</small></div>
+   <div class="m">MAE 4.04<small> mg/L · vs baseline 8.39</small></div>
    <p>Honest split, no leak. A worse number — and the first one that means anything. The error is roughly halved against zero effort.</p>
    <a href="ml_report_honest.html" target="_blank" rel="noopener">open report ↗</a></div>
   <div class="run chg"><div class="k">Run 3 · applies run 2’s next step</div>
-   <div class="m">R² 0.77<small> · MAE 3.68 mg/L</small></div>
+   <div class="m">MAE 3.68<small> mg/L · vs baseline 8.39</small></div>
    <p>Add <b>load = BOD × solids</b> — domain knowledge, not a bigger model — and the report improves.</p>
    <a href="ml_report_variant.html" target="_blank" rel="noopener">open report ↗</a></div>
   <div class="note">Each run executes the <b>next investigations</b> written by the previous report — three turns of the loop, a human approving each turn before it runs.</div>
