@@ -6389,11 +6389,12 @@
   
   .main{gap:0}
   .cols{display:grid;grid-template-columns:2fr 1fr;gap:16px;flex:1;min-height:0}
-  .lcol{display:flex;flex-direction:column;gap:11px;min-height:0}
+  .lcol{display:flex;flex-direction:column;gap:8px;min-height:0}
   .lhd{font-family:var(--mono);font-size:7.6px;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);
-    border-bottom:1px solid var(--rule);padding-bottom:3px}
-  #sysblock{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-  .sys{border:1.5px solid var(--ink);background:#fbfaf7;padding:9px 12px 8px;display:flex;flex-direction:column;gap:5px}
+    border-bottom:1px solid var(--rule);padding-bottom:3px;display:flex;align-items:baseline;gap:9px}
+  .lhd .qall{margin-left:auto;position:relative;top:-1px}
+  #sysblock{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+  .sys{border:1.5px solid var(--ink);background:#fbfaf7;padding:7px 11px 6px;display:flex;flex-direction:column;gap:4px}
   .sys.ml{border-color:var(--green);background:#f4f8f5}
   .sys h3{font-family:var(--display);font-size:15px;font-weight:700}
   .sys .st{font-family:var(--mono);font-size:7.2px;letter-spacing:.13em;text-transform:uppercase;color:var(--grey)}
@@ -6421,8 +6422,8 @@
   #wf{border:1.5px solid var(--ink);background:#fbfaf7;display:flex;flex-direction:column;min-height:0;position:relative}
   #wf .whd{font-family:var(--mono);font-size:7.6px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);
     padding:8px 12px 5px;border-bottom:1px solid var(--rule)}
-  .wsteps{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:7px 12px 9px;min-height:0}
-  .wstep{border:1px solid var(--rule);background:#fff;padding:5px 9px 5px;cursor:pointer;position:relative;
+  .wsteps{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:6px 11px 7px;min-height:0}
+  .wstep{border:1px solid var(--rule);background:#fff;padding:4px 8px;cursor:pointer;position:relative;
     display:flex;gap:9px;align-items:baseline}
   .wstep:hover{border-color:var(--ink)}
   .wstep .wn{font-family:var(--display);font-size:17px;font-weight:900;color:var(--red);line-height:1;width:16px;flex:none}
@@ -6438,8 +6439,8 @@
   #modal .mrev.on .mrevb{display:none}
   #modal .mrevin .qv{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#fff;padding:2px 8px;margin-right:7px}
   #modal .mrevin .qwhy{font-size:12.5px;line-height:1.5;color:#22262e}
-  .quiz8{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:5px;min-height:0}
-  .qc{position:relative;border:1.5px solid var(--ink);background:#fff;padding:5px 6px;display:flex;gap:6px;align-items:flex-start;overflow:hidden}
+  .quiz8{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:4px;min-height:0}
+  .qc{position:relative;border:1.5px solid var(--ink);background:#fff;padding:4px 6px;display:flex;gap:6px;align-items:flex-start;overflow:hidden}
   .qimg{position:relative;flex:none;width:34px;height:34px;border:1px solid var(--rule);background:var(--panel);
     display:flex;align-items:center;justify-content:center;color:var(--ink);overflow:hidden;cursor:pointer;padding:0}
   .qimg:hover{border-color:var(--red)}
@@ -6461,7 +6462,7 @@
   .qv{font-family:var(--mono);font-size:7.2px;font-weight:700;letter-spacing:.08em;color:#fff;padding:1px 5px;margin-right:4px}
   .qv.yes{background:var(--green)} .qv.no{background:var(--red)} .qv.dep{background:#B98F1D}
   .qwhy{font-size:7.6px;line-height:1.32;color:#33373f}
-  .qfoot{display:flex;gap:8px;align-items:flex-start;margin-top:5px}
+  .qfoot{display:flex;gap:8px;align-items:flex-start;margin-top:4px}
   .qall{flex:none;font-family:var(--mono);font-size:7.4px;letter-spacing:.07em;text-transform:uppercase;
     border:1.5px solid var(--red);background:var(--red);color:#fff;padding:3px 8px;cursor:pointer}
   .qnote{font-size:7.8px;line-height:1.35;color:#5c606b}
@@ -6533,7 +6534,7 @@
   
 
   /* ── running practice stamp: same token, four times across the talk ── */
-  .prac{display:flex;align-items:baseline;gap:11px;margin-top:8px;padding:8px 13px;flex:none;
+  .prac{display:flex;align-items:baseline;gap:11px;margin-top:9px;padding:7px 13px;flex:none;
     background:#002147;border-left:5px solid #E8B72E;color:#f4f2ee}
   .prac .pn{font-family:var(--mono);font-size:8.2px;letter-spacing:.18em;text-transform:uppercase;
     color:#E8B72E;flex:none;font-weight:500}
@@ -6579,9 +6580,9 @@
             </div>
           </div>
           <div style="flex:1;min-height:0;display:flex;flex-direction:column">
-            <div class="lhd">Activity · AI or not AI?<span class="lhx">tap a picture for detail · reveal when ready</span></div>
+            <div class="lhd">Activity · AI or not AI?<span class="lhx">tap a picture for detail</span><button class="qall">reveal all</button></div>
             <div class="quiz8" id="uses" style="flex:1;margin-top:7px"><div class="qc" id="q0" tabindex="0"><button class="qimg" data-p="p_q0" title="Picture and description"><svg viewBox="0 0 34 34"><rect x="7" y="12" width="20" height="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 19h5M27 19h5" stroke="currentColor" stroke-width="2"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>Predicting water quality</h4><div class="qsol">UPL project · 527 plant-days</div><div class="qsub">inflow chemistry → tomorrow’s BOD</div><div class="qacts"><button class="qstory" data-m="u0">full example ›</button><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv yes">AI</span><span class="qwhy">Supervised · regression</span></div></div></div><div class="qc" id="q1" tabindex="0"><button class="qimg" data-p="p_q1" title="Picture and description"><svg viewBox="0 0 34 34"><rect x="8" y="4" width="18" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="11" y="7" width="12" height="5" fill="currentColor"/><circle cx="13" cy="18" r="1.6" fill="currentColor"/><circle cx="21" cy="18" r="1.6" fill="currentColor"/><circle cx="13" cy="24" r="1.6" fill="currentColor"/><circle cx="21" cy="24" r="1.6" fill="currentColor"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>A pocket calculator</h4><div class="qsol">Casio HS-4 · six functions</div><div class="qsub">7 × 8 = 56, every time</div><div class="qacts"><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv no">NOT AI</span><span class="qwhy">Fixed rules, written by a human. No examples, no learning — and it is never wrong.</span></div></div></div><div class="qc" id="q2" tabindex="0"><button class="qimg" data-p="p_q2" title="Picture and description"><svg viewBox="0 0 34 34"><circle cx="17" cy="15" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M17 3v4M17 23v4M5 15h4M25 15h4M8 6l3 3M26 6l-3 3" stroke="currentColor" stroke-width="2"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>Forecasting solar &amp; wind</h4><div class="qsol">grid forecast · day-ahead forecasting</div><div class="qsub">past output + weather → tomorrow</div><div class="qacts"><button class="qstory" data-m="u1">full example ›</button><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv yes">AI</span><span class="qwhy">Supervised · regression, forecasting setting</span></div></div></div><div class="qc" id="q3" tabindex="0"><button class="qimg" data-p="p_q3" title="Picture and description"><svg viewBox="0 0 34 34"><rect x="5" y="7" width="24" height="20" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 13h24M5 20h24M13 7v20M21 7v20" stroke="currentColor" stroke-width="1.4"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>A spreadsheet formula</h4><div class="qsol">Microsoft Excel · =VLOOKUP()</div><div class="qsub">=SUM(B2:B40)</div><div class="qacts"><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv no">NOT AI</span><span class="qwhy">A rule you wrote. Excel repeats it exactly — no data-fitted function, nothing learned.</span></div></div></div><div class="qc" id="q4" tabindex="0"><button class="qimg" data-p="p_q4" title="Picture and description"><svg viewBox="0 0 34 34"><path d="M14 4v9L7 27a2 2 0 002 3h16a2 2 0 002-3l-7-14V4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M11 4h12" stroke="currentColor" stroke-width="2"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>Predicting a material property</h4><div class="qsol">UPL project · recipe → property</div><div class="qsub">composition → melting point</div><div class="qacts"><button class="qstory" data-m="u2">full example ›</button><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv yes">AI</span><span class="qwhy">Supervised · regression on small data</span></div></div></div><div class="qc" id="q5" tabindex="0"><button class="qimg" data-p="p_q5" title="Picture and description"><svg viewBox="0 0 34 34"><rect x="14" y="16" width="6" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><rect x="12" y="5" width="10" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 5V2M17 5V2M20 5V2" stroke="currentColor" stroke-width="1.6"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>A smart toothbrush</h4><div class="qsol">Oral-B iO · Philips Sonicare</div><div class="qsub">pressure + motion sensors</div><div class="qacts"><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv dep">BOTH</span><span class="qwhy">The timer and the pressure alert are rules. But mapping motion to <b>which tooth you are brushing</b> is learned from labelled recordings — supervised classification.</span></div></div></div><div class="qc" id="q6" tabindex="0"><button class="qimg" data-p="p_q6" title="Picture and description"><svg viewBox="0 0 34 34"><path d="M5 8h24v14H16l-7 6v-6H5z" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>Classifying hostile comments</h4><div class="qsol">UPL project · Gujarati NLP</div><div class="qsub">posts → hostile / not</div><div class="qacts"><button class="qstory" data-m="u3">full example ›</button><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv yes">AI</span><span class="qwhy">Supervised · classification, rare class</span></div></div></div><div class="qc" id="q7" tabindex="0"><button class="qimg" data-p="p_q7" title="Picture and description"><svg viewBox="0 0 34 34"><path d="M17 4v14" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="24" r="5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="6" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="2"/></svg><span class="qmag">+</span></button><div class="qmain"><h4>A thermostat</h4><div class="qsol">classic dial model · vs Nest</div><div class="qsub">below 19°C → heat on</div><div class="qacts"><button class="qtog">reveal ›</button></div><div class="qrev"><span class="qv no">NOT AI</span><span class="qwhy">One threshold, one rule. A <i>learning</i> thermostat that predicts your schedule would be AI — this one is not.</span></div></div></div></div>
-            <div class="qfoot"><button class="qall">reveal all</button><span class="qnote">Not everything automatic is AI. Rules are written; models are fitted to examples. <b>What decides is where the behaviour came from.</b></span></div>
+            <div class="qfoot"><span class="qnote">Not everything automatic is AI. Rules are written; models are fitted to examples. <b>What decides is where the behaviour came from.</b></span></div>
           </div>
         </div>
         <div id="wf">
@@ -6599,9 +6600,9 @@
             <div class="warr">&darr;</div>
             <div class="wstep" data-m="w6" tabindex="0"><span class="plus">+</span><span class="wn">6</span><span><span class="wt">Fit &amp; evaluate</span><div class="ws">fit on train &middot; measure on test &middot; vs baseline</div></span><div class="kcrow"><button class="kc" data-m="kc_fpfn">FP / FN</button><button class="kc" data-m="kc_overfit">overfitting</button></div></div>
           </div>
-          <div class="prac"><span class="pn">Practice 4 of 4</span><b>Accountability</b><span class="px2">A false positive costs a wasted check; a false negative costs a fine, or a river. Step&nbsp;6 is where a number becomes a decision &mdash; <i>and someone&rsquo;s name goes under it.</i></span></div>
         </div>
         </div>
+      <div class="prac"><span class="pn">Practice 4 of 4</span><b>Accountability</b><span class="px2">A false positive costs a wasted check; a false negative costs a fine, or a river. Step&nbsp;6 is where a number becomes a decision &mdash; <i>and someone&rsquo;s name goes under it.</i></span></div>
       <div id="mback"></div>
       <div id="modal" role="dialog" aria-modal="true"><button class="mx" aria-label="Close">&times;</button><div id="mbody"></div></div></div>
   </div>
@@ -7348,6 +7349,14 @@
   .sbody{border-top:1.5px solid var(--ink);background:#fff;padding:10px 15px;font-size:12px;line-height:1.5;color:#22262e;flex:none;min-height:64px}
   .sbody b{font-weight:700;color:var(--ink)}
   .sbody i{color:var(--red)}
+  .ydock{position:absolute;left:2.4%;right:2.4%;top:47%;display:none;gap:11px}
+  .ydock.on{display:grid;grid-template-columns:repeat(3,1fr)}
+  .ybx{border:1px solid var(--rule);border-left:5px solid var(--yellow);background:#fff;padding:8px 11px 7px;
+    box-shadow:0 2px 8px rgba(0,0,0,.06)}
+  .ybx .yt{font-family:var(--mono);font-size:7.6px;letter-spacing:.13em;text-transform:uppercase;color:#8a6a12;font-weight:500}
+  .ybx .yx{font-size:9.9px;line-height:1.42;color:#22262e;margin-top:3px}
+  .ybx .yx b{color:var(--ink)}
+  .ybx .yg{font-family:var(--mono);font-size:7.4px;color:var(--red);margin-top:5px;letter-spacing:.05em}
   .chipdock{position:absolute;right:1.6%;top:7%;width:25%;display:none;flex-direction:column;gap:8px}
   .chipdock.on{display:flex}
   .achip{border:1px solid var(--rule);border-left:4px solid var(--red);background:#fff;padding:7px 10px 6px;
@@ -7419,6 +7428,17 @@
         </div>
         <div id="scene">
           <svg id="ssvg" viewBox="0 0 820 330" font-family="'Roboto',sans-serif"></svg>
+          <div class="ydock" id="ybox" data-id="ybox">
+            <div class="ybx"><div class="yt">Per delegated step &middot; the level</div>
+              <div class="yx">Set it stage by stage, not once for the project. <b>Features and model family:</b> the agent proposes, you review. <b>Split rule, target, metric:</b> fixed by you, the agent only executes. Nothing is handed over as a whole.</div>
+              <div class="yg">prompt.txt &middot; DELEGATION &middot; may / may not</div></div>
+            <div class="ybx"><div class="yt">Per delegated step &middot; the check</div>
+              <div class="yx">Guardrails are <b>not one gate at the end</b>. Each stage carries its own, numbered and verified where it applies &mdash; so a failure names the stage that caused it.</div>
+              <div class="yg">G2 data &middot; G3 features &middot; G4 split &middot; G5&ndash;G7 evaluate</div></div>
+            <div class="ybx"><div class="yt">At the end &middot; read, then sign</div>
+              <div class="yx">Validation reads every score <b>beside the baseline</b>; accountability puts your name under it. The agent may earn the number &mdash; it may never tick that line.</div>
+              <div class="yg">G5 &middot; G6 &middot; G7 &rarr; H1 stays empty</div></div>
+          </div>
           <div class="chipdock" id="chips" data-id="chips">
             <div class="achip" id="chData"><div class="at">Data &rarr; <b>tacit knowledge</b></div>
               <div class="ax">The question and the data: what is predicted and for whom, where each number comes from, what it means. Your workflow, your domain &mdash; it is in no file.</div>
@@ -7442,7 +7462,7 @@
   <div class="pane" id="paneScript">
     <div class="legend"><span>Read at about <b>125 words a minute</b>.</span><span><i class="dot r"></i> Red is what you <b>do</b>.</span><span id="wcTotalStatic" style="margin-left:auto">416 words &middot; about 3:20 spoken</span></div>
     <div class="sec">Spoken script<span>six beats = six steps of the scene</span></div>
-    <div class="scr" style="grid-template-columns:repeat(6,1fr);overflow:auto"><div class="scol"><div class="t">0:00</div><div class="bt">The myth</div><div class="dir">Step 1 on screen. Point at the empty centre.</div><div class="say"><p>Doing it well is a question of position: where do you stand in the system?</p><p>Start with the old answer — a famous diagram, and a myth.</p><p>Data science, the classic picture: programming, maths and statistics, domain expertise — and in the centre, the unicorn who holds all three. For twenty years that centre kept domain experts out.</p></div><div class="wc">58 words &middot; about 0:28</div></div><div class="scol"><div class="t">0:28</div><div class="bt">The 2026 update</div><div class="dir">Step 2. Trace the two tethers outward.</div><div class="say"><p>Here is the update. You do not move. You stand in your own circle — your field — and agents extend your reach into the other two.</p><p>The Coder and the Analyst from chapter one, working the circles you do not live in. You do not move to the centre; the centre comes to you.</p><p>And notice the spiral. To command these agents, you write rules again — specs, guardrails, acceptance checks. The expert system returns, one level up: rules around the learner.</p></div><div class="wc">83 words &middot; about 0:40</div></div><div class="scol"><div class="t">1:08</div><div class="bt">What stays yours</div><div class="dir">Step 3. Circle the four duties with a finger.</div><div class="say"><p>Four duties never cross the dotted lines.</p><p>Tacit knowledge: the question and the data — what only you know. Delegation level: how far the agent goes alone. Guardrails: the checks, written before the run. Accountability: the signature. Everything else can be discussed — these four are the job.</p></div><div class="wc">24 words &middot; about 0:12</div></div><div class="scol"><div class="t">1:19</div><div class="bt">The attitudes</div><div class="dir">Step 4. One chip per sentence, top to bottom.</div><div class="say"><p>Now chapter two comes back as those four duties — the chips on the right.</p><p>Alignment becomes guardrails: write the spec and the checks before the agent runs — it will chase what you measure.</p><p>Offloading becomes the delegation level: decide in advance how much you hand over, and discuss the plan before any execution — that is how you keep thinking at system level.</p><p>Responsibility becomes accountability: the last word is not delegated.</p><p>And data becomes tacit knowledge: collection, quality, documentation, and the meaning behind the numbers — all yours to own.</p></div><div class="wc">70 words &middot; about 0:34</div></div><div class="scol"><div class="t">1:53</div><div class="bt">The system around the model</div><div class="dir">Step 5. Tap the tiny model box; open one checklist.</div><div class="say"><p>Step five: zoom out, and the workflow becomes a system.</p><p>And the four duties land where they belong: tacit knowledge before the chain and at its start, delegation level across the middle, guardrails at validation, accountability on the report. Agents run the middle — inside the limits you set.</p><p>Garbage in, garbage out — the chain is as strong as its weakest link. Le maillon faible.</p><p>And before any model: beat the dumb baseline. The mean, the last value, the majority class — no model has earned attention until it wins that fight.</p><p>Every stage is clickable — a checklist behind each box.</p></div><div class="wc">96 words &middot; about 0:46</div></div><div class="scol"><div class="t">2:39</div><div class="bt">Where you stand — and the bridge</div><div class="dir">Step 6. Read the rule slowly. End on the audience.</div><div class="say"><p>Last step: the badges. Green squares, an agent can run — features, the model, a first draft of the report.</p><p>Yellow stays human — tacit knowledge at both ends, guardrails at validation, accountability on the signature. And on the split, the question from section seven is pinned for good: data the model never saw?</p><p>One rule holds the whole slide: delegate only what you can validate.</p><p>So let us prove it. Next: the whole chain runs once, for real — and you sit in the seat of the one who checks.</p></div><div class="wc">85 words &middot; about 0:41</div></div></div>
+    <div class="scr" style="grid-template-columns:repeat(6,1fr);overflow:auto"><div class="scol"><div class="t">0:00</div><div class="bt">The myth</div><div class="dir">Step 1 on screen. Point at the empty centre.</div><div class="say"><p>Doing it well is a question of position: where do you stand in the system?</p><p>Start with the old answer — a famous diagram, and a myth.</p><p>Data science, the classic picture: programming, maths and statistics, domain expertise — and in the centre, the unicorn who holds all three. For twenty years that centre kept domain experts out.</p></div><div class="wc">58 words &middot; about 0:28</div></div><div class="scol"><div class="t">0:28</div><div class="bt">The 2026 update</div><div class="dir">Step 2. Trace the two tethers outward.</div><div class="say"><p>Here is the update. You do not move. You stand in your own circle — your field — and agents extend your reach into the other two.</p><p>The Coder and the Analyst from chapter one, working the circles you do not live in. You do not move to the centre; the centre comes to you.</p><p>And notice the spiral. To command these agents, you write rules again — specs, guardrails, acceptance checks. The expert system returns, one level up: rules around the learner.</p></div><div class="wc">83 words &middot; about 0:40</div></div><div class="scol"><div class="t">1:08</div><div class="bt">What stays yours</div><div class="dir">Step 3. Circle the four duties with a finger.</div><div class="say"><p>Four duties never cross the dotted lines.</p><p>Tacit knowledge: the question and the data — what only you know. Delegation level: how far the agent goes alone. Guardrails: the checks, written before the run. Accountability: the signature. Everything else can be discussed — these four are the job.</p></div><div class="wc">24 words &middot; about 0:12</div></div><div class="scol"><div class="t">1:19</div><div class="bt">The attitudes</div><div class="dir">Step 4. One chip per sentence, top to bottom.</div><div class="say"><p>Now chapter two comes back as those four duties — the chips on the right.</p><p>Alignment becomes guardrails: write the spec and the checks before the agent runs — it will chase what you measure.</p><p>Offloading becomes the delegation level: decide in advance how much you hand over, and discuss the plan before any execution — that is how you keep thinking at system level.</p><p>Responsibility becomes accountability: the last word is not delegated.</p><p>And data becomes tacit knowledge: collection, quality, documentation, and the meaning behind the numbers — all yours to own.</p></div><div class="wc">70 words &middot; about 0:34</div></div><div class="scol"><div class="t">1:53</div><div class="bt">The system around the model</div><div class="dir">Step 5. Tap the tiny model box; open one checklist.</div><div class="say"><p>Step five: zoom out, and the workflow becomes a system.</p><p>Read it from the top: garbage in, garbage out — the chain is only as strong as its weakest link. Then the four duties land on it, stage by stage. Tacit knowledge before the chain and at its start. And for every stage you delegate, two settings of your own: how far the agent goes alone, and which numbered check must pass there. Guardrails are not one gate at the end — G2 guards the data, G3 the features, G4 the split, G5 to G7 the evaluation. Accountability closes it.</p><p>Garbage in, garbage out — the chain is as strong as its weakest link. Le maillon faible.</p><p>And before any model: beat the dumb baseline. The mean, the last value, the majority class — no model has earned attention until it wins that fight.</p><p>Every stage is clickable — a checklist behind each box.</p></div><div class="wc">96 words &middot; about 0:46</div></div><div class="scol"><div class="t">2:39</div><div class="bt">Where you stand — and the bridge</div><div class="dir">Step 6. Read the rule slowly. End on the audience.</div><div class="say"><p>Last step: the badges. Green squares, an agent can run — features, the model, a first draft of the report.</p><p>Yellow stays human — tacit knowledge at both ends, guardrails at validation, accountability on the signature. And on the split, the question from section seven is pinned for good: data the model never saw?</p><p>One rule holds the whole slide: delegate only what you can validate.</p><p>So let us prove it. Next: the whole chain runs once, for real — and you sit in the seat of the one who checks.</p></div><div class="wc">85 words &middot; about 0:41</div></div></div>
   </div>
 </div></div>
 <script>
@@ -7500,11 +7520,11 @@
   pill(486,246,96,'guardrails','#E8B72E','#002147','ring',9.5);
   pill(372,294,112,'accountability','#E8B72E','#002147','ring',9.5);
   /* ACT B: pipeline */
-  var P=[['g1','Data','collect \u00b7 check',56,118,92,52],['g2','Quality','gate',168,118,74,52],
-         ['g3','Features','engineer',262,118,92,52],['g4','Split','train / test',374,118,86,52],
-         ['g5','MODEL','',482,130,58,30],['g6','Validation','vs baseline',562,118,96,52],
-         ['g7','Report','communicate',678,118,96,52]];
-  pill(28,144,44,'you','#002147','#fff','pipe',10);
+  var P=[['g1','Data','collect \u00b7 check',56,68,92,52],['g2','Quality','gate',168,68,74,52],
+         ['g3','Features','engineer',262,68,92,52],['g4','Split','train / test',374,68,86,52],
+         ['g5','MODEL','',482,80,58,30],['g6','Validation','vs baseline',562,68,96,52],
+         ['g7','Report','communicate',678,68,96,52]];
+  pill(28,94,44,'you','#002147','#fff','pipe',10);
   P.forEach(function(p,i){
     var sm=(p[0]==='g5');
     el('rect',{x:p[3],y:p[4],width:p[5],height:p[6],fill:sm?'#994636':'#fff',
@@ -7514,19 +7534,20 @@
     if(p[2]) el('text',{x:p[3]+p[5]/2,y:p[4]+38,'text-anchor':'middle','font-size':8.5,fill:'#8c8f98','data-id':'pipe',opacity:0,'data-m':p[0],style:'cursor:pointer'},p[2]);
     if(i<P.length-1) el('text',{x:p[3]+p[5]+8,y:p[4]+30,'font-size':14,'font-weight':700,fill:'#002147','data-id':'pipe',opacity:0},'\u2192');
   });
-  el('rect',{x:120,y:236,width:600,height:24,rx:12,fill:'#eceae3',stroke:'#dcd8d1','data-id':'pipe',opacity:0});
-  el('text',{x:420,y:252,'text-anchor':'middle','font-size':10.5,fill:'#33373f','data-id':'pipe',opacity:0},'garbage in \u2192 garbage out \u00b7 the chain is as strong as its weakest link \u2014 le maillon faible');
+  el('rect',{x:120,y:4,width:600,height:22,rx:11,fill:'#eceae3',stroke:'#dcd8d1','data-id':'pipe',opacity:0});
+  el('text',{x:420,y:19,'text-anchor':'middle','font-size':10.5,fill:'#33373f','data-id':'pipe',opacity:0},'garbage in \u2192 garbage out \u00b7 the chain is as strong as its weakest link \u2014 le maillon faible');
   /* badges */
   [['g2','\u25a0 agent'],['g3','\u25a0 agent'],['g4','\u25a0 agent'],['g5','\u25a0 agent']].forEach(function(bd){
     var p=P.filter(function(q){return q[0]===bd[0];})[0];
-    pill(p[3]+p[5]/2,p[4]-16,66,bd[1],'#426A5A','#fff','badge',8.5);});
+    pill(p[3]+p[5]/2,p[4]-14,66,bd[1],'#426A5A','#fff','badge',8.5);});
   /* the four duties, from the previous step, landing on the chain */
-  pill(46,108,104,'tacit knowledge','#E8B72E','#002147','badge',8.5);
-  pill(56+92/2,186,104,'tacit knowledge','#E8B72E','#002147','badge',8.5);
-  pill(374+86/2,186,100,'delegation level','#E8B72E','#002147','badge',8.5);
-  pill(562+96/2,186,80,'guardrails','#E8B72E','#002147','badge',8.5);
-  pill(678+96/2,186,96,'accountability','#E8B72E','#002147','badge',8.5);
-  el('text',{x:420,y:300,'text-anchor':'middle','font-size':15,'font-weight':900,fill:'#002147','data-id':'rule',opacity:0},'Delegate only what you can validate.');
+  pill(46,58,104,'tacit knowledge','#E8B72E','#002147','badge',8.5);
+  pill(56+92/2,136,104,'tacit knowledge','#E8B72E','#002147','badge',8.5);
+  pill(262+92/2,136,100,'delegation level','#E8B72E','#002147','badge',8.5);
+  pill(374+86/2,136,80,'guardrails','#E8B72E','#002147','badge',8.5);
+  pill(562+96/2,136,80,'guardrails','#E8B72E','#002147','badge',8.5);
+  pill(678+96/2,136,96,'accountability','#E8B72E','#002147','badge',8.5);
+  el('text',{x:420,y:322,'text-anchor':'middle','font-size':15,'font-weight':900,fill:'#002147','data-id':'rule',opacity:0},'Delegate only what you can validate.');
 
   var STEPS=[
    {t:'1 \u00b7 The myth \u2014 the unicorn',show:['venn','uni'],
@@ -7537,9 +7558,9 @@
     b:'Four duties never cross the tethers. <b>Tacit knowledge</b>: the question and the data \u2014 what is predicted, in which unit, for whom, which mistake costs more; where each number comes from and whether it can be trusted. Your workflow and your domain, which exist nowhere in the file. <b>Delegation level</b>: how far the agent goes alone \u2014 what it may decide, what it must bring back, what you do yourself. <b>Guardrails</b>: the checks written before the run, verified by ID and printed pass or fail. <b>Accountability</b>: the signature \u2014 your name under the report. Everything else can be delegated; these four cannot.'},
    {t:'4 \u00b7 The attitudes \u2014 four walls, four habits',show:['venn','person','agents','ring','chips'],
     b:'Each chapter-two wall becomes one of the four duties. <b>Alignment</b> \u2192 <i>guardrails</i>: write the spec and the checks before the agent runs, because it will chase what you measure. <b>Offloading</b> \u2192 <i>delegation level</i>: decide in advance how much you hand over, and discuss the plan before any execution. <b>Responsibility</b> \u2192 <i>accountability</i>: the last word is not delegated. <b>Data</b> \u2192 <i>tacit knowledge</i>: ground truth, and the meaning behind it, are yours to own.'},
-   {t:'5 \u00b7 The system around the model',show:['pipe','badge'],
-    b:'Zoom out: the workflow becomes a system \u2014 and the four duties from the last step land on it. <b>Tacit knowledge</b> before the chain and at its start; <b>delegation level</b> in the middle, where you set how far the agent goes; <b>guardrails</b> at validation; <b>accountability</b> on the report. Agents run the middle, inside the limits you set. Click any stage for its checklist.'},
-   {t:'6 \u00b7 Where you stand',show:['pipe','badge','rule'],
+   {t:'5 \u00b7 The system around the model',show:['pipe','badge','ybox'],
+    b:'Zoom out: the workflow becomes a system \u2014 and the four duties land on it, <b>stage by stage</b>. Read the chain from the top: the weakest link decides the result, which is why the rule sits above it. <b>Tacit knowledge</b> before the chain and at its start. Then, for <i>every</i> delegated stage, two settings of your own: how far the agent goes alone, and which numbered check must pass there. <b>Guardrails are not one gate at the end</b> \u2014 G2 guards the data, G3 the features, G4 the split, G5\u2013G7 the evaluation. <b>Accountability</b> closes it. Click any stage for its checklist.'},
+   {t:'6 \u00b7 Where you stand',show:['pipe','badge','rule','ybox'],
     b:'Badges: green, an agent can run \u2014 features, the model, a first draft of the report. That green is the <b>delegation level</b>, and you choose it. Yellow stays human \u2014 tacit knowledge at both ends, guardrails at validation, accountability on the signature. On the split, the question from section seven is pinned for good. The rule of the chapter: <b>delegate only what you can validate.</b>'}
   ];
   var si=0,sdots=document.getElementById('sdots');
@@ -7612,7 +7633,7 @@
      S('Responsibility becomes accountability: the last word is not delegated.',{r:0.9,sel:['#chResp']}),
      S('And data becomes tacit knowledge: collection, quality, documentation, and the meaning behind the numbers — all yours to own.',{r:0.93,sel:['#chData']})]},
    {bt:'The system around the model', items:[S('Step five: zoom out, and the workflow becomes a system.',{pre:350,r:0.92,sel:['#stepper']}),
-     S('And the four duties land where they belong: tacit knowledge before the chain and at its start, delegation level across the middle, guardrails at validation, accountability on the report. Agents run the middle — inside the limits you set.',{r:0.97}),
+     S('Read it from the top: garbage in, garbage out — the chain is only as strong as its weakest link. Then the four duties land on it, stage by stage. Tacit knowledge before the chain and at its start. And for every stage you delegate, two settings of your own: how far the agent goes alone, and which numbered check must pass there. Guardrails are not one gate at the end — G2 guards the data, G3 the features, G4 the split, G5 to G7 the evaluation. Accountability closes it.',{r:0.97}),
      S('Garbage in, garbage out — the chain is as strong as its weakest link. Le maillon faible.',{pre:250,r:0.93}),
      S('And before any model: beat the dumb baseline. The mean, the last value, the majority class — no model has earned attention until it wins that fight.',{r:0.95}),
      S('Every stage is clickable — a checklist behind each box.',{pre:250,r:0.9})]},
@@ -8171,6 +8192,7 @@
   .kws{display:flex;gap:3px;flex-wrap:wrap}
   .kws i{font-style:normal;font-family:var(--mono);font-size:6.6px;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--red);padding:2px 5px}
   .duty{font-family:var(--mono);font-size:6.8px;letter-spacing:.05em;text-transform:uppercase;padding:2px 5px;align-self:flex-start}
+  .kws i.g{background:#0b2748;color:#E8B72E;border-color:#0b2748;font-weight:500}
   .duty.dyou{background:var(--yellow);color:var(--ink)}
   .duty.dag{background:#e4ede9;color:var(--green);border:1px solid var(--green)}
   .skbtns{display:flex;gap:6px}
@@ -8349,9 +8371,9 @@
       <div class="pan" data-p="2">
         <span class="pk">The slide-19 workflow · annotated for this problem</span>
         <span class="pt">Same six steps — the water column filled in.</span>
-        <div style="flex:1;display:flex;flex-direction:column;justify-content:center"><div class="minis"><div class="mini"><span class="mn">STEP 1</span><span class="mt2">Question</span><span class="ma">target DBO-S, mg/L · metric MAE · baseline: the mean</span><span class="kws"><i>baseline</i></span><span class="duty dyou">you · tacit knowledge</span></div><div class="mini"><span class="mn">STEP 2</span><span class="mt2">Data</span><span class="ma">527 days · 92 missing cells → medians from training rows</span><span class="kws"><i>imputation</i><i>leakage</i></span><span class="duty dyou">you · tacit knowledge</span></div><div class="mini"><span class="mn">STEP 3</span><span class="mt2">Features</span><span class="ma">inflow chemistry + flow · load = BOD × solids</span><span class="kws"><i>feature leakage</i></span><span class="duty dag">agent · delegation level</span></div><div class="mini"><span class="mn">STEP 4</span><span class="mt2">Model</span><span class="ma">regression family → linear first</span><span class="kws"><i>overfitting</i></span><span class="duty dag">agent · inside guardrails</span></div><div class="mini"><span class="mn">STEP 5</span><span class="mt2">Split</span><span class="ma">time-aware · first 80% train, last 20% test</span><span class="kws"><i>leakage</i><i>stratification</i></span><span class="duty dag">agent · inside guardrails</span></div><div class="mini"><span class="mn">STEP 6</span><span class="mt2">Evaluate</span><span class="ma">MAE vs baseline 8.39 · write the report</span><span class="kws"><i>FP / FN</i><i>report generation</i></span><span class="duty dyou">you · guardrails · accountability</span></div></div></div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center"><div class="minis"><div class="mini"><span class="mn">STEP 1</span><span class="mt2">Question</span><span class="ma">target DBO-S, mg/L · metric MAE · baseline: the mean</span><span class="kws"><i>baseline</i><i class="g">G1</i></span><span class="duty dyou">you · tacit knowledge</span></div><div class="mini"><span class="mn">STEP 2</span><span class="mt2">Data</span><span class="ma">527 days · 92 missing cells → medians from training rows</span><span class="kws"><i>imputation</i><i>leakage</i><i class="g">G2</i></span><span class="duty dyou">you · tacit knowledge</span></div><div class="mini"><span class="mn">STEP 3</span><span class="mt2">Features</span><span class="ma">inflow chemistry + flow · load = BOD × solids</span><span class="kws"><i>feature leakage</i><i class="g">G3</i></span><span class="duty dag">agent · delegation level</span></div><div class="mini"><span class="mn">STEP 4</span><span class="mt2">Model</span><span class="ma">regression family → linear first</span><span class="kws"><i>overfitting</i></span><span class="duty dag">agent · delegation level</span></div><div class="mini"><span class="mn">STEP 5</span><span class="mt2">Split</span><span class="ma">time-aware · first 80% train, last 20% test</span><span class="kws"><i>leakage</i><i>stratification</i><i class="g">G4</i></span><span class="duty dag">agent · inside guardrails</span></div><div class="mini"><span class="mn">STEP 6</span><span class="mt2">Evaluate</span><span class="ma">MAE vs baseline 8.39 · write the report</span><span class="kws"><i>FP / FN</i><i>report generation</i><i class="g">G5·G6·G7</i><i class="g">H1</i></span><span class="duty dyou">you · guardrails · accountability</span></div></div></div>
         <span class="px" style="font-size:9.6px;color:#5c606b">Plain words: <b>imputation</b> = filling a missing cell by a stated rule · <b>leakage</b> = tomorrow’s information hiding in today’s inputs · <b>overfitting</b> = memorising instead of learning · <b>baseline</b> = the zero-effort score every model must beat.</span>
-        <span class="px">Red chips: the slide-19 risk words at their stations. Yellow and green tags: who holds each step — <b>you</b> for the question, the data, validation and sign-off; <b>agents</b> for the middle, inside your guardrails.</span>
+        <span class="px">Red chips: the risk words at their stations. <b>Navy chips: the guardrail from prompt.txt that guards that step</b> &mdash; G2 the data, G3 the features, G4 the split, G5&ndash;G7 the evaluation, H1 the signature. Every step you delegate carries both a level and a check. Yellow and green tags: who holds each step — <b>you</b> for the question, the data, validation and sign-off; <b>agents</b> for the middle, inside your guardrails.</span>
       </div>
       <div class="pan" data-p="3">
         <span class="pk">Artefact one · written by the human, frozen before any run</span>
@@ -8893,7 +8915,7 @@ function b64d(s){return decodeURIComponent(Array.prototype.map.call(atob(s),func
 <div id="fit"><div class="stage" id="stage">
   <div class="top"><span class="ch">Conclusion &middot; 1 of 2</span><span class="of">what we saw</span></div>
   <div class="mid">
-    <h1>Ninety minutes,<br><em>three findings.</em></h1>
+    <h1>Three <em>findings.</em></h1>
     <div class="three">
       <div class="t"><div class="n">Finding 01</div>
         <div class="x">The narrative is powerful &mdash; and it is a loop</div>
@@ -8908,7 +8930,7 @@ function b64d(s){return decodeURIComponent(Array.prototype.map.call(atob(s),func
         <div class="y"><b>Energy:</b> a million times more computing buys about twenty times more knowledge, and efficiency is spent on more use, not less. <b>Society:</b> jobs, who may hold the capability, and goals pursued as written rather than as meant. <b>Cognition:</b> offloading erodes the judgement the whole thing depends on. None of the three has a solution today.</div>
         <div class="z">chapter 2 &middot; sections 05&ndash;07</div></div>
     </div>
-    <p class="stand">So the honest position is neither enthusiasm nor refusal. The capability is real, rentable, and improving; the bills are real, unpaid, and structural. What remains is knowing which part of the work is still yours &mdash; and that is the next slide.</p>
+    <p class="stand">So the honest position is neither enthusiasm nor refusal. The capability is real, rentable, and improving; the bills are real, unpaid, and structural. What remains is knowing which part of the work is still yours.</p>
   </div>
   <div class="foot"><span>Practical AI</span><span>Oxford &middot; July 2026</span><span>next: the four practices</span></div>
 </div></div>
@@ -8959,9 +8981,9 @@ function b64d(s){return decodeURIComponent(Array.prototype.map.call(atob(s),func
     border-top:1px solid rgba(244,242,238,.25);padding-top:14px;margin-top:4px}
 </style>
 <div id="fit"><div class="stage" id="stage">
-  <div class="top"><span class="ch">Conclusion &middot; 2 of 2</span><span class="of">what to do on Monday</span></div>
+  <div class="top"><span class="ch">Conclusion &middot; 2 of 2</span><span class="of">what to try on your next project</span></div>
   <div class="mid">
-    <h1>Four practices,<br><em>already seen.</em></h1>
+    <h1>Four <em>practices.</em></h1>
     <div class="four">
       <div class="p"><span class="pn">1</span><span>
         <div class="x">Identify the tacit knowledge</div>
