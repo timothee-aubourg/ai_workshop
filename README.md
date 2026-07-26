@@ -46,8 +46,10 @@ No build step, no server code, no dependencies — everything is static.
 | `E` | show or hide the transcript while presenting |
 | `S` | script view |
 
-The QR code in the bar encodes the page's own URL, so once deployed it points at
-the live address, including the current page number.
+The QR code in the bar encodes the live site address including the current page
+number (`https://timothee-aubourg.github.io/ai_workshop/#<page>`), so a scan
+lands on the right page even when you present from a local copy. The title
+slide carries a larger join QR plus a link to this repository's source.
 
 ## Structure
 
