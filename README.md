@@ -18,7 +18,7 @@ University of Oxford · timothee.aubourg@ndcn.ox.ac.uk
 | `ml_report_flawed.html` | Analysis report, **iteration 0** — the run that lies. |
 | `ml_report_variant.html` | Analysis report, **iteration 2** — one domain feature added. |
 | `ml_report_*.pdf` | The same three reports, printable. |
-| `skills/ml-analysis/` | The generic skill: `SKILL.md`, `run.py`, `prompt.txt` (the frozen context prompt), `water_treatment.csv` (527 days, UCI id-106 schema, synthetic values), `cache.json`. |
+| `skills/ml-analysis/` | The generic skill: `SKILL.md`, `run.py`, `setup_env.py` + `requirements.txt` (the environment, built on demand), `prompt.txt` (the frozen context prompt), `water_treatment.csv` (527 days, UCI id-106 schema, synthetic values), `cache.json`. |
 | `skills/narrative-spine/` | The presentation-writing skill used to build the deck itself. |
 | `.claude/skills/` | The same two skills registered for Claude Code, so they work on a fresh clone. |
 | `present_deck.sh` / `.command` / `.bat` | Local presenting: serve the folder on `localhost:8765` and open the deck (Linux / macOS / Windows). |
@@ -87,15 +87,30 @@ it verified, and returns a report whose sign-off line is empty — that signatur
 is yours. It also proposes the next investigations: the loop is specified for
 three iterations, and the held-out test set is touched once per run.
 
-The runner works from any working directory:
+The runner works from any working directory and installs nothing by hand:
 
 ```
 python3 skills/ml-analysis/run.py --prompt skills/ml-analysis/prompt.txt --mode honest
 ```
 
-`--mode flawed` and `--mode variant` reproduce the two teaching runs. It needs
-pandas, numpy and scikit-learn; without scikit-learn it falls back to the frozen
-results in `cache.json`, so the chain still runs on a laptop with no install.
+`--mode flawed` and `--mode variant` reproduce the two teaching runs.
+
+The first run builds its own environment. If numpy, pandas or scikit-learn are
+missing, `run.py` calls `setup_env.py`, which creates `.venv` (using `uv` when
+present, otherwise the `venv` module) and installs `requirements.txt`, then
+re-runs itself inside it — roughly fifteen seconds, once. To do it ahead of a
+live session, or to check or rebuild it:
+
+```
+python3 skills/ml-analysis/setup_env.py            # build if needed
+python3 skills/ml-analysis/setup_env.py --check    # ready? (exit 0 / 1)
+python3 skills/ml-analysis/setup_env.py --force    # rebuild from scratch
+```
+
+If the environment cannot be built — no network, or a Python without `venv`
+support — nothing fails: the run falls back to the frozen results in
+`cache.json` and labels its output `source: cache.json`. `--no-setup` forces
+that path deliberately. `.venv/` is gitignored.
 
 ## Notes
 

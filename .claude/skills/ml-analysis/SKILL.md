@@ -13,7 +13,8 @@ in the workshop copy of this skill. Read it first and follow it literally:
 - **Context prompt (the frozen workshop problem):** `skills/ml-analysis/prompt.txt`
 - **Data:** `skills/ml-analysis/water_treatment.csv` (527 daily rows, UCI id-106 schema, synthetic values)
 - **Runner:** `skills/ml-analysis/run.py`
-- **Frozen results** (used when scikit-learn is not installed): `skills/ml-analysis/cache.json`
+- **Environment builder:** `skills/ml-analysis/setup_env.py` (+ `requirements.txt`)
+- **Frozen results** (used when the environment cannot be built): `skills/ml-analysis/cache.json`
 
 Run the chain with:
 
@@ -23,8 +24,17 @@ python3 skills/ml-analysis/run.py --prompt skills/ml-analysis/prompt.txt --mode 
 
 `--mode flawed` and `--mode variant` exist for teaching: they deliberately break
 a stated rule (a leaked feature, a shuffled split) and the report must say so in
-its header. The runner works from any working directory and falls back to
-`cache.json` when scikit-learn is missing.
+its header. The runner works from any working directory.
+
+**Do not install anything by hand.** On the first run, if numpy, pandas or
+scikit-learn are missing, `run.py` calls `setup_env.py`, which builds `.venv`
+and installs the requirements, then re-runs itself inside that environment. It
+takes about fifteen seconds and only happens once. Build it ahead of a live
+session with `python3 skills/ml-analysis/setup_env.py`.
+
+If the environment cannot be built, the run still succeeds on the frozen
+`cache.json` results and says `source: cache.json` in its output — report that
+label honestly rather than presenting cached numbers as a fresh fit.
 
 Two rules override everything, in every mode and for any score: a failed
 guardrail is printed in red and withholds the target tick, and the H1 human

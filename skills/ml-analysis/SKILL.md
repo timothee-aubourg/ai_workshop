@@ -78,3 +78,14 @@ the held-out test set once per run.
 `python run.py --prompt <prompt-file> --mode honest|flawed|variant`
 (non-honest modes exist for teaching: they deliberately break a stated
 rule and must say so in the report header).
+
+The runner works from any directory and builds its own environment: on the
+first run, if numpy, pandas or scikit-learn are missing, it calls
+`setup_env.py`, which creates `.venv` (uv, else the venv module) and installs
+`requirements.txt`, then re-runs itself inside it. Build it ahead of time with
+`python3 setup_env.py`, check it with `--check`, rebuild with `--force`.
+
+If the environment cannot be built — no network, no venv support — the run
+does not fail: it falls back to the frozen results in `cache.json` and labels
+the output `source: cache.json`, so the chain is still demonstrable. Pass
+`--no-setup` to force that path deliberately.

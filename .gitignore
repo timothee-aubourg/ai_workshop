@@ -8,3 +8,6 @@ archive/
 
 # personal Claude Code settings (the skills in .claude/skills/ ARE tracked)
 .claude/settings.local.json
+
+# analysis environment, built on demand by skills/ml-analysis/setup_env.py
+.venv/
