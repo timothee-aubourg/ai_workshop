@@ -1,12 +1,15 @@
 ---
-name: ml-analysis
-description: Run a data-analysis chain end to end from a written context prompt — question, data, features, model, split, evaluation against a baseline, and a report with a verified guardrail table and an empty human sign-off. Use when the user invokes /ml-analysis, points at a prompt file describing an analysis, or asks to run the workshop's water-treatment chain (honest, flawed, or variant mode).
+name: analysis
+description: Run a data-analysis chain end to end from a written context prompt — question, data, features, model, split, evaluation against a baseline, and a report with a verified guardrail table and an empty human sign-off. Use when the user invokes /analysis, points at a prompt file describing an analysis, or asks to run the workshop's water-treatment chain (honest, flawed, or variant mode).
 ---
 
 # Skill: ml-analysis
 
+Installed as the `analysis` skill, so the command is `/analysis`. Copy this
+folder to `.claude/skills/analysis/` in any project to use it there.
+
 ## When to use
-The user invokes `/ml-analysis <prompt-file>` or asks to run a data-analysis
+The user invokes `/analysis <prompt-file>` or asks to run a data-analysis
 chain end to end from a written context prompt.
 
 ## Principle

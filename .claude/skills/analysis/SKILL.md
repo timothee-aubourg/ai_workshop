@@ -1,9 +1,9 @@
 ---
-name: ml-analysis
-description: Run a data-analysis chain end to end from a written context prompt — question, data, features, model, split, evaluation against a baseline, and a report with a verified guardrail table and an empty human sign-off. Use when the user invokes /ml-analysis, points at a prompt file describing an analysis, or asks to run the workshop's water-treatment chain (honest, flawed, or variant mode).
+name: analysis
+description: Run a data-analysis chain end to end from a written context prompt — question, data, features, model, split, evaluation against a baseline, and a report with a verified guardrail table and an empty human sign-off. Use when the user invokes /analysis, points at a prompt file describing an analysis, or asks to run the workshop's water-treatment chain (honest, flawed, or variant mode).
 ---
 
-# ml-analysis
+# analysis
 
 The full method — what the skill reads from the prompt, the seven steps, the
 guardrail rules, the sign-off rule, and the self-improvement loop — is written

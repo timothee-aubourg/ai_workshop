@@ -70,17 +70,21 @@ activity, questions and discussion inside 90.
 ## Running the analysis yourself
 
 The skills are registered in `.claude/skills/`, so **clone the repo and open it
-in Claude Code** — `/ml-analysis` and `/narrative-spine` are available with no
-setup. (Skills are a feature of the Claude client, not of GitHub: browsing the
+in Claude Code** — `/analysis` and `/narrative-spine` are available with no
+setup. Claude Code reads `.claude/skills/` when a session starts, so if you
+added them to a session already running, restart it before the commands appear.
+(Skills are a feature of the Claude client, not of GitHub: browsing the
 repository on github.com will not offer them.)
 
 ```
-/ml-analysis skills/ml-analysis/prompt.txt
+/analysis skills/ml-analysis/prompt.txt
 ```
 
-To use the analysis skill in a different project instead, copy
-`skills/ml-analysis/` into that project's `.claude/skills/` folder — the folder
-is a self-contained skill, frontmatter included.
+To use it in a different project instead, copy `skills/ml-analysis/` to that
+project's `.claude/skills/analysis/` — the folder is a self-contained skill,
+frontmatter included. The folder keeps its descriptive name in the workshop
+material; the skill it declares is named `analysis`, so the command is
+`/analysis`.
 
 The skill reads the prompt, executes the chain end to end, ticks the guardrails
 it verified, and returns a report whose sign-off line is empty — that signature
