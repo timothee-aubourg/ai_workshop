@@ -553,6 +553,13 @@ pre.code{background:var(--ink);color:#dbe6f2;border-radius:11px;padding:12px;ove
 .checks .human{border-bottom:0;border-top:2px solid var(--ink);margin-top:4px;padding-top:10px;font-weight:500}
 .dark .checks .human{border-top-color:var(--yellow)}
 
+.prac{background:var(--ink);border-left:5px solid var(--yellow);color:var(--paper);
+ padding:11px 13px;margin:14px 0 13px}
+.prac .pn{font-family:var(--mono);font-size:8.4px;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
+.prac b{display:block;font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.15;margin:4px 0 5px}
+.prac .px2{font-size:12px;line-height:1.45;color:#c9d4e2}
+.prac .px2 i{font-style:italic;color:var(--yellow)}
+.dark .prac{border:1px solid #2f5f8c;border-left:5px solid var(--yellow)}
 .links{margin-bottom:12px}
 .links a{display:block;font-size:12px;color:var(--lb);text-decoration:none;padding:7px 0;
  border-bottom:1px solid var(--rule);line-height:1.35}
@@ -648,7 +655,7 @@ const SLIDES = [
     'Understand the current AI narrative: the <b>democratisation of intelligence</b>, the <b>energy-based framing</b> of progress, and the <b>self-improving loop</b>.',
     'Identify today’s challenges: <b>energy</b>, <b>society</b>, and the <b>risks of the intelligence itself</b> — alignment, overfitting, offloading.',
     'See how AI can support your own work today — <b>six roles</b> you can already delegate to.',
-    'Position yourself in an AI project: <b>your circle, your four duties</b> — the question, the data, validation, sign-off.',
+    'Position yourself in an AI project: <b>your circle, your four duties</b> — tacit knowledge, delegation level, guardrails, accountability.',
     'Practice a practical AI workflow, end to end: <b>question → data → features → model → split → evaluation</b>.']}]},
 
 /* 4 ───────────────────────────────────────────────────────── */
@@ -739,7 +746,7 @@ const SLIDES = [
      x:'Agents, subagents, prompts, memory, permissions, tools, MCP, hooks — a new programmable layer on top of everything else. His image is the useful one: a powerful alien tool was handed round, and it came with no manual. <b>If he feels behind, nobody in this room should feel embarrassed to.</b>',
      links:[['x.com/karpathy','https://x.com/karpathy/status/1872362712958906460']]},
     {t:'You cannot outsource understanding', n:'03',
-     x:'“You can outsource your thinking, but you cannot outsource your understanding.” This is the whole argument of chapter three in one sentence — and the reason four duties (the question, the data, validation, the signature) never leave your hands.',
+     x:'“You can outsource your thinking, but you cannot outsource your understanding.” This is the whole argument of chapter three in one sentence — and the reason four duties (tacit knowledge, the delegation level, the guardrails, the signature) never leave your hands.',
      links:[['x.com/karpathy','https://x.com/karpathy/status/1917546757929722115'],
             ['A dog saved with public AI tools','https://www.youtube.com/watch?v=MgY8MkJg8js']]}]}]},
 
@@ -769,6 +776,8 @@ const SLIDES = [
   {k:'two', items:[
     ['What limits the loop','The loop only closes where <b>checking is cheap</b>. In Go, the rules score the game for nothing. In code, tests pass or fail in seconds — which is why coding assistants improve faster than anything else on the market. In medicine or materials, checking means trials and months of human judgement, and the loop turns slowly whatever the computation. The rule for your projects: <b>the speed of your loop is the speed of your evaluation.</b>'],
     ['What stays scarce','If capability is abundant and interchangeable, access to it is not an advantage — everyone has the same access. Three things stay scarce: <b>your data</b>, <b>your ability to evaluate an answer</b>, and <b>the judgement to choose a problem worth solving</b>. A university holds all three.']]},
+  {k:'prac', n:1, t:'Identify the tacit knowledge',
+   x:'Access to the loop is not an advantage — everyone has it. What stays scarce is yours: the question worth asking, the data behind it, and what the numbers mean. <i>Write it down; it is in no model.</i>'},
   {k:'tx', t:'The open question, from Demis Hassabis: <i>can the loop close without a human inside it?</i> Today it cannot. A person still sets the objective, defines what counts as success, and accepts the result. Objectives, verification, energy — those are the three limits.'}]},
 
 /* 11 ──────────────────────────────────────────────────────── */
@@ -880,7 +889,7 @@ const SLIDES = [
    {n:'3', t:'The answer',
     x:'Exponentials defeat intuition — so we compare growth rates instead of trusting feelings. Nobody guesses this correctly.'},
    {n:'4', t:'The envelope: compute → data → knowledge',
-    x:'Each layer keeps a fraction of the growth below it, in the spirit of the measured scaling laws (Kaplan 2020). Computing ×2/2yr feeds data ×2/~3yr, which feeds knowledge — drawn as a <b>band</b>, ×2/9–18yr, because capability is a proxy with real uncertainty. <b>Thousands of times more computing buys only a few times more knowledge.</b>'},
+    x:'Each layer keeps a fraction of the growth below it, in the spirit of the measured scaling laws (Kaplan 2020). Computing ×2/2yr feeds data ×2/~3yr, which feeds knowledge — drawn as a <b>band</b>, ×2/9–18yr, because capability is a proxy with real uncertainty. <b>A million times more computing buys about twenty times more knowledge — a gap of roughly 48,000 to one.</b> Hold that against the matchstick: the Sun sits <b>400</b> Moon-distances away. This gap is <b>48,000</b> — about 124 astronomical units, three times beyond Pluto, out where Voyager 1 crossed into interstellar space.'},
    {n:'5', t:'The three slopes, and where they come from',
     x:'<b>computing ×2 / 2 yr</b> — the physical identity: electricity ×2/5.1 yr (IEA 2025) × hardware efficiency ×2/3.0 yr (Epoch 2023) ÷ PUE, flat six years at ~1.54 (Uptime 2025). Add the doubling rates and the physical ceiling is a doubling every 1.9 years — near enough the measured line. <i>Denser, hotter chips are the reason cooling stopped improving, so treat the sum as a good approximation, not an arithmetic fact.</i>'},
    {n:'6', t:'Four things that could bend these lines',
@@ -927,6 +936,8 @@ const SLIDES = [
   {k:'two', items:[
     ['What is “alignment”?','Getting a machine to want what you actually meant — not just the words of the instruction. The July models were told “score well”, so they cheated: goal followed, intention missed. It is an open research problem, and it shows up small in your own work too: <b>whatever you measure, the system will chase</b>.'],
     ['And who owns it','Capability is now national power. Top models are gated through government safety bodies — and when the hacked firm cleaned up, US models refused to help, so its team finished the job with a <b>Chinese open model</b>. It is not only about firms: the strongest systems are trained and tested mostly in English, so the places with the least representation in the data are the ones least served by the result.']]},
+  {k:'prac', n:2, t:'Write the guardrails',
+   x:'Whatever you measure, the system will chase — the July models followed the goal and missed the intention. <i>Write the checks before the run, and verify each one by name.</i>'},
   {k:'links', items:[['Decrypt · the escape, in detail','https://decrypt.co/374015/openai-models-escaped-test-environment-hacked-hugging-face-cheat-benchmark']]}]},
 
 /* 18 ──────────────────────────────────────────────────────── */
@@ -956,7 +967,9 @@ const SLIDES = [
    note:'One question defeats a hollow claim: was the score measured on data the model never saw?'},
   {k:'two', items:[
     ['Keep a human here','Machines are strong where knowledge is written down and scored quickly; weak where the world is physical, social, or unrepeatable. Delegate the first. Keep judgement, taste, and the definition of success.'],
-    ['The echo','Every use of AI ends the same way: <b>someone judges whether the answer is good.</b> Offloading erodes exactly that skill — the more the machine evaluates for you, the less practised your judgement becomes. The countermeasure is boring and effective: keep doing part of the evaluation by hand.']]}]},
+    ['The echo','Every use of AI ends the same way: <b>someone judges whether the answer is good.</b> Offloading erodes exactly that skill — the more the machine evaluates for you, the less practised your judgement becomes. The countermeasure is boring and effective: keep doing part of the evaluation by hand.']]},
+  {k:'prac', n:3, t:'Set the delegation level',
+   x:'Offloading erodes the very skill you need to judge the answer. <i>Decide in advance how far the machine goes alone — and keep doing part of the evaluation by hand.</i>'}]},
 
 /* 20 ──────────────────────────────────────────────────────── */
 {id:'ch3', kind:'chapter', ch:3, tag:'Chapter 3',
@@ -1016,6 +1029,8 @@ const SLIDES = [
     ['4','Model choice','Pick the family, then the simplest member of it. Complexity must be earned against the baseline. Two failures live here: overfitting (memorises, then collapses) and underfitting (wrong everywhere).', ['overfitting','underfitting']],
     ['5','Split · train / test','Hold out data the model never sees. Ordered in time? Split by time — a random shuffle puts tomorrow in the training set and the score becomes excellent and meaningless. Rare class? Keep its proportion on both sides.', ['stratification','leakage']],
     ['6','Fit &amp; evaluate','Fit on train · measure on test · read against the baseline. Error 4.04 against a baseline of 8.39 means something; 4.04 alone means nothing. For alarms, read the matrix — a false positive costs a wasted check, a false negative costs a fine, or a river.', ['FP / FN','overfitting']]]},
+  {k:'prac', n:4, t:'Keep the accountability',
+   x:'A false positive costs a wasted check; a false negative costs a fine, or a river. Step 6 is where a number becomes a decision — <i>and someone’s name goes under it.</i>'},
   {k:'note', t:'Leakage is the failure that ruins more projects than any other: information from the outcome, or from the future, sneaks into your features or your split. The score becomes a lie — and a beautiful one, which is why nobody questions it. The test is one question, asked of every feature: <b>would this value exist, with this value, at the moment of prediction?</b>'}]},
 
 /* 23 ──────────────────────────────────────────────────────── */
@@ -1023,27 +1038,27 @@ const SLIDES = [
  body:[
   {k:'eyebrow', t:'Doing AI in your project'},
   {k:'h', t:'Doing It<br><em>Well.</em>'},
-  {k:'stand', t:'The three-circle myth said one person must hold programming, maths, and the domain. The 2026 answer: stand in your field, let agents reach the other circles. Four duties stay with you: the question, the data, validation, sign-off.'}]},
+  {k:'stand', t:'The three-circle myth said one person must hold programming, maths, and the domain. The 2026 answer: stand in your field, let agents reach the other circles. Four duties stay with you: tacit knowledge, delegation level, guardrails, accountability.'}]},
 
 /* 24 ──────────────────────────────────────────────────────── */
 {id:'c9', kind:'slide', ch:3, n:'09', tag:'Doing it well',
  body:[
   {k:'eyebrow', t:'Section 09 · doing AI in your project'},
   {k:'hd', t:'Where you<br><em>stand.</em>'},
-  {k:'stand', t:'The old myth: one person holding programming, maths and the domain. The 2026 answer: <b>stand in your field</b>, extend your reach with agents — and keep four duties that are never delegated.'},
+  {k:'stand', t:'The old myth: one person holding programming, maths and the domain. The 2026 answer: <b>stand in your field</b>, extend your reach with agents — and keep four duties that are never delegated: <b>tacit knowledge</b>, <b>delegation level</b>, <b>guardrails</b>, <b>accountability</b>.'},
   {k:'acc', items:[
    {n:'1', t:'The myth — the unicorn',
     x:'The classic picture of a data scientist: <b>programming</b>, <b>maths &amp; statistics</b>, and <b>domain expertise</b> — one person in the centre holding all three. That person is rare. For twenty years, this triangle kept domain experts out.'},
    {n:'2', t:'The 2026 update',
     x:'You stand where you are strong: <b>your field</b>. Agents — the Coder and Analyst from chapter one — extend your reach into the other circles. <b>You do not move to the centre; the centre comes to you.</b> And notice the spiral: to command them you write rules again — specs, guardrails, checks. The expert system returns, one level up: rules <i>around the learner</i>.'},
    {n:'3', t:'What stays yours',
-    x:'<b>The question</b>: what is predicted, in which unit, for whom, and which mistake costs more. <b>The data</b>: where each number comes from, what it means, whether it can be trusted. <b>Validation</b>: does the result hold on cases the model never saw, read against the dumb baseline. <b>Sign-off</b>: the accountable yes — your name under the report. Everything else can be delegated; these four cannot.'},
+    x:'<b>Tacit knowledge</b>: the question and the data — what is predicted, in which unit, for whom, which mistake costs more; where each number comes from and whether it can be trusted. Your workflow and your domain, which exist in no file. <b>Delegation level</b>: how far the agent goes alone — what it may decide, what it must bring back, what you still do yourself. <b>Guardrails</b>: the checks written before the run, verified by ID and printed pass or fail. <b>Accountability</b>: the signature — your name under the report. Everything else can be delegated; these four cannot.'},
    {n:'4', t:'The attitudes — four walls, four habits',
-    x:'<b>Alignment</b> → write the spec and guardrails before the agent runs (it will chase what you measure). <b>Offloading</b> → discuss the plan before any execution; think at system level. <b>Responsibility</b> → the last word is not delegated. <b>Data</b> → collection, quality, documentation; the ground truth is yours to own.'},
+    x:'Each chapter-two wall becomes one duty. <b>Data → tacit knowledge</b>: collection, quality, documentation, and the meaning behind the numbers. <b>Offloading → delegation level</b>: decide in advance how much you hand over, and discuss the plan before any execution. <b>Alignment → guardrails</b>: write the spec and the checks before the agent runs, because it will chase what you measure. <b>Responsibility → accountability</b>: the last word is not delegated.'},
    {n:'5', t:'The system around the model',
-    x:'Zoom out and the workflow becomes a system — the model is the smallest box in it (Sculley 2015). The four duties land where they belong: <b>the question</b> before the chain, <b>the data</b> at its start, <b>validation</b> and <b>sign-off</b> at its end. Agents run the middle, inside your guardrails. Garbage in, garbage out — the chain is as strong as its weakest link. And before any model: <b>beat the dumb baseline</b>.'},
+    x:'Zoom out and the workflow becomes a system — the model is the smallest box in it (Sculley 2015). The four duties land where they belong: <b>tacit knowledge</b> before the chain and at its start, <b>delegation level</b> across the middle, <b>guardrails</b> at validation, <b>accountability</b> on the report. Agents run the middle, inside the limits you set. Garbage in, garbage out — the chain is as strong as its weakest link. And before any model: <b>beat the dumb baseline</b>.'},
    {n:'6', t:'Where you stand',
-    x:'Green, an agent can run — features, the model, a first draft of the report. Red stays human — the data, the split, validation. And on the split, the question from section seven is pinned for good: <i>data the model never saw?</i>'}]},
+    x:'Green, an agent can run — features, the model, a first draft of the report; that green line is the <b>delegation level</b>, and you choose it. Yellow stays human — tacit knowledge at both ends, guardrails at validation, accountability on the signature. And on the split, the question from section seven is pinned for good: <i>data the model never saw?</i>'}]},
   {k:'pipe'},
   {k:'two', items:[
     ['The rule of the chapter','<b>Delegate only what you can validate.</b>']]},
@@ -1054,7 +1069,7 @@ const SLIDES = [
  body:[
   {k:'eyebrow', t:'Doing AI in your project'},
   {k:'h', t:'From Problem<br>to <em>Report.</em>'},
-  {k:'stand', t:'One dataset on a real schema, one frozen prompt, one skill — and a guided walk: problem, your place, workflow, prompt, skill, three runs with one lie, and the single line that reruns it all on your machine. The signature stays yours.'}]},
+  {k:'stand', t:'One dataset on a real schema, one frozen prompt, one skill — and a guided walk: problem, your place, workflow, prompt, skill, three runs with one lie, and the single line that reruns it all on your machine. Watch the four duties travel through it: tacit knowledge, delegation level, guardrails, accountability. The signature stays yours.'}]},
 
 /* 26 ──────────────────────────────────────────────────────── */
 {id:'c10', kind:'slide', ch:3, n:'10', tag:'From problem to report',
@@ -1066,28 +1081,34 @@ const SLIDES = [
   {k:'tx', t:'<b>BOD</b> — biochemical oxygen demand: how much oxygen microbes need to break down the organic matter in the water. High BOD = polluted water; rivers suffocate. That is why the law sets a <b>limit</b> on the plant’s outflow. The lab test that measures it takes <b>days</b> — so operators steer blind. The question: from this morning’s easy measurements (acidity, flow, incoming pollution), predict <b>tomorrow’s output BOD</b>.'},
   {k:'stats', items:[['527','daily records'],['92','missing cells'],['1','legal BOD limit'],['?','tomorrow’s output, today']]},
   {k:'sub', t:'2 · Where you stand'},
-  {k:'tx', t:'<b>Kept by the human:</b> the question, the data’s meaning, validation, the signature. <b>Delegated:</b> the code (Coder agent) and the statistics (Analyst agent). This is where AI is used — and where it is not.'},
+  {k:'tx', t:'<b>Kept by the human:</b> the tacit knowledge (the question and what the data means), the delegation level, the guardrails, the signature. <b>Delegated:</b> the code (Coder agent) and the statistics (Analyst agent), inside those limits. This is where AI is used — and where it is not.'},
   {k:'sub', t:'3 · The workflow, applied'},
   {k:'steps', items:[
-    ['1','Question','target DBO-S, mg/L · metric MAE · baseline: the mean',['baseline','you · the question']],
-    ['2','Data','527 days · 92 missing cells → medians from training rows',['imputation','leakage','you · the data']],
-    ['3','Features','inflow chemistry + flow · load = BOD × solids',['feature leakage','agent · your review']],
-    ['4','Model','regression family → linear first',['overfitting','agent · guardrails']],
-    ['5','Split','time-aware · first 80% train, last 20% test',['leakage','stratification','agent · guardrails']],
-    ['6','Evaluate','MAE vs baseline 8.39 · write the report',['FP / FN','you · validation · sign-off']]]},
+    ['1','Question','target DBO-S, mg/L · metric MAE · baseline: the mean',['baseline','you · tacit knowledge']],
+    ['2','Data','527 days · 92 missing cells → medians from training rows',['imputation','leakage','you · tacit knowledge']],
+    ['3','Features','inflow chemistry + flow · load = BOD × solids',['feature leakage','agent · delegation level']],
+    ['4','Model','regression family → linear first',['overfitting','agent · inside guardrails']],
+    ['5','Split','time-aware · first 80% train, last 20% test',['leakage','stratification','agent · inside guardrails']],
+    ['6','Evaluate','MAE vs baseline 8.39 · write the report',['FP / FN','you · guardrails · accountability']]]},
   {k:'note', t:'Plain words: <b>imputation</b> = filling a missing cell by a stated rule · <b>leakage</b> = tomorrow’s information hiding in today’s inputs · <b>overfitting</b> = memorising instead of learning · <b>baseline</b> = the zero-effort score every model must beat.'},
   {k:'sub', t:'4 · The context prompt — written by the human, frozen before any run'},
-  {k:'code', t:`TASK   Predict tomorrow's output BOD (DBO-S, mg/L) for one treatment
+  {k:'code', t:`TACIT KNOWLEDGE — what only the domain expert can supply
+TASK   Predict tomorrow's output BOD (DBO-S, mg/L) for one treatment
        plant from this morning's measurements.
        BOD = biochemical oxygen demand; a legal discharge limit applies.
-
 DATA   water_treatment.csv — 527 daily rows, UCI id-106 schema.
        92 missing cells: fill with TRAINING-set medians only.
-
 TYPE   Regression (the outcome is a quantity).
        Metric: MAE, reported beside the baseline (predict the training mean).
 
+DELEGATION — how far the run may go on its own
 SPLIT  Time-aware: train = first 80% of days, test = last 20%. Never shuffle.
+AGENT  MAY choose the features and the model family, and tune them on
+       validation data. MAY NOT change the target, the split rule, the
+       metric, the baseline, or any guardrail below.
+LOOP   Iterations: 3. Each report ends with next investigations; the
+       following run executes them and says so in its header.
+       Tune on validation data; touch the test set once per run.
 
 GUARDRAILS — verify each one by ID, and print the ID with PASS or FAIL.
        G1  The target variable and its unit are stated in the report.
@@ -1101,6 +1122,7 @@ GUARDRAILS — verify each one by ID, and print the ID with PASS or FAIL.
        G7  Target reached: MAE ≤ 4.5 mg/L.
            Tick G7 ONLY if it is reached AND G1–G6 all pass.
 
+ACCOUNTABILITY — the signature is never delegated
        H1  Human sign-off. The run must leave this line EMPTY.
            No exception, in any mode, for any score.
 
@@ -1108,13 +1130,8 @@ REPORT HTML, in this order: question · data (with the imputation table) ·
        features · model · split · evaluation against the baseline ·
        the guardrail table above, each row as "G1 PASS" or "G1 FAIL" ·
        limits & uncertainty · next investigations (2–3 concrete leads) ·
-       the empty H1 sign-off line.
-       A FAIL is printed in red and is never hidden.
-
-LOOP   Iterations: 3. Each report ends with next investigations; the
-       following run executes them and says so in its header.
-       Tune on validation data; touch the test set once per run.`},
-  {k:'note', t:'Saved as <b>prompt.txt</b>. Note the numbered guardrails G1–G7: the run prints each ID with PASS or FAIL, the report shows the same IDs, and the checklist below ticks the same IDs. One list, three places — so every claim traces back to something you wrote.'},
+       the empty H1 sign-off line.  A FAIL is printed in red, never hidden.`},
+  {k:'note', t:'Saved as <b>prompt.txt</b>. Read the four block headings — <b>tacit knowledge</b>, <b>delegation</b>, <b>guardrails</b>, <b>accountability</b>: the prompt is written in the four duties, so every line traces to the one it serves. Note also the numbered guardrails G1–G7: the run prints each ID with PASS or FAIL, the report shows the same IDs, and the checklist below ticks the same IDs. One list, three places — so every claim traces back to something you wrote.'},
   {k:'sub', t:'5 · The skill — the same six steps, written down'},
   {k:'code', t:`STEP 1  Question   q = read(prompt)  # target, metric, baseline
 STEP 2  Data       df = load(csv); impute(median[train])
@@ -1122,7 +1139,8 @@ STEP 3  Features   X = build_features(df)  # nothing future
 STEP 4  Model      m = LinearRegression()
 STEP 5  Split      train, test = split_by_time(.8)
 STEP 6  Evaluate   report(mae, base, limits) → html`},
-  {k:'tx', t:'<b>The skill is generic.</b> It does not know water. It reads <b>prompt.txt</b> and follows its instructions — target, split, guardrails, report. A skill is the concatenation: <b>SKILL.md</b> (when and how to act) + <b>run.py</b> + the data the prompt names.'},
+  {k:'tx', t:'<b>The skill is the method; the prompt is the case.</b> The skill does not know water. It holds the four duties, the six steps, how a guardrail is verified and printed, the report structure, and the rule that H1 is never ticked. The prompt holds this problem: target, data, metric, split, thresholds, iterations.'},
+  {k:'note', t:'<b>One test decides where a line goes:</b> if changing it changes <i>the answer</i>, it belongs in the prompt; if it changes <i>what a good answer means</i>, it belongs in the skill. So the prompt does not extend the skill — it adapts it. Hand the same skill a prompt from another field and nothing in it should need editing.'},
   {k:'sub', t:'6 · Three runs — one is lying'},
   {k:'runs'},
   {k:'note', t:'<b>How to read the numbers.</b> MAE = mean absolute error: the average miss, in mg/L — lower is better. R² = the share of the day-to-day variation the model explains — 1 is perfect, 0 is no better than the baseline. <b>A score too beautiful should worry you before it pleases you.</b>'},
@@ -1132,7 +1150,7 @@ STEP 6  Evaluate   report(mae, base, limits) → html`},
     ['01','Install','Put the folder <b>skills/ml-analysis</b> (SKILL.md · run.py · the data) into <b>.claude/skills/analysis/</b> in a Claude project, then run <b>/analysis</b>.'],
     ['02','Run','Claude reads the skill and executes the whole chain locally, end to end — imputation, split, baseline, model, report.'],
     ['03','Judge','What comes back is a report with an empty sign-off line. The checklist below is how you earn the right to tick it.']]},
-  {k:'sub', t:'Guardrails from prompt.txt · G checked by the agent, H signed by you'},
+  {k:'sub', t:'Guardrails from prompt.txt · the four duties, in one bar'},
   {k:'checks', items:[
     ['G1','target &amp; unit stated', true],
     ['G2·G3','imputation listed · nothing leaks', true],
@@ -1142,6 +1160,33 @@ STEP 6  Evaluate   report(mae, base, limits) → html`},
   {k:'tx', t:'<b>The human job was never the typing.</b> It is the question, the data, and the judgement — the seat this talk has been about from the first minute.'}]},
 
 /* 27 ──────────────────────────────────────────────────────── */
+{id:'end1', kind:'chapter', tag:'Conclusion · What we saw',
+ body:[
+  {k:'kick', t:'Conclusion · 1 of 2'},
+  {k:'h', t:'Ninety minutes,<br><em>three findings.</em>'},
+  {k:'take', items:[
+    ['Finding 01','The narrative is powerful — and it is a loop','A rocket company priced as an AI company, because capability now arrives as something you rent by the month. Underneath the story sits a real machine: <b>energy becomes data, data becomes knowledge</b>, and the output re-enters as input. That loop is why the curve bends upward instead of climbing steadily. <i>Chapter 1 · sections 01–03</i>'],
+    ['Finding 02','It hands you tools, role by role','Not one assistant — six working colleagues you can delegate to this week: adviser, reader, research assistant, teaching assistant, engineer, coordinator. Delegation happens <b>by role, not by task</b>, and each role keeps one check that stays human. <i>Chapter 1 · section 04</i>'],
+    ['Finding 03','And the limits are real, with no fix in sight','<b>Energy:</b> a million times more computing buys about twenty times more knowledge, and efficiency is spent on more use, not less. <b>Society:</b> jobs, who may hold the capability, and goals pursued as written rather than as meant. <b>Cognition:</b> offloading erodes the judgement the whole thing depends on. None of the three has a solution today. <i>Chapter 2 · sections 05–07</i>']]},
+  {k:'stand', t:'So the honest position is neither enthusiasm nor refusal. The capability is real, rentable, and improving; the bills are real, unpaid, and structural. What remains is knowing which part of the work is still yours.'}]},
+
+/* 28 ──────────────────────────────────────────────────────── */
+{id:'end2', kind:'chapter', tag:'Conclusion · Four practices',
+ body:[
+  {k:'kick', t:'Conclusion · 2 of 2'},
+  {k:'h', t:'Four practices,<br><em>already seen.</em>'},
+  {k:'stand', t:'You have met all four already — each one stamped on the slide where its problem was felt.'},
+  {k:'prac', n:1, t:'Identify the tacit knowledge',
+   x:'The question and the data — what is predicted, in which unit, for whom, which mistake costs more; where each number comes from and what it means. Your workflow and your expertise, which exist in no file and in no model. Write them down first: everything downstream inherits them. <i>Seen at section 03 · the loop.</i>'},
+  {k:'prac', n:2, t:'Write the guardrails',
+   x:'Whatever you measure, the system will chase. So state the checks before the run, number them, and demand each one back by name with pass or fail. A failed check withholds the result, even when the number is good. <i>Seen at section 06 · the social bill.</i>'},
+  {k:'prac', n:3, t:'Set the delegation level',
+   x:'Human in the loop is a dial, not a switch. Decide in advance what the agent may choose alone, what it must bring back for review, and what you still do by hand — because the skill you stop practising is the one you need to judge its work. <i>Seen at section 07 · the mind bill.</i>'},
+  {k:'prac', n:4, t:'Keep the accountability',
+   x:'A number becomes a decision, and a decision has consequences — a wasted check, or a river. The signature under the report is not a formality and it is not delegable. The machine may earn the result; only a person can approve it. <i>Seen at section 08 · the workflow.</i>'},
+  {k:'two', items:[['The rule of the whole afternoon','<b>Delegate only what you can validate.</b>']]}]},
+
+/* 29 ──────────────────────────────────────────────────────── */
 {id:'thanks', kind:'end', tag:'Thank you',
  body:[
   {k:'h', t:'Thank <em>you.</em>'},
@@ -1306,6 +1351,7 @@ function Block({b}){
   case 'reveal':  return h`<${Reveal} items=${b.items}/>`;
   case 'runs':    return h`<${Runs}/>`;
   case 'checks':  return h`<${Checks} items=${b.items}/>`;
+  case 'prac':    return h`<div class="prac"><span class="pn">Practice ${b.n} of 4</span><b ...${html(b.t)}></b><span class="px2" ...${html(b.x)}></span></div>`;
   case 'pipe':    return h`<${Pipe}/>`;
   default:        return null;
  }

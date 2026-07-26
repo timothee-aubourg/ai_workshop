@@ -1,14 +1,20 @@
+TACIT KNOWLEDGE — what only the domain expert can supply
 TASK   Predict tomorrow's output BOD (DBO-S, mg/L) for one treatment
        plant from this morning's measurements.
        BOD = biochemical oxygen demand; a legal discharge limit applies.
-
 DATA   water_treatment.csv — 527 daily rows, UCI id-106 schema.
        92 missing cells: fill with TRAINING-set medians only.
-
 TYPE   Regression (the outcome is a quantity).
        Metric: MAE, reported beside the baseline (predict the training mean).
 
+DELEGATION — how far the run may go on its own
 SPLIT  Time-aware: train = first 80% of days, test = last 20%. Never shuffle.
+AGENT  MAY choose the features and the model family, and tune them on
+       validation data. MAY NOT change the target, the split rule, the
+       metric, the baseline, or any guardrail below.
+LOOP   Iterations: 3. Each report ends with next investigations; the
+       following run executes them and says so in its header.
+       Tune on validation data; touch the test set once per run.
 
 GUARDRAILS — verify each one by ID, and print the ID with PASS or FAIL.
        G1  The target variable and its unit are stated in the report.
@@ -22,6 +28,7 @@ GUARDRAILS — verify each one by ID, and print the ID with PASS or FAIL.
        G7  Target reached: MAE ≤ 4.5 mg/L.
            Tick G7 ONLY if it is reached AND G1–G6 all pass.
 
+ACCOUNTABILITY — the signature is never delegated
        H1  Human sign-off. The run must leave this line EMPTY.
            No exception, in any mode, for any score.
 
@@ -29,9 +36,4 @@ REPORT HTML, in this order: question · data (with the imputation table) ·
        features · model · split · evaluation against the baseline ·
        the guardrail table above, each row as "G1 PASS" or "G1 FAIL" ·
        limits & uncertainty · next investigations (2–3 concrete leads) ·
-       the empty H1 sign-off line.
-       A FAIL is printed in red and is never hidden.
-
-LOOP   Iterations: 3. Each report ends with next investigations; the
-       following run executes them and says so in its header.
-       Tune on validation data; touch the test set once per run.
+       the empty H1 sign-off line.  A FAIL is printed in red, never hidden.
