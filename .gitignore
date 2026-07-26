@@ -5,3 +5,6 @@ __pycache__/
 
 # local-only: superseded material kept out of the public repo
 archive/
+
+# personal Claude Code settings (the skills in .claude/skills/ ARE tracked)
+.claude/settings.local.json

@@ -20,6 +20,7 @@ University of Oxford · timothee.aubourg@ndcn.ox.ac.uk
 | `ml_report_*.pdf` | The same three reports, printable. |
 | `skills/ml-analysis/` | The generic skill: `SKILL.md`, `run.py`, `prompt.txt` (the frozen context prompt), `water_treatment.csv` (527 days, UCI id-106 schema, synthetic values), `cache.json`. |
 | `skills/narrative-spine/` | The presentation-writing skill used to build the deck itself. |
+| `.claude/skills/` | The same two skills registered for Claude Code, so they work on a fresh clone. |
 | `present_deck.sh` / `.command` / `.bat` | Local presenting: serve the folder on `localhost:8765` and open the deck (Linux / macOS / Windows). |
 
 ## Deploy on GitHub Pages
@@ -68,16 +69,33 @@ activity, questions and discussion inside 90.
 
 ## Running the analysis yourself
 
-Put `skills/ml-analysis/` and its `prompt.txt` into a Claude project, then:
+The skills are registered in `.claude/skills/`, so **clone the repo and open it
+in Claude Code** — `/ml-analysis` and `/narrative-spine` are available with no
+setup. (Skills are a feature of the Claude client, not of GitHub: browsing the
+repository on github.com will not offer them.)
 
 ```
-/analysis prompt.txt
+/ml-analysis skills/ml-analysis/prompt.txt
 ```
+
+To use the analysis skill in a different project instead, copy
+`skills/ml-analysis/` into that project's `.claude/skills/` folder — the folder
+is a self-contained skill, frontmatter included.
 
 The skill reads the prompt, executes the chain end to end, ticks the guardrails
 it verified, and returns a report whose sign-off line is empty — that signature
 is yours. It also proposes the next investigations: the loop is specified for
 three iterations, and the held-out test set is touched once per run.
+
+The runner works from any working directory:
+
+```
+python3 skills/ml-analysis/run.py --prompt skills/ml-analysis/prompt.txt --mode honest
+```
+
+`--mode flawed` and `--mode variant` reproduce the two teaching runs. It needs
+pandas, numpy and scikit-learn; without scikit-learn it falls back to the frozen
+results in `cache.json`, so the chain still runs on a laptop with no install.
 
 ## Notes
 
