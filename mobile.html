@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#002147">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="description" content="Practical AI — the workshop deck, reflowed for a phone. Twenty-seven slides, same running order.">
+<meta name="description" content="Practical AI — the workshop deck, reflowed for a phone. Twenty-nine slides, same running order.">
 <title>Practical AI — the deck, on your phone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -490,8 +490,9 @@ p.tx i{font-style:italic;color:var(--red)} .dark p.tx i{color:var(--yellow)}
 .dark .step{border-color:#2f5f8c;background:#0b2748}
 .step .n{font-family:var(--serif);font-size:20px;font-weight:900;color:var(--red);line-height:1;flex:none;width:20px}
 .dark .step .n{color:var(--yellow)}
-.step .t{font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.15}
-.step .x{font-size:11.5px;line-height:1.42;color:var(--mut);margin-top:3px}
+.step>span:last-child{min-width:0}
+.step .t{display:block;font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.15}
+.step .x{display:block;font-size:11.5px;line-height:1.42;color:var(--mut);margin-top:3px}
 .dark .step .x{color:#9ab0c8}
 .chips{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
 .chip{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--red);
@@ -596,8 +597,9 @@ pre.code{background:var(--ink);color:#dbe6f2;border-radius:11px;padding:12px;ove
  padding:9px 11px;margin-bottom:7px;display:flex;gap:11px;align-items:center}
 .ix.here{border-color:var(--red);background:#fdf5ef}
 .ix .n{font-family:var(--serif);font-size:17px;font-weight:900;color:var(--red);width:26px;flex:none}
-.ix .t{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.15}
-.ix .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+.ix>span:last-child{min-width:0}
+.ix .t{display:block;font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.15}
+.ix .k{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:2px}
 .ixch{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);
  background:var(--rule);border-radius:6px;padding:5px 8px;margin:12px 0 8px}
 </style>
@@ -608,7 +610,7 @@ const h = htm.bind(React.createElement);
 const {useState, useEffect, useRef, useCallback} = React;
 
 /* ══════════════════════════════════════════════════════════════════
-   THE DECK — 27 pages, same running order as index.html.
+   THE DECK — 29 pages, same running order as index.html.
    Each page reflows for a phone; nothing is a scaled-down 1280×720.
    ══════════════════════════════════════════════════════════════════ */
 
@@ -1368,7 +1370,7 @@ function Index({i, go, close}){
   <div class="dim" onClick=${close}></div>
   <div class="sheet">
    <div class="sh"><h3>The deck</h3>
-    <span class="note">27 pages</span>
+    <span class="note">${SLIDES.length} pages</span>
     <button onClick=${close}>close</button></div>
    <div class="sb">
     ${SLIDES.map((s, k) => {
@@ -1405,6 +1407,18 @@ function App(){
  useEffect(() => {
    location.hash = String(i + 1);
    if (stage.current) stage.current.scrollTop = 0;
+ }, [i]);
+
+ /* the phone's back button is its main way back — without this the hash moves
+    and the deck sits still, which reads as a frozen page */
+ useEffect(() => {
+   const hc = () => {
+     const m = /^#(\d+)$/.exec(location.hash);
+     const n = m ? parseInt(m[1], 10) - 1 : 0;
+     if (n >= 0 && n < SLIDES.length && n !== i) { setDir(n >= i ? 1 : -1); setI(n); }
+   };
+   addEventListener('hashchange', hc);
+   return () => removeEventListener('hashchange', hc);
  }, [i]);
 
  useEffect(() => {
