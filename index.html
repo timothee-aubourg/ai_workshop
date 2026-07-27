@@ -1,8 +1,23 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>What's going on in AI? — programme</title>
+<script>
+/* PHONE HAND-OFF — a 16:9 slide deck cannot be read on a 390px screen, so a phone
+   goes straight to the reflowed deck at the same page. ?full=1 opts out for the
+   rest of the tab (that is the link the phone deck points back with). */
+(function(){
+  try{
+    if(/[?&]full=1/.test(location.search)){ sessionStorage.setItem('deckFull','1'); return; }
+    if(sessionStorage.getItem('deckFull')==='1') return;
+    var coarse = (window.matchMedia && matchMedia('(pointer:coarse)').matches) || ('ontouchstart' in window);
+    var side   = Math.min(screen.width||9999, screen.height||9999,
+                          innerWidth||9999, innerHeight||9999);
+    if(coarse && side < 700) location.replace('mobile.html' + (location.hash||''));
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;0,900;1,400&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -27,24 +42,41 @@
   .navbtn.present[aria-pressed="true"]{background:#E8B72E;border-color:#E8B72E;color:#002147}
   .navbtn[aria-pressed="true"]{background:#f4f2ee;color:#002147;border-color:#f4f2ee}
   .navbtn:disabled{opacity:.3;cursor:default}
-  /* MOBILE_V1 */
-  body.mobile #bar{padding:10px 10px}
-  body.mobile .navbtn{font-size:12px;padding:10px 14px}
-  body.mobile .udbtn{width:40px;height:24px;font-size:11px}
-  body.mobile #stageWrap{overflow:auto;-webkit-overflow-scrolling:touch}
-  body.mobile #stageWrap iframe{position:relative;inset:auto;width:1280px;height:720px;
-    transform-origin:0 0;display:none}
+  /* MOBILE_V2 — the phone fallback for the 16:9 deck (reached with ?full=1).
+     The slide is letterboxed dead centre on ink, never cropped, never floating
+     in a half-empty panel; the bar shrinks to one thumb-sized scrollable row. */
+  body.mobile #deck{background:#001730}
+  body.mobile #bar{height:auto;gap:6px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));
+    overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  body.mobile #bar::-webkit-scrollbar{display:none}
+  body.mobile .navbtn{font-size:11px;padding:9px 11px;flex:none}
+  body.mobile .udbtn{width:36px;height:21px;font-size:10px}
+  body.mobile #count{margin:0;flex:none;font-size:10px}
+  body.mobile #count .sec{display:none}
+  body.mobile #scBtn,body.mobile #prBtn,body.mobile #exBtn,body.mobile #qrBtn,
+  body.mobile #clkWrap{display:none}
+  body.mobile .right{margin-left:0}
+  body.mobile #stageWrap{background:#001730;overflow:hidden}
+  body.mobile #stageWrap iframe{position:absolute;inset:auto;left:50%;top:50%;
+    width:1280px;height:720px;transform-origin:center center;display:none;
+    box-shadow:0 8px 34px rgba(0,0,0,.5)}
   body.mobile #stageWrap iframe.on{display:block}
-  #rotHint{position:fixed;inset:0;z-index:200;display:none;background:rgba(0,20,45,.94);
-    color:#f4f2ee;flex-direction:column;align-items:center;justify-content:center;gap:14px;
-    font-family:'Roboto',sans-serif;text-align:center;padding:30px}
+  /* portrait nudge — a toast, not a wall: it never blocks the slide */
+  #rotHint{position:fixed;left:10px;right:10px;z-index:200;display:none;
+    bottom:calc(62px + env(safe-area-inset-bottom,0px));
+    background:rgba(0,20,45,.96);border:1px solid #2f5f8c;border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.45);color:#f4f2ee;
+    align-items:center;gap:11px;font-family:'Roboto',sans-serif;text-align:left;padding:10px 12px}
   #rotHint.on{display:flex}
-  #rotHint .ph{width:46px;height:78px;border:3px solid #E8B72E;border-radius:8px;
+  #rotHint .ph{width:17px;height:27px;border:2px solid #E8B72E;border-radius:4px;flex:none;
     animation:rot 1.6s ease-in-out infinite alternate}
   @keyframes rot{from{transform:rotate(0)}to{transform:rotate(90deg)}}
-  #rotHint b{font-size:17px} #rotHint span{font-size:12.5px;color:#9ab0c8;max-width:300px}
-  #rotHint button{font-family:'Roboto Mono',monospace;font-size:11px;letter-spacing:.1em;
-    border:1.5px solid #f4f2ee;background:transparent;color:#f4f2ee;padding:9px 18px}
+  #rotHint .txt{min-width:0}
+  #rotHint b{display:block;font-size:13px;line-height:1.25}
+  #rotHint span{display:block;font-size:11.5px;line-height:1.35;color:#9ab0c8;margin-top:2px}
+  #rotHint span a{color:#E8B72E}
+  #rotHint button{margin-left:auto;flex:none;font-family:'Roboto Mono',monospace;font-size:15px;
+    line-height:1;border:0;border-radius:8px;background:#0b2748;color:#f4f2ee;padding:8px 11px}
   .updown{display:flex;flex-direction:column;gap:3px;margin-left:2px}
   .udbtn{width:28px;height:16px;background:#E8B72E;border:0;cursor:pointer;color:#002147;
     font-size:8px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
@@ -56,8 +88,9 @@
   .navbtn:hover{border-color:var(--accent);color:#cfe0d8}
   .navbtn:disabled{opacity:.3;cursor:default;border-color:#2f5f8c;color:var(--paper)}
   .navbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .mobbtn{display:inline-flex;align-items:center;gap:7px;text-decoration:none}
-  .mobbtn .ph{width:9px;height:14px;border:1.5px solid currentColor;border-radius:2.5px;flex:none;
+  /* icon only — the phone glyph says it, the word was just width */
+  .mobbtn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:6px 11px}
+  .mobbtn .ph{width:10px;height:15px;border:1.5px solid currentColor;border-radius:2.5px;flex:none;
     position:relative}
   .mobbtn .ph::after{content:'';position:absolute;left:50%;bottom:1px;transform:translateX(-50%);
     width:3px;height:1.5px;background:currentColor}
@@ -82,6 +115,12 @@
   #qrBigBox svg{display:block;width:100%;height:100%}
   .qrurl{font-family:var(--mono);font-size:12px;color:#0c2b4f;margin-top:12px;word-break:break-all;max-width:340px}
   .qrhint{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:#8c8f98;margin-top:8px;text-transform:uppercase}
+  /* presentation timer — click the clock to run or hold it, ↺ to go back to 00:00 */
+  .clockwrap{display:flex;align-items:center;gap:4px;margin-left:2px}
+  #clkBtn{font-variant-numeric:tabular-nums;min-width:92px;text-align:center;letter-spacing:.1em}
+  #clkBtn.run{border-color:#426A5A;background:rgba(66,106,90,.3);color:#d3e4db}
+  #clkBtn.hold{border-color:#E8B72E;color:#E8B72E}
+  #clkRst{padding:6px 9px}
   #count{margin:0 auto;text-transform:uppercase;letter-spacing:.14em;color:#9fb3c6;white-space:nowrap}
   #count b{color:var(--paper);font-weight:500}
   #count .sec{color:#8fb3a6;margin-left:8px}
@@ -11424,7 +11463,7 @@ var qrcode = function() {
 </script>
 <div id="deck">
   <div id="stageWrap"></div>
-  <div id="rotHint"><div class="ph"></div><b>Turn your phone sideways</b><span>The deck reads at full width in landscape. Swipe left / right to change slides; scroll to see the lower half.</span><button id="rotOk">Continue anyway</button></div>
+  <div id="rotHint"><div class="ph" aria-hidden="true"></div><div class="txt"><b>Turn your phone sideways</b><span>Or use the <a id="rotMob" href="mobile.html">phone version</a>, built to be read upright.</span></div><button id="rotOk" aria-label="Dismiss">&times;</button></div>
 
   <nav id="bar" aria-label="Presentation controls">
     <button class="navbtn" id="prev" aria-label="Previous page">&lsaquo; Prev</button>
@@ -11433,11 +11472,16 @@ var qrcode = function() {
     <button class="navbtn" id="scBtn" aria-pressed="false" aria-label="Script" title="Script view (S)">Script</button>
     <button class="navbtn present" id="prBtn" aria-pressed="false" aria-label="Present" title="Present with voice (P)">&#9654; Present</button>
     <button class="navbtn" id="exBtn" aria-pressed="false" aria-label="Expand presenter view" title="Show transcript and voice settings (E)" hidden>&#9662; Transcript</button>
+    <div class="clockwrap" id="clkWrap">
+      <button class="navbtn" id="clkBtn" aria-pressed="false" aria-label="Presentation timer"
+              title="Start the presentation timer (T)">&#9201; 00:00</button>
+      <button class="navbtn ic" id="clkRst" aria-label="Reset timer" title="Back to 00:00" disabled>&#8634;</button>
+    </div>
     <div id="count" aria-live="polite"></div>
     <div class="right">
       <button class="navbtn qrbtn" id="qrBtn" aria-label="Deck link QR" title="Deck link (click to enlarge)"><span id="qrMini"></span><span class="qrlbl">deck</span></button>
       <a class="navbtn mobbtn" id="mobBtn" href="mobile.html" aria-label="Phone version"
-         title="Open the phone version at this page (M)"><span class="ph" aria-hidden="true"></span>Mobile</a>
+         title="Open the phone version at this page (M)"><span class="ph" aria-hidden="true"></span></a>
       <button class="navbtn ic" id="ovBtn" aria-label="Overview" title="Overview (O)">&#9638;</button>
       <button class="navbtn ic" id="fsBtn" aria-label="Fullscreen" title="Fullscreen (F)">&#9974;</button>
     </div>
@@ -11549,8 +11593,10 @@ var qrcode = function() {
     Array.prototype.forEach.call(document.querySelectorAll('.ovcard'),function(c,k){
       c.classList.toggle('here', k===i);
     });
-    var mob=document.getElementById('mobBtn');
-    if(mob) mob.href='mobile.html#'+(i+1);   // hand the phone deck the page you are on
+    // hand the phone deck the page you are on, from the bar and from the portrait toast
+    ['mobBtn','rotMob'].forEach(function(id){
+      var a=document.getElementById(id); if(a) a.href='mobile.html#'+(i+1);
+    });
     updateQR();
   }
   var ytLb=document.getElementById('ytLb'), ytHost=document.getElementById('ytHost'), ytOut=document.getElementById('ytOut');
@@ -11632,19 +11678,51 @@ var qrcode = function() {
   }
   rUp.addEventListener('click',function(){ stepRegion(-1); });
   rDn.addEventListener('click',function(){ stepRegion(1); });
-  /* MOBILE_V1 */
-  function isMobile(){ return (matchMedia('(pointer:coarse)').matches||('ontouchstart' in window)) && Math.min(innerWidth,innerHeight)<620; }
+  /* PRESENTATION TIMER — wall-clock accumulation, so a throttled tab or a long
+     pause never drifts the way a counted-ticks timer would. */
+  var clkBtn=document.getElementById('clkBtn'), clkRst=document.getElementById('clkRst');
+  var clkHeld=0, clkFrom=0, clkTick=null;
+  function clkNow(){ return clkHeld + (clkFrom ? Date.now()-clkFrom : 0); }
+  function clkFmt(ms){
+    var s=Math.floor(ms/1000), h=Math.floor(s/3600), m=Math.floor(s%3600/60), ss=s%60,
+        p=function(n){ return (n<10?'0':'')+n; };
+    return (h ? h+':'+p(m) : p(m)) + ':' + p(ss);
+  }
+  function clkPaint(){
+    var t=clkNow(), running=!!clkFrom;
+    clkBtn.innerHTML='&#9201; '+clkFmt(t);
+    clkBtn.classList.toggle('run',running);
+    clkBtn.classList.toggle('hold',!running && t>0);
+    clkBtn.setAttribute('aria-pressed', running?'true':'false');
+    clkBtn.title=(running?'Pause':(t?'Resume':'Start'))+' the presentation timer (T)';
+    clkRst.disabled = !running && t===0;
+  }
+  function clkToggle(){
+    if(clkFrom){ clkHeld=clkNow(); clkFrom=0; clearInterval(clkTick); clkTick=null; }
+    else { clkFrom=Date.now(); clkTick=setInterval(clkPaint,250); }
+    clkPaint();
+  }
+  function clkReset(){ clkHeld=0; if(clkFrom) clkFrom=Date.now(); clkPaint(); }  // running? restart from zero
+  clkBtn.addEventListener('click',clkToggle);
+  clkRst.addEventListener('click',clkReset);
+  clkPaint();
+
+  /* MOBILE_V2 */
+  function isMobile(){ return (matchMedia('(pointer:coarse)').matches||('ontouchstart' in window)) && Math.min(innerWidth,innerHeight)<700; }
   var rotHint=document.getElementById('rotHint'), rotDismissed=false;
   document.getElementById('rotOk').addEventListener('click',function(){rotDismissed=true;rotHint.classList.remove('on');});
   function mobileFit(){
     var m=isMobile();
     document.body.classList.toggle('mobile',m);
-    var f=document.querySelector('#stageWrap iframe.on');
-    if(!m){ if(f){f.style.transform='';f.style.width='';f.style.height='';} return; }
-    var S=Math.max(0.2, wrap.clientWidth/1280);
+    if(!m){
+      document.querySelectorAll('#stageWrap iframe').forEach(function(fr){ fr.style.transform=''; });
+      rotHint.classList.remove('on');
+      return;
+    }
+    /* contain, don't crop: whichever of width or height runs out first sets the scale */
+    var S=Math.max(0.15, Math.min(wrap.clientWidth/1280, wrap.clientHeight/720));
     document.querySelectorAll('#stageWrap iframe').forEach(function(fr){
-      fr.style.transform='scale('+S+')';
-      fr.style.marginBottom=(720*S-720)+'px';
+      fr.style.transform='translate(-50%,-50%) scale('+S+')';
     });
     rotHint.classList.toggle('on', innerHeight>innerWidth && !rotDismissed);
   }
@@ -11712,6 +11790,7 @@ var qrcode = function() {
       case 's': case 'S': e.preventDefault(); scBtn.click(); break;
       case 'p': case 'P': e.preventDefault(); prBtn.click(); break;
       case 'm': case 'M': e.preventDefault(); document.getElementById('mobBtn').click(); break;
+      case 't': case 'T': e.preventDefault(); clkToggle(); break;
       case 'ArrowDown': e.preventDefault(); stepRegion(1); break;
       case 'ArrowUp': e.preventDefault(); stepRegion(-1); break;
       case ' ':
