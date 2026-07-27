@@ -130,6 +130,28 @@ that path deliberately. `.venv/` is gitignored.
   static server from this folder) so the PDFs and the `skills/` folder resolve;
   the deck itself is self-contained and also opens directly as a file.
 
+## Licence
+
+Reuse and adapt this freely, for any purpose including commercially — just
+keep the credit.
+
+- **Workshop material** (the decks, the reports, the prompt, the text):
+  [CC BY 4.0](LICENSE) — see `LICENSE`.
+- **Code** (`skills/*/run.py`, `setup_env.py`, the `present_deck` scripts):
+  [MIT](LICENSE-CODE) — see `LICENSE-CODE`.
+
+Suggested attribution:
+
+> "Practical AI — fundamentals you can apply to your projects" by Timothée
+> Aubourg (Nuffield Department of Clinical Neurosciences, University of
+> Oxford), CC BY 4.0 —
+> https://timothee-aubourg.github.io/ai_workshop
+
+Third-party material keeps its own licence: the photographs are hotlinked from
+Wikimedia Commons and institutional sites under CC BY-SA / CC0, and the water
+treatment schema follows the UCI dataset (Poch 1993, CC BY 4.0) with values
+regenerated for teaching.
+
 ## Sources cited in the deck
 
 Energy and scaling: IEA *Energy and AI* (2025); Koomey et al., *Implications of
