@@ -802,6 +802,7 @@ const SLIDES = [
     tools:[['Elicit','https://elicit.com','systematic screening across 138M+ papers'],
            ['Consensus','https://consensus.app','evidence-weighted answers to yes/no scientific questions'],
            ['Semantic Scholar','https://www.semanticscholar.org','free discovery across 200M+ papers'],
+           ['Google Scholar Labs','https://scholar.google.com/scholar_labs/search?hl=en','ask a research question, get the papers that answer it'],
            ['scite','https://scite.ai','did later work support or contradict this citation'],
            ['Perplexity','https://www.perplexity.ai','cited web reports in minutes'],
            ['Claude Research','https://claude.ai','long, structured, sourced investigations']],
@@ -982,8 +983,7 @@ const SLIDES = [
   {k:'take', items:[
     ['Takeaway 01','The four duties','Tacit knowledge, delegation level, guardrails, accountability — the four things that stay human, whatever the field, the data or the tool.'],
     ['Takeaway 02','Place your expertise','The model is the smallest part. Delegate what you can validate; keep the question, the data, and the judgement.'],
-    ['Takeaway 03','Evaluation is the job','Run the whole chain, then do the human part: catch the flaw, approve the honest result, sign it off.']]},
-  {k:'note', t:'Oxford India Centre for Sustainable Development · Somerville College'}]},
+    ['Takeaway 03','Evaluation is the job','Run the whole chain, then do the human part: catch the flaw, approve the honest result, sign it off.']]}]},
 
 /* 21 ──────────────────────────────────────────────────────── */
 {id:'intro8', kind:'intro', ch:3, n:'08', tag:'Section 08 · What ML is',
@@ -1014,13 +1014,13 @@ const SLIDES = [
     x:'Like learning to ride a bicycle: nobody hands you the correct handlebar angle; you act, you wobble, you adjust. The agent observes a state, takes an action, receives a reward, improves its policy. It needs a safe place to fail — a simulator, not a live plant. And it will chase precisely what the reward measures. <b>The goal you write is the goal you get.</b>'}]},
   {k:'sub', t:'Activity · AI or not AI?'},
   {k:'reveal', items:[
-   ['Predicting water quality','UPL project · 527 plant-days · inflow chemistry → tomorrow’s BOD','yes','AI','Supervised · regression. Nobody can write the rule that turns this morning’s chemistry into tomorrow’s outflow — so it is fitted to the record instead.'],
+   ['Predicting water quality','water treatment plant · 527 plant-days · inflow chemistry → tomorrow’s BOD','yes','AI','Supervised · regression. Nobody can write the rule that turns this morning’s chemistry into tomorrow’s outflow — so it is fitted to the record instead.'],
    ['A pocket calculator','Casio HS-4 · 7 × 8 = 56, every time','no','NOT AI','Fixed rules, written by a human. No examples, no learning — and it is never wrong.'],
    ['Forecasting solar &amp; wind','grid forecast · past output + weather → tomorrow','yes','AI','Supervised · regression in a forecasting setting. The rival to beat is not another network: it is “same as yesterday”.'],
    ['A spreadsheet formula','Microsoft Excel · =SUM(B2:B40)','no','NOT AI','A rule you wrote. Excel repeats it exactly — no data-fitted function, nothing learned.'],
-   ['Predicting a material property','UPL project · composition → melting point','yes','AI','Supervised · regression on small data — which changes everything: simple model, designed experiments, and no extrapolation beyond what was tested.'],
+   ['Predicting a material property','materials science · composition → melting point','yes','AI','Supervised · regression on small data — which changes everything: simple model, designed experiments, and no extrapolation beyond what was tested.'],
    ['A smart toothbrush','Oral-B iO · pressure + motion sensors','both','BOTH','The timer and the pressure alert are rules. But mapping motion to <b>which tooth you are brushing</b> is learned from labelled recordings — supervised classification. Note the trap: its microcontroller runs about ten times faster than the first Macintosh. Raw power was never what made something AI.'],
-   ['Classifying hostile comments','UPL project · Gujarati NLP · posts → hostile / not','yes','AI','Supervised · classification with a rare class — which means accuracy will lie to you.'],
+   ['Classifying hostile comments','content moderation · low-resource language · posts → hostile / not','yes','AI','Supervised · classification with a rare class — which means accuracy will lie to you.'],
    ['A thermostat','classic dial model · below 19°C → heat on','no','NOT AI','One threshold, one rule. A <i>learning</i> thermostat that predicts your schedule would be AI — this one is not.']]},
   {k:'note', t:'Not everything automatic is AI. Rules are written; models are fitted to examples. <b>What decides is where the behaviour came from.</b>'},
   {k:'sub', t:'The workflow · six steps'},

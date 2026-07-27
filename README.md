@@ -1,7 +1,6 @@
 # Practical AI — fundamentals you can apply to your projects
 
-Materials for the 90-minute Oxford session, OICSD–UPL faculty summer visit,
-Somerville College, July 2026.
+Materials for the Oxford presentation, July 2026.
 
 **Timothée Aubourg** · Nuffield Department of Clinical Neurosciences,
 University of Oxford · timothee.aubourg@ndcn.ox.ac.uk
@@ -12,8 +11,8 @@ University of Oxford · timothee.aubourg@ndcn.ox.ac.uk
 
 | Path | What it is |
 |---|---|
-| `index.html` | The talk: 27 interactive pages, with presenter mode, transcript and voice. Self-contained — the reports and skill files are embedded, so it runs from any location. |
-| `mobile.html` | The same 27 pages, as a phone deck: swipe to advance, reflowed for portrait, with the index, the activity, the prompt and the three reports. Add to home screen for a full-screen app. |
+| `index.html` | The talk: 29 interactive pages, with presenter mode, transcript and voice. Self-contained — the reports and skill files are embedded, so it runs from any location. |
+| `mobile.html` | The same 29 pages, as a phone deck: swipe to advance, reflowed for portrait, with the index, the activity, the prompt and the three reports. Add to home screen for a full-screen app. |
 | `ml_report_honest.html` | Analysis report, **iteration 1** — guardrails enforced. |
 | `ml_report_flawed.html` | Analysis report, **iteration 0** — the run that lies. |
 | `ml_report_variant.html` | Analysis report, **iteration 2** — one domain feature added. |
@@ -65,7 +64,7 @@ slide carries a larger join QR plus a link to this repository's source.
 - **Close** — questions
 
 Spoken script ≈ 51 minutes across the content pages, leaving room for the
-activity, questions and discussion inside 90.
+activity, questions and discussion.
 
 ## Running the analysis yourself
 
