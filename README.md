@@ -59,7 +59,7 @@ slide carries a larger join QR plus a link to this repository's source.
 - **Chapter 2 · New challenges** — the energy bill, the social bill, the
   cognitive bill
 - **Chapter 3 · Doing AI in your project** — what machine learning is (with the
-  *AI or not AI?* activity), where you stand in the system, and one full chain
+  *ML or not ML?* activity), where you stand in the system, and one full chain
   run end to end
 - **Close** — questions
 
